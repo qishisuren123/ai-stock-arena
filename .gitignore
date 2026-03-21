@@ -1,0 +1,21 @@
+# API 密钥和配置
+config.json
+model_config.py
+
+# 原始状态文件（通过 export_data.py 控制导出）
+multi_states/
+
+# 单模型旧状态
+sim_state.json
+trades.json
+
+# Python
+__pycache__/
+*.pyc
+
+# 日志
+sync.log
+*.log
+
+# 系统文件
+.DS_Store

@@ -1,0 +1,57 @@
+[
+  {
+    "timestamp": "2026-03-21 23:56:53",
+    "models": [
+      {
+        "name": "Claude-Haiku",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "GPT-5.4",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "Gemini-3.1-Pro",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "Minimax2.5",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "GLM5",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "DeepSeek-V3.2",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "Kimi-K2.5",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "Qwen3.5-397B",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "Intern-S1",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "Intern-S1-Pro",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      }
+    ]
+  }
+]
