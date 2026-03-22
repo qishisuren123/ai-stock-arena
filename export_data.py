@@ -18,17 +18,18 @@ INITIAL_CASH = 10000.0
 HISTORY_MAX = 720  # 历史记录上限（每小时1条，约30天）
 
 # 硬编码模型列表（避免 import model_config.py 暴露敏感信息）
+# name: 显示名称，safe_name_override: 状态文件名映射（改名前的旧文件名）
 MODELS = [
-    {"name": "Claude-Haiku",   "source": "商业API"},
-    {"name": "GPT-5.4",        "source": "商业API"},
-    {"name": "Gemini-3.1-Pro", "source": "商业API"},
-    {"name": "Minimax2.5",     "source": "内部部署"},
-    {"name": "GLM5",           "source": "内部部署"},
-    {"name": "DeepSeek-V3.2",  "source": "内部部署"},
-    {"name": "Kimi-K2.5",      "source": "内部部署"},
-    {"name": "Qwen3.5-397B",   "source": "内部部署"},
-    {"name": "Intern-S1",      "source": "内部部署"},
-    {"name": "Intern-S1-Pro",  "source": "内部部署"},
+    {"name": "Claude-4.6"},
+    {"name": "GPT-5.4"},
+    {"name": "Gemini-3.1-Pro"},
+    {"name": "Minimax2.5"},
+    {"name": "GLM5"},
+    {"name": "DeepSeek-V3.2"},
+    {"name": "Kimi-K2.5"},
+    {"name": "Qwen3.5-397B"},
+    {"name": "Intern-S1"},
+    {"name": "Intern-S1-Pro"},
 ]
 
 
@@ -60,7 +61,6 @@ def export():
         # 默认值
         record = {
             "name": m["name"],
-            "source": m["source"],
             "cash": INITIAL_CASH,
             "positions": [],
             "total_value": INITIAL_CASH,

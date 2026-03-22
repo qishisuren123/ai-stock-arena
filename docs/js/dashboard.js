@@ -6,7 +6,7 @@
 
 // 10 个模型的专属颜色（与 CSS 变量对应）
 const MODEL_COLORS = {
-    "Claude-Haiku":   "#f97316",
+    "Claude-4.6":     "#f97316",
     "GPT-5.4":        "#10b981",
     "Gemini-3.1-Pro": "#3b82f6",
     "Minimax2.5":     "#8b5cf6",
@@ -71,9 +71,6 @@ function renderLeaderboard(models) {
         if (m.return_pct > 0) { pnlClass = "pnl-up"; pnlPrefix = "+"; }
         else if (m.return_pct < 0) { pnlClass = "pnl-down"; }
 
-        // 数据源标签
-        const srcClass = m.source === "商业API" ? "source-api" : "source-internal";
-
         // 持仓摘要
         let posText = "空仓";
         if (m.positions && m.positions.length > 0) {
@@ -83,7 +80,6 @@ function renderLeaderboard(models) {
         tr.innerHTML = `
             <td>${rankText}</td>
             <td style="color:${MODEL_COLORS[m.name] || '#e6edf3'}">${m.name}</td>
-            <td><span class="source-tag ${srcClass}">${m.source}</span></td>
             <td>&yen;${m.total_value.toLocaleString("zh-CN", {minimumFractionDigits: 2})}</td>
             <td class="${pnlClass}">${pnlPrefix}${m.return_pct.toFixed(2)}%</td>
             <td>${m.trade_count}</td>
