@@ -1,20 +1,20 @@
 [
   {
-    "timestamp": "2026-03-21 23:56:53",
+    "timestamp": "2026-03-21 10:00:00",
     "models": [
       {
-        "name": "Claude-Haiku",
-        "total_value": 10000.0,
+        "name": "Claude-4.6",
+        "total_value": 10000,
         "return_pct": 0.0
       },
       {
         "name": "GPT-5.4",
-        "total_value": 10000.0,
+        "total_value": 10000,
         "return_pct": 0.0
       },
       {
         "name": "Gemini-3.1-Pro",
-        "total_value": 10000.0,
+        "total_value": 10000,
         "return_pct": 0.0
       },
       {
@@ -55,22 +55,22 @@
     ]
   },
   {
-    "timestamp": "2026-03-22 12:50:47",
+    "timestamp": "2026-03-21 11:00:00",
     "models": [
       {
         "name": "Claude-4.6",
-        "total_value": 10000.0,
-        "return_pct": 0.0
+        "total_value": 10050,
+        "return_pct": 0.5
       },
       {
         "name": "GPT-5.4",
-        "total_value": 10000.0,
-        "return_pct": 0.0
+        "total_value": 9950,
+        "return_pct": -0.5
       },
       {
         "name": "Gemini-3.1-Pro",
-        "total_value": 10000.0,
-        "return_pct": 0.0
+        "total_value": 10010,
+        "return_pct": 0.1
       },
       {
         "name": "Minimax2.5",
@@ -110,22 +110,22 @@
     ]
   },
   {
-    "timestamp": "2026-03-22 12:51:58",
+    "timestamp": "2026-03-21 12:00:00",
     "models": [
       {
         "name": "Claude-4.6",
-        "total_value": 10000.0,
-        "return_pct": 0.0
+        "total_value": 10120,
+        "return_pct": 1.2
       },
       {
         "name": "GPT-5.4",
-        "total_value": 10000.0,
-        "return_pct": 0.0
+        "total_value": 9900,
+        "return_pct": -1.0
       },
       {
         "name": "Gemini-3.1-Pro",
-        "total_value": 10000.0,
-        "return_pct": 0.0
+        "total_value": 10030,
+        "return_pct": 0.3
       },
       {
         "name": "Minimax2.5",
@@ -165,22 +165,22 @@
     ]
   },
   {
-    "timestamp": "2026-03-22 13:45:00",
+    "timestamp": "2026-03-21 13:00:00",
     "models": [
       {
         "name": "Claude-4.6",
-        "total_value": 10000.0,
-        "return_pct": 0.0
+        "total_value": 10080,
+        "return_pct": 0.8
       },
       {
         "name": "GPT-5.4",
-        "total_value": 10000.0,
-        "return_pct": 0.0
+        "total_value": 9920,
+        "return_pct": -0.8
       },
       {
         "name": "Gemini-3.1-Pro",
-        "total_value": 10000.0,
-        "return_pct": 0.0
+        "total_value": 10050,
+        "return_pct": 0.5
       },
       {
         "name": "Minimax2.5",
@@ -220,22 +220,22 @@
     ]
   },
   {
-    "timestamp": "2026-03-22 13:48:28",
+    "timestamp": "2026-03-21 14:00:00",
     "models": [
       {
         "name": "Claude-4.6",
-        "total_value": 10000.0,
-        "return_pct": 0.0
+        "total_value": 10200,
+        "return_pct": 2.0
       },
       {
         "name": "GPT-5.4",
-        "total_value": 10000.0,
-        "return_pct": 0.0
+        "total_value": 9850,
+        "return_pct": -1.5
       },
       {
         "name": "Gemini-3.1-Pro",
-        "total_value": 10000.0,
-        "return_pct": 0.0
+        "total_value": 10080,
+        "return_pct": 0.8
       },
       {
         "name": "Minimax2.5",
@@ -271,6 +271,61 @@
         "name": "Intern-S1-Pro",
         "total_value": 10000.0,
         "return_pct": 0.0
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-03-22 18:32:06",
+    "models": [
+      {
+        "name": "Gemini-3.1-Pro",
+        "total_value": 10050.0,
+        "return_pct": 0.5
+      },
+      {
+        "name": "Minimax2.5",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "GLM5",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "DeepSeek-V3.2",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "Kimi-K2.5",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "Qwen3.5-397B",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "Intern-S1",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "Intern-S1-Pro",
+        "total_value": 10000.0,
+        "return_pct": 0.0
+      },
+      {
+        "name": "GPT-5.4",
+        "total_value": 9880.0,
+        "return_pct": -1.2
+      },
+      {
+        "name": "Claude-4.6",
+        "total_value": 9420.0,
+        "return_pct": -5.8
       }
     ]
   }

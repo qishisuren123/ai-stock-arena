@@ -125,17 +125,17 @@ def generate_battle_report(overview: str, prices: dict):
     )
     user_msg = f"大盘概况：\n{overview}\n\n各模型本轮表现：\n{summary}"
 
-    # 硬编码 Kimi 配置（不 import model_config.py 中的敏感信息）
-    kimi_cfg = {
-        "name": "Kimi-K2.5",
-        "base_url": "http://s-20260204175507-cqflp.ailab-pj.pjh-service.org.cn/v1",
-        "model": "kimi-k2.5",
+    # 硬编码 Qwen 配置用于战报生成（不 import model_config.py 中的敏感信息）
+    qwen_cfg = {
+        "name": "Qwen3.5-397B",
+        "base_url": "http://s-20260304112131-p7qvl.ailab-pj.pjh-service.org.cn/v1",
+        "model": "qwen3.5-397b",
         "api_key": "",
         "api_format": "openai",
         "use_proxy": False,
     }
 
-    report_text = ai_advisor.call_model_api(kimi_cfg, system_prompt, user_msg)
+    report_text = ai_advisor.call_model_api(qwen_cfg, system_prompt, user_msg)
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M")
 
     # 保存当前战报
