@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-22 18:53:31",
+  "timestamp": "2026-03-22 19:13:27",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -18,8 +18,8 @@
         "新手上路"
       ],
       "metrics": {
-        "max_drawdown": 7.65,
-        "sharpe_ratio": -10.84,
+        "max_drawdown": 0.0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -42,8 +42,8 @@
         "新手上路"
       ],
       "metrics": {
-        "max_drawdown": 1.5,
-        "sharpe_ratio": -18.48,
+        "max_drawdown": 0.0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -66,8 +66,8 @@
         "新手上路"
       ],
       "metrics": {
-        "max_drawdown": 0.3,
-        "sharpe_ratio": 15.17,
+        "max_drawdown": 0.0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -91,7 +91,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -115,7 +115,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -139,7 +139,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -163,7 +163,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -187,7 +187,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -211,7 +211,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -235,7 +235,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
