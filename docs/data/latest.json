@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-22 12:51:58",
+  "timestamp": "2026-03-22 13:48:28",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -12,7 +12,19 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-21 20:08:44"
+      "last_update": "2026-03-21 20:08:44",
+      "thinking": null,
+      "style_tags": [
+        "新手上路"
+      ],
+      "metrics": {
+        "max_drawdown": 0.0,
+        "sharpe_ratio": 0,
+        "win_streak": 0,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 0.0
+      }
     },
     {
       "name": "GPT-5.4",
@@ -24,7 +36,19 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-21 20:08:44"
+      "last_update": "2026-03-21 20:08:44",
+      "thinking": null,
+      "style_tags": [
+        "新手上路"
+      ],
+      "metrics": {
+        "max_drawdown": 0.0,
+        "sharpe_ratio": 0,
+        "win_streak": 0,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 0.0
+      }
     },
     {
       "name": "Gemini-3.1-Pro",
@@ -36,7 +60,19 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-21 20:08:44"
+      "last_update": "2026-03-21 20:08:44",
+      "thinking": null,
+      "style_tags": [
+        "新手上路"
+      ],
+      "metrics": {
+        "max_drawdown": 0.0,
+        "sharpe_ratio": 0,
+        "win_streak": 0,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 0.0
+      }
     },
     {
       "name": "Minimax2.5",
@@ -48,7 +84,19 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-21 20:08:44"
+      "last_update": "2026-03-21 20:08:44",
+      "thinking": null,
+      "style_tags": [
+        "新手上路"
+      ],
+      "metrics": {
+        "max_drawdown": 0.0,
+        "sharpe_ratio": 0,
+        "win_streak": 0,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 0.0
+      }
     },
     {
       "name": "GLM5",
@@ -60,7 +108,19 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-21 20:08:44"
+      "last_update": "2026-03-21 20:08:44",
+      "thinking": null,
+      "style_tags": [
+        "新手上路"
+      ],
+      "metrics": {
+        "max_drawdown": 0.0,
+        "sharpe_ratio": 0,
+        "win_streak": 0,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 0.0
+      }
     },
     {
       "name": "DeepSeek-V3.2",
@@ -72,7 +132,19 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-21 20:08:44"
+      "last_update": "2026-03-21 20:08:44",
+      "thinking": null,
+      "style_tags": [
+        "新手上路"
+      ],
+      "metrics": {
+        "max_drawdown": 0.0,
+        "sharpe_ratio": 0,
+        "win_streak": 0,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 0.0
+      }
     },
     {
       "name": "Kimi-K2.5",
@@ -84,7 +156,19 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-21 20:08:44"
+      "last_update": "2026-03-21 20:08:44",
+      "thinking": null,
+      "style_tags": [
+        "新手上路"
+      ],
+      "metrics": {
+        "max_drawdown": 0.0,
+        "sharpe_ratio": 0,
+        "win_streak": 0,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 0.0
+      }
     },
     {
       "name": "Qwen3.5-397B",
@@ -96,7 +180,19 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-21 20:08:44"
+      "last_update": "2026-03-21 20:08:44",
+      "thinking": null,
+      "style_tags": [
+        "新手上路"
+      ],
+      "metrics": {
+        "max_drawdown": 0.0,
+        "sharpe_ratio": 0,
+        "win_streak": 0,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 0.0
+      }
     },
     {
       "name": "Intern-S1",
@@ -108,7 +204,19 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-21 20:08:44"
+      "last_update": "2026-03-21 20:08:44",
+      "thinking": null,
+      "style_tags": [
+        "新手上路"
+      ],
+      "metrics": {
+        "max_drawdown": 0.0,
+        "sharpe_ratio": 0,
+        "win_streak": 0,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 0.0
+      }
     },
     {
       "name": "Intern-S1-Pro",
@@ -120,7 +228,19 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-21 20:08:44"
+      "last_update": "2026-03-21 20:08:44",
+      "thinking": null,
+      "style_tags": [
+        "新手上路"
+      ],
+      "metrics": {
+        "max_drawdown": 0.0,
+        "sharpe_ratio": 0,
+        "win_streak": 0,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 0.0
+      }
     }
   ]
 }
