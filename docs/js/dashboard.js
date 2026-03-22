@@ -18,8 +18,23 @@ const MODEL_COLORS = {
     "Intern-S1-Pro":  "#a78bfa",
 };
 
+// 风格标签 → CSS class 映射
+const STYLE_TAG_CLASS = {
+    "激进派": "style-tag-aggressive",
+    "保守派": "style-tag-conservative",
+    "追涨型": "style-tag-chaser",
+    "抄底型": "style-tag-bargain",
+    "长线选手": "style-tag-longterm",
+    "短线选手": "style-tag-shortterm",
+    "观望派": "style-tag-observer",
+    "分散持仓": "style-tag-spread",
+    "集中持仓": "style-tag-focus",
+    "新手上路": "style-tag-newbie",
+    "稳健型": "style-tag-default",
+};
+
 // 排名奖牌
-const MEDALS = ["🥇", "🥈", "🥉"];
+const MEDALS = ["\u{1F947}", "\u{1F948}", "\u{1F949}"];
 
 let chartInstance = null;
 
@@ -49,6 +64,7 @@ function renderAll(latest, history) {
         `最后更新: ${latest.timestamp}`;
 
     renderLeaderboard(latest.models);
+    renderBattleReport(latest);
     renderChart(history);
     renderModelGrid(latest.models);
 }
@@ -77,17 +93,62 @@ function renderLeaderboard(models) {
             posText = m.positions.map(p => p.name).join(", ");
         }
 
+        // 高级指标
+        const met = m.metrics || {};
+        const ddText = met.max_drawdown ? `-${met.max_drawdown.toFixed(1)}%` : "-";
+        const sharpeText = met.sharpe_ratio ? met.sharpe_ratio.toFixed(2) : "-";
+        const streakText = met.win_streak ? `${met.win_streak}连胜` : (met.lose_streak ? `${met.lose_streak}连败` : "-");
+        const streakColor = met.win_streak > 0 ? "var(--up)" : (met.lose_streak > 0 ? "var(--down)" : "var(--flat)");
+
         tr.innerHTML = `
             <td>${rankText}</td>
             <td style="color:${MODEL_COLORS[m.name] || '#e6edf3'}">${m.name}</td>
             <td>&yen;${m.total_value.toLocaleString("zh-CN", {minimumFractionDigits: 2})}</td>
             <td class="${pnlClass}">${pnlPrefix}${m.return_pct.toFixed(2)}%</td>
+            <td class="metric-dd">${ddText}</td>
+            <td class="metric-sharpe">${sharpeText}</td>
+            <td class="metric-streak" style="color:${streakColor}">${streakText}</td>
             <td>${m.trade_count}</td>
             <td>${m.trade_count > 0 ? m.win_rate.toFixed(0) + "%" : "-"}</td>
             <td>${posText}</td>
         `;
         tbody.appendChild(tr);
     });
+}
+
+// === 战报渲染 ===
+function renderBattleReport(latest) {
+    const section = document.getElementById("battleReportSection");
+    const currentDiv = document.getElementById("battleReportCurrent");
+    const timeDiv = document.getElementById("battleReportTime");
+    const histDiv = document.getElementById("battleReportHistory");
+
+    if (!latest.battle_report) {
+        section.style.display = "none";
+        return;
+    }
+
+    section.style.display = "";
+    currentDiv.textContent = latest.battle_report;
+    timeDiv.textContent = latest.battle_report_time || "";
+
+    // 历史战报
+    histDiv.innerHTML = "";
+    if (latest.battle_reports && latest.battle_reports.length > 0) {
+        // 倒序显示，最新的在上面（排除当前那条）
+        const reports = [...latest.battle_reports].reverse();
+        reports.forEach(r => {
+            if (r.report === latest.battle_report) return; // 跳过当前战报
+            const item = document.createElement("div");
+            item.className = "hist-item";
+            item.textContent = r.report;
+            const timeEl = document.createElement("div");
+            timeEl.className = "hist-time";
+            timeEl.textContent = r.timestamp;
+            item.appendChild(timeEl);
+            histDiv.appendChild(item);
+        });
+    }
 }
 
 // === 收益走势图 ===
@@ -193,6 +254,28 @@ function renderModelGrid(models) {
         const pnlClass = m.return_pct > 0 ? "pnl-up" : (m.return_pct < 0 ? "pnl-down" : "pnl-flat");
         const pnlPrefix = m.return_pct > 0 ? "+" : "";
 
+        // 风格标签
+        let tagsHTML = "";
+        if (m.style_tags && m.style_tags.length > 0) {
+            tagsHTML = '<div class="mc-style-tags">' +
+                m.style_tags.map(tag => {
+                    const cls = STYLE_TAG_CLASS[tag] || "style-tag-default";
+                    return `<span class="style-tag ${cls}">${tag}</span>`;
+                }).join("") +
+                '</div>';
+        }
+
+        // 高级指标摘要
+        const met = m.metrics || {};
+        let metricsHTML = "";
+        if (met.max_drawdown || met.sharpe_ratio || met.avg_hold_days) {
+            const parts = [];
+            if (met.max_drawdown) parts.push(`回撤 -${met.max_drawdown}%`);
+            if (met.sharpe_ratio) parts.push(`Sharpe ${met.sharpe_ratio}`);
+            if (met.avg_hold_days) parts.push(`持仓 ${met.avg_hold_days}天`);
+            metricsHTML = `<span>${parts.join(" | ")}</span>`;
+        }
+
         // 持仓列表
         let posHTML = '<span style="color:var(--text-dim)">空仓</span>';
         if (m.positions && m.positions.length > 0) {
@@ -200,6 +283,29 @@ function renderModelGrid(models) {
                 const pnlColor = p.unrealized_pnl > 0 ? "var(--up)" : (p.unrealized_pnl < 0 ? "var(--down)" : "var(--flat)");
                 return `<span class="pos-item">${p.name} <span style="color:${pnlColor}">${p.unrealized_pnl >= 0 ? "+" : ""}${p.unrealized_pnl.toFixed(0)}</span></span>`;
             }).join(" ");
+        }
+
+        // 思考过程
+        let thinkingHTML = "";
+        if (m.thinking && m.thinking.analysis) {
+            let actionsHTML = "";
+            if (m.thinking.actions && m.thinking.actions.length > 0) {
+                actionsHTML = '<div class="thinking-actions">' +
+                    m.thinking.actions.map(a => {
+                        const cls = a.action === "buy" ? "thinking-action-buy" : "thinking-action-sell";
+                        const label = a.action === "buy" ? "买" : "卖";
+                        return `<span class="thinking-action-tag ${cls}">${label} ${a.name || a.code}</span>`;
+                    }).join("") +
+                    '</div>';
+            }
+            thinkingHTML = `
+                <details class="mc-thinking">
+                    <summary>AI 思考过程</summary>
+                    <div class="thinking-content">
+                        <div class="thinking-analysis">${escapeHTML(m.thinking.analysis)}</div>
+                        ${actionsHTML}
+                    </div>
+                </details>`;
         }
 
         const card = document.createElement("div");
@@ -210,16 +316,26 @@ function renderModelGrid(models) {
                 <span class="mc-name" style="color:${color}">${m.name}</span>
                 <span class="mc-return ${pnlClass}">${pnlPrefix}${m.return_pct.toFixed(2)}%</span>
             </div>
+            ${tagsHTML}
             <div class="mc-stats">
                 <span>总资产: &yen;${m.total_value.toLocaleString("zh-CN", {minimumFractionDigits: 2})}</span>
                 <span>现金: &yen;${m.cash.toLocaleString("zh-CN", {minimumFractionDigits: 2})}</span>
                 <span>交易: ${m.trade_count}次 | 胜率: ${m.trade_count > 0 ? m.win_rate.toFixed(0) + "%" : "-"}</span>
                 <span>已实现盈亏: &yen;${m.realized_pnl >= 0 ? "+" : ""}${m.realized_pnl.toFixed(2)}</span>
+                ${metricsHTML}
             </div>
             <div class="mc-positions">${posHTML}</div>
+            ${thinkingHTML}
         `;
         grid.appendChild(card);
     });
+}
+
+// === 工具函数 ===
+function escapeHTML(str) {
+    const div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
 }
 
 // === 启动 + 自动刷新 ===

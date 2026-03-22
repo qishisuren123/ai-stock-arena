@@ -77,3 +77,43 @@ conda activate stock
 cd /mnt/shared-storage-user/renyiming/tonghuashun
 python auto_trader_multi.py
 ```
+
+## 2026-03-21 GitHub Pages 仪表盘
+
+### 完成内容
+（已有，此处省略具体记录）
+
+## 2026-03-22 四大创意功能
+
+### 完成内容
+1. **模型思考过程展示**
+   - `auto_trader_multi.py` 新增 `save_thinking_data()`：每轮查询后保存各模型的 analysis/actions/status 到 `_thinking.json`
+   - `export_data.py` 读取并嵌入 `latest.json`（analysis 截断 500 字符）
+   - 前端模型卡片底部可折叠展开"AI 思考过程"，显示分析文本 + 买卖意图标签
+
+2. **多维度排行榜**
+   - `export_data.py` 新增 `compute_advanced_metrics()`：计算最大回撤、Sharpe 比率、连胜/连败、平均持仓天数、HHI 集中度
+   - 排行榜表头新增 3 列：最大回撤、Sharpe、连胜
+   - 模型卡片也展示高级指标摘要
+
+3. **自动风格画像**
+   - `auto_trader_multi.py` 新增 `save_hot_codes()`：保存热门股代码到 `_hot_codes.json`
+   - `export_data.py` 新增 `compute_style_tags()`：根据交易频率/热门股比例/持仓天数等生成标签（激进派/保守派/追涨型/抄底型/长线/短线/观望派 等）
+   - 前端模型卡片名字下方显示彩色标签徽章
+
+4. **Kimi 战报解说**
+   - `auto_trader_multi.py` 新增 `generate_battle_report()`：硬编码 Kimi 配置，汇总各模型操作调用 Kimi 写 200 字解说
+   - 保存当前战报 + 历史战报（上限 50 条）
+   - `export_data.py` 嵌入最新战报 + 最近 5 条历史
+   - 前端排行榜和走势图之间插入战报卡片，底部可展开历史战报
+
+### 修改文件
+- `auto_trader_multi.py`: +save_thinking_data(), +save_hot_codes(), +generate_battle_report(), 集成到 run_trading_cycle()
+- `export_data.py`: +compute_advanced_metrics(), +compute_style_tags(), 读取 thinking/report/hot_codes, history 加载提前
+- `docs/index.html`: +战报 section, 排行榜加 3 列
+- `docs/css/style.css`: +思考过程折叠/风格标签/战报样式
+- `docs/js/dashboard.js`: +renderBattleReport(), 扩展 renderLeaderboard() 和 renderModelGrid()
+
+### 验证
+- `python export_data.py` 通过，latest.json 含所有新字段
+- 语法检查通过

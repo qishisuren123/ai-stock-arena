@@ -29,6 +29,9 @@
                             <th>模型</th>
                             <th>总资产</th>
                             <th>收益率</th>
+                            <th>最大回撤</th>
+                            <th>Sharpe</th>
+                            <th>连胜</th>
                             <th>交易次数</th>
                             <th>胜率</th>
                             <th>持仓</th>
@@ -37,6 +40,17 @@
                     <tbody id="leaderboardBody"></tbody>
                 </table>
             </div>
+        </section>
+
+        <!-- 本轮战报 -->
+        <section class="card battle-report-section" id="battleReportSection" style="display:none">
+            <h2>本轮战报</h2>
+            <div class="battle-report-current" id="battleReportCurrent"></div>
+            <div class="battle-report-time" id="battleReportTime"></div>
+            <details class="battle-report-history">
+                <summary>历史战报</summary>
+                <div id="battleReportHistory"></div>
+            </details>
         </section>
 
         <!-- 收益走势图 -->

@@ -71,6 +71,97 @@ signal.signal(signal.SIGINT, _signal_handler)
 signal.signal(signal.SIGTERM, _signal_handler)
 
 
+def save_thinking_data():
+    """保存各模型本轮思考过程到 _thinking.json"""
+    thinking = {}
+    for r in runners:
+        safe = get_safe_name(r.name)
+        analysis = ""
+        actions = []
+        if r.advice:
+            analysis = r.advice.get("analysis", "")
+            actions = r.advice.get("actions", [])
+        thinking[safe] = {
+            "name": r.name,
+            "analysis": analysis,
+            "actions": actions,
+            "elapsed": round(r.elapsed, 1),
+            "status": r.status,
+        }
+    path = os.path.join(STATES_DIR, "_thinking.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(thinking, f, ensure_ascii=False, indent=2)
+
+
+def save_hot_codes(top_codes: list):
+    """保存当前热门股票代码到 _hot_codes.json"""
+    path = os.path.join(STATES_DIR, "_hot_codes.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(top_codes, f, ensure_ascii=False)
+
+
+def generate_battle_report(overview: str, prices: dict):
+    """调用 Kimi 生成本轮战报解说"""
+    # 汇总本轮各模型操作摘要
+    lines = []
+    for r in runners:
+        total = r.account.total_value(prices)
+        pnl_pct = (total - INITIAL_CASH) / INITIAL_CASH * 100
+        actions = r.advice.get("actions", []) if r.advice else []
+        if actions:
+            ops = ", ".join(
+                f"{a.get('action','?')}{a.get('name', a.get('code',''))}"
+                for a in actions
+            )
+        else:
+            ops = "观望"
+        lines.append(f"- {r.name}: 收益{pnl_pct:+.2f}%, 操作: {ops}")
+    summary = "\n".join(lines)
+
+    system_prompt = (
+        "你是一位风趣幽默的 A 股解说员，负责为 AI 炒股竞技场写战报。"
+        "请用 200 字以内写一段生动有趣的解说，点评各模型本轮表现，可以适当调侃。"
+        "不要用 markdown 格式，直接输出纯文本。"
+    )
+    user_msg = f"大盘概况：\n{overview}\n\n各模型本轮表现：\n{summary}"
+
+    # 硬编码 Kimi 配置（不 import model_config.py 中的敏感信息）
+    kimi_cfg = {
+        "name": "Kimi-K2.5",
+        "base_url": "http://s-20260204175507-cqflp.ailab-pj.pjh-service.org.cn/v1",
+        "model": "kimi-k2.5",
+        "api_key": "",
+        "api_format": "openai",
+        "use_proxy": False,
+    }
+
+    report_text = ai_advisor.call_model_api(kimi_cfg, system_prompt, user_msg)
+    now_str = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+    # 保存当前战报
+    current = {"timestamp": now_str, "report": report_text.strip()}
+    cur_path = os.path.join(STATES_DIR, "_battle_report.json")
+    with open(cur_path, "w", encoding="utf-8") as f:
+        json.dump(current, f, ensure_ascii=False, indent=2)
+
+    # 追加到历史战报（上限 50 条）
+    hist_path = os.path.join(STATES_DIR, "_battle_reports_history.json")
+    history = []
+    if os.path.exists(hist_path):
+        try:
+            with open(hist_path, "r", encoding="utf-8") as f:
+                history = json.load(f)
+        except (json.JSONDecodeError, ValueError):
+            history = []
+    history.append(current)
+    if len(history) > 50:
+        history = history[-50:]
+    with open(hist_path, "w", encoding="utf-8") as f:
+        json.dump(history, f, ensure_ascii=False, indent=2)
+
+    console.print(f"[dim]战报已生成: {report_text[:60]}...[/dim]")
+
+
 def is_trading_time() -> bool:
     """判断当前是否为 A 股交易时间"""
     now = datetime.now()
@@ -271,8 +362,14 @@ def run_trading_cycle():
     if deep_info:
         market_text += f"\n\n{deep_info}"
 
+    # 保存热门股票代码
+    save_hot_codes(top_codes)
+
     # 4. 并行查询所有模型
     query_all_models(market_text, prices)
+
+    # 保存各模型思考过程
+    save_thinking_data()
 
     # 5. 打印各模型 AI 分析摘要
     for r in runners:
@@ -294,6 +391,12 @@ def run_trading_cycle():
     if all_held_codes:
         prices = market_data.get_realtime_prices(list(all_held_codes))
     print_leaderboard(prices)
+
+    # 生成 Kimi 战报解说
+    try:
+        generate_battle_report(overview, prices)
+    except Exception as e:
+        console.print(f"[yellow]战报生成失败（不影响交易）: {e}[/yellow]")
 
     console.print("[dim]所有模型状态已保存[/dim]")
 

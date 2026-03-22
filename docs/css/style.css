@@ -222,6 +222,150 @@ footer {
     border-top: 1px solid var(--border);
 }
 
+/* === 思考过程折叠 === */
+.mc-thinking {
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--border);
+    padding-top: 0.4rem;
+}
+
+.mc-thinking summary {
+    cursor: pointer;
+    font-size: 0.78rem;
+    color: var(--accent);
+    user-select: none;
+    padding: 0.2rem 0;
+}
+
+.mc-thinking summary:hover {
+    color: #79c0ff;
+}
+
+.mc-thinking .thinking-content {
+    margin-top: 0.4rem;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+}
+
+.mc-thinking .thinking-analysis {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.5rem;
+    margin-bottom: 0.3rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.mc-thinking .thinking-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.mc-thinking .thinking-action-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+}
+
+.thinking-action-buy { border-color: var(--up) !important; color: var(--up); }
+.thinking-action-sell { border-color: var(--down) !important; color: var(--down); }
+
+/* === 风格标签徽章 === */
+.mc-style-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.style-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: 999px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* 各风格标签配色 */
+.style-tag-aggressive { background: #3b1a1a; color: #ef4444; }
+.style-tag-conservative { background: #1a2e1a; color: #22c55e; }
+.style-tag-chaser { background: #3b2f1a; color: #f59e0b; }
+.style-tag-bargain { background: #1a2639; color: #3b82f6; }
+.style-tag-longterm { background: #1a3329; color: #14b8a6; }
+.style-tag-shortterm { background: #2d1a3b; color: #a78bfa; }
+.style-tag-observer { background: #1c2128; color: #8b949e; }
+.style-tag-spread { background: #1e3a5f; color: #58a6ff; }
+.style-tag-focus { background: #3b1a2f; color: #ec4899; }
+.style-tag-newbie { background: #1c2128; color: #6e7681; }
+.style-tag-default { background: #1e2a1a; color: #3fb950; }
+
+/* === 战报卡片 === */
+.battle-report-section h2 {
+    color: #f59e0b;
+}
+
+.battle-report-current {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--text);
+    padding: 0.75rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    border-left: 3px solid #f59e0b;
+}
+
+.battle-report-time {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 0.4rem;
+    text-align: right;
+}
+
+.battle-report-history {
+    margin-top: 0.75rem;
+}
+
+.battle-report-history summary {
+    cursor: pointer;
+    font-size: 0.82rem;
+    color: var(--accent);
+    user-select: none;
+}
+
+.battle-report-history summary:hover {
+    color: #79c0ff;
+}
+
+.battle-report-history .hist-item {
+    padding: 0.5rem;
+    margin-top: 0.4rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+}
+
+.battle-report-history .hist-time {
+    font-size: 0.72rem;
+    color: #6e7681;
+    margin-top: 0.2rem;
+}
+
+/* === 高级指标列 === */
+.metric-dd { color: var(--down); font-size: 0.85rem; }
+.metric-sharpe { color: var(--accent); font-size: 0.85rem; }
+.metric-streak { font-size: 0.85rem; }
+
 /* === 响应式 === */
 @media (max-width: 640px) {
     header h1 { font-size: 1.5rem; }
