@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-22 19:13:27",
+  "timestamp": "2026-03-23 09:30:40",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -13,7 +13,11 @@
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
-      "thinking": null,
+      "thinking": {
+        "analysis": "AI 返回解析失败: [Claude-4.6] API 调用失败（重试 3 次）: Anthropic HTTP 500: invalid claude code request (request id: 202603230930236720318365DbmITDV)",
+        "actions": [],
+        "status": "成功"
+      },
       "style_tags": [
         "新手上路"
       ],
@@ -37,7 +41,11 @@
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
-      "thinking": null,
+      "thinking": {
+        "analysis": "AI 返回解析失败: [GPT-5.4] API 调用失败（重试 3 次）: Anthropic HTTP 404: <!DOCTYPE html><!--GbYAKMxe496gg0T2HR3mj--><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/css/6d032cba474e6fa6.css\" data-precedence=\"next\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/chunks/webpack-4e6bf084ac60582b.js\"/><script src=\"/_next/static/chunks/4bd1b696-c023c6e3521b1417.js\" async=\"\"></script>...",
+        "actions": [],
+        "status": "成功"
+      },
       "style_tags": [
         "新手上路"
       ],
@@ -61,7 +69,11 @@
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
-      "thinking": null,
+      "thinking": {
+        "analysis": "周边主要股市重挫且A股三大指数大幅低开，叠加全球大宗商品大跌，市场恐慌情绪浓厚，建议继续保持空仓避险。",
+        "actions": [],
+        "status": "成功"
+      },
       "style_tags": [
         "新手上路"
       ],
@@ -85,7 +97,11 @@
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
-      "thinking": null,
+      "thinking": {
+        "analysis": "AI 返回解析失败: [Minimax2.5] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: read tcp4 100.100.158.65:57674->10.102.228.25:7891: read: connection reset by peer",
+        "actions": [],
+        "status": "成功"
+      },
       "style_tags": [
         "新手上路"
       ],
@@ -109,7 +125,11 @@
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
-      "thinking": null,
+      "thinking": {
+        "analysis": "AI 返回解析失败: [GLM5] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: EOF",
+        "actions": [],
+        "status": "成功"
+      },
       "style_tags": [
         "新手上路"
       ],
@@ -133,7 +153,11 @@
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
-      "thinking": null,
+      "thinking": {
+        "analysis": "AI 返回解析失败: [DeepSeek-V3.2] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: write tcp4 100.100.158.65:57668->10.102.228.25:7891: use of closed network connection",
+        "actions": [],
+        "status": "成功"
+      },
       "style_tags": [
         "新手上路"
       ],
@@ -157,7 +181,11 @@
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
-      "thinking": null,
+      "thinking": {
+        "analysis": "AI 返回解析失败: [Kimi-K2.5] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: write tcp4 100.100.158.65:57664->10.102.228.25:7891: write: broken pipe",
+        "actions": [],
+        "status": "成功"
+      },
       "style_tags": [
         "新手上路"
       ],
@@ -181,7 +209,11 @@
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
-      "thinking": null,
+      "thinking": {
+        "analysis": "AI 返回解析失败: [Qwen3.5-397B] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: EOF",
+        "actions": [],
+        "status": "成功"
+      },
       "style_tags": [
         "新手上路"
       ],
@@ -205,7 +237,11 @@
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
-      "thinking": null,
+      "thinking": {
+        "analysis": "AI 返回解析失败: [Intern-S1] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: write tcp4 100.100.158.65:57706->10.102.228.25:7891: use of closed network connection",
+        "actions": [],
+        "status": "成功"
+      },
       "style_tags": [
         "新手上路"
       ],
@@ -229,7 +265,11 @@
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
-      "thinking": null,
+      "thinking": {
+        "analysis": "AI 返回解析失败: [Intern-S1-Pro] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: EOF",
+        "actions": [],
+        "status": "成功"
+      },
       "style_tags": [
         "新手上路"
       ],
