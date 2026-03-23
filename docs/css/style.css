@@ -13,17 +13,16 @@
     --down: #22c55e;
     --flat: #8b949e;
 
-    /* 10 个模型专属颜色 */
+    /* 9 个模型专属颜色 */
     --c0: #f97316; /* Claude-4.6 - 橙 */
-    --c1: #10b981; /* GPT-5.4 - 绿 */
-    --c2: #3b82f6; /* Gemini-3.1-Pro - 蓝 */
-    --c3: #8b5cf6; /* Minimax2.5 - 紫 */
-    --c4: #ef4444; /* GLM5 - 红 */
-    --c5: #06b6d4; /* DeepSeek-V3.2 - 青 */
-    --c6: #f59e0b; /* Kimi-K2.5 - 琥珀 */
-    --c7: #ec4899; /* Qwen3.5-397B - 粉 */
-    --c8: #14b8a6; /* Intern-S1 - 绿松石 */
-    --c9: #a78bfa; /* Intern-S1-Pro - 淡紫 */
+    --c1: #3b82f6; /* Gemini-3.1-Pro - 蓝 */
+    --c2: #8b5cf6; /* Minimax2.5 - 紫 */
+    --c3: #ef4444; /* GLM5 - 红 */
+    --c4: #06b6d4; /* DeepSeek-V3.2 - 青 */
+    --c5: #f59e0b; /* Kimi-K2.5 - 琥珀 */
+    --c6: #ec4899; /* Qwen3.5-397B - 粉 */
+    --c7: #14b8a6; /* Intern-S1 - 绿松石 */
+    --c8: #a78bfa; /* Intern-S1-Pro - 淡紫 */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }

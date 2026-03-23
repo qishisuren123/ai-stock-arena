@@ -24,7 +24,6 @@ HISTORY_MAX = 720  # 历史记录上限（每小时1条，约30天）
 # 硬编码模型列表（避免 import model_config.py 暴露敏感信息）
 MODELS = [
     {"name": "Claude-4.6"},
-    {"name": "GPT-5.4"},
     {"name": "Gemini-3.1-Pro"},
     {"name": "Minimax2.5"},
     {"name": "GLM5"},

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-23 11:00:36",
+  "timestamp": "2026-03-23 11:04:15",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -23,35 +23,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
-        "win_streak": 0,
-        "lose_streak": 0,
-        "avg_hold_days": 0.0,
-        "concentration_hhi": 0.0
-      }
-    },
-    {
-      "name": "GPT-5.4",
-      "cash": 10000.0,
-      "positions": [],
-      "total_value": 10000.0,
-      "return_pct": 0.0,
-      "realized_pnl": 0.0,
-      "trade_count": 0,
-      "win_count": 0,
-      "win_rate": 0.0,
-      "last_update": "2026-03-21 20:08:44",
-      "thinking": {
-        "analysis": "AI 返回解析失败: [GPT-5.4] API 调用失败（重试 3 次）: Anthropic HTTP 404: <!DOCTYPE html><!--GbYAKMxe496gg0T2HR3mj--><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/css/6d032cba474e6fa6.css\" data-precedence=\"next\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/chunks/webpack-4e6bf084ac60582b.js\"/><script src=\"/_next/static/chunks/4bd1b696-c023c6e3521b1417.js\" async=\"\"></script>...",
-        "actions": [],
-        "status": "成功"
-      },
-      "style_tags": [
-        "新手上路"
-      ],
-      "metrics": {
-        "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -79,7 +51,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -107,7 +79,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -135,7 +107,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -163,7 +135,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -191,7 +163,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -219,7 +191,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -247,7 +219,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -292,7 +264,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.0,
-        "sharpe_ratio": 0,
+        "sharpe_ratio": 0.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
