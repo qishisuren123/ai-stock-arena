@@ -125,17 +125,20 @@ def generate_battle_report(overview: str, prices: dict):
     )
     user_msg = f"大盘概况：\n{overview}\n\n各模型本轮表现：\n{summary}"
 
-    # 硬编码 Qwen 配置用于战报生成（不 import model_config.py 中的敏感信息）
-    qwen_cfg = {
-        "name": "Qwen3.5-397B",
-        "base_url": "http://s-20260304112131-p7qvl.ailab-pj.pjh-service.org.cn/v1",
-        "model": "qwen3.5-397b",
-        "api_key": "",
-        "api_format": "openai",
-        "use_proxy": False,
-    }
+    # 从 model_config.py 中取 Minimax 配置用于战报生成（model_config.py 已在 .gitignore）
+    reporter_cfg = None
+    for cfg in MODELS:
+        if cfg["name"] == "Minimax2.5":
+            reporter_cfg = cfg
+            break
+    if not reporter_cfg:
+        console.print("[yellow]未找到战报模型配置，跳过[/yellow]")
+        return
 
-    report_text = ai_advisor.call_model_api(qwen_cfg, system_prompt, user_msg)
+    report_text = ai_advisor.call_model_api(reporter_cfg, system_prompt, user_msg)
+    # 过滤掉模型可能输出的 <think>...</think> 思考过程
+    import re as _re
+    report_text = _re.sub(r"<think>[\s\S]*?</think>\s*", "", report_text).strip()
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M")
 
     # 保存当前战报

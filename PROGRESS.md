@@ -13,7 +13,7 @@
 ### 遇到的问题及解决
 - **akshare 东方财富 API 超时**: 集群网络不通东方财富域名（push2.eastmoney.com），改用腾讯财经 HTTP API（qt.gtimg.cn），通过集群代理可达
 - **涨幅榜接口失效**: `rankA_hr` 返回空，改为预设 25 只主流股票列表，按涨跌幅排序
-- **Anthropic SDK 520 错误**: anyrouter.top 代理不稳定，弃用 SDK 改为 httpx 直接调用，加 5 次重试（间隔递增 5s/10s/15s/20s）
+- **Anthropic SDK 520 错误**: 外部代理不稳定，弃用 SDK 改为 httpx 直接调用，加 5 次重试（间隔递增 5s/10s/15s/20s）
 - **模型选择**: `claude-sonnet-4-20250514` 返回 "invalid claude code request"，改用 `claude-haiku-4-5-20251001`
 
 ### 运行方式

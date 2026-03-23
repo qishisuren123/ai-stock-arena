@@ -2,6 +2,7 @@
 
 import json
 import os
+import re
 import time
 import httpx
 
@@ -163,7 +164,7 @@ def get_structured_advice(market_data: str, portfolio_info: str) -> dict:
 
 def _call_anthropic(base_url: str, api_key: str, model: str,
                     system: str, user_msg: str, proxy_url: str = None) -> str:
-    """Anthropic Messages 格式调用（Claude Haiku / GPT-5.4 / Gemini 兼容）"""
+    """Anthropic Messages 格式调用（Claude / GPT-5.4 兼容）"""
     client = httpx.Client(proxy=proxy_url, timeout=120.0)
     url = f"{base_url}/v1/messages"
     headers = {
@@ -191,10 +192,34 @@ def _call_anthropic(base_url: str, api_key: str, model: str,
     raise RuntimeError(f"Anthropic HTTP {resp.status_code}: {err_msg}")
 
 
+def _call_gemini(base_url: str, api_key: str, model: str,
+                 system: str, user_msg: str, proxy_url: str = None) -> str:
+    """Google Gemini 原生 API 调用"""
+    client = httpx.Client(proxy=proxy_url, timeout=120.0)
+    url = f"{base_url}/v1beta/models/{model}:generateContent?key={api_key}"
+    payload = {
+        "systemInstruction": {"parts": [{"text": system}]},
+        "contents": [{"role": "user", "parts": [{"text": user_msg}]}],
+        "generationConfig": {"maxOutputTokens": 2048},
+    }
+    resp = client.post(url, json=payload)
+    if resp.status_code == 200:
+        data = resp.json()
+        return data["candidates"][0]["content"]["parts"][0]["text"]
+    err_msg = resp.text
+    try:
+        err_data = resp.json()
+        err_msg = err_data.get("error", {}).get("message", resp.text)
+    except Exception:
+        pass
+    raise RuntimeError(f"Gemini HTTP {resp.status_code}: {err_msg}")
+
+
 def _call_openai(base_url: str, api_key: str, model: str,
                  system: str, user_msg: str) -> str:
     """OpenAI Chat Completions 格式调用（pjlab 内部模型）"""
-    client = httpx.Client(timeout=120.0)
+    # trust_env=False 禁止 httpx 读取环境变量中的代理，避免干扰内部模型访问
+    client = httpx.Client(timeout=120.0, trust_env=False)
     url = f"{base_url}/chat/completions"
     headers = {
         "Authorization": f"Bearer {api_key}" if api_key else "",
@@ -214,7 +239,8 @@ def _call_openai(base_url: str, api_key: str, model: str,
     resp = client.post(url, headers=headers, json=payload)
     if resp.status_code == 200:
         data = resp.json()
-        return data["choices"][0]["message"]["content"]
+        content = data["choices"][0]["message"]["content"]
+        return content if content else ""
     err_msg = resp.text
     try:
         err_data = resp.json()
@@ -228,12 +254,23 @@ def call_model_api(model_cfg: dict, system: str, user_msg: str,
                    max_retries: int = 3) -> str:
     """统一入口：按 api_format 分发，带重试"""
     cfg = _load_config()
-    proxy_url = cfg.get("proxy", {}).get("https") if model_cfg.get("use_proxy") else None
+    # 优先使用模型自带的 proxy_url，否则用全局代理
+    if model_cfg.get("proxy_url"):
+        proxy_url = model_cfg["proxy_url"]
+    elif model_cfg.get("use_proxy"):
+        proxy_url = cfg.get("proxy", {}).get("https")
+    else:
+        proxy_url = None
 
     for attempt in range(max_retries):
         try:
             if model_cfg["api_format"] == "anthropic":
                 return _call_anthropic(
+                    model_cfg["base_url"], model_cfg["api_key"],
+                    model_cfg["model"], system, user_msg, proxy_url,
+                )
+            elif model_cfg["api_format"] == "gemini":
+                return _call_gemini(
                     model_cfg["base_url"], model_cfg["api_key"],
                     model_cfg["model"], system, user_msg, proxy_url,
                 )
@@ -261,8 +298,11 @@ def get_structured_advice_multi(model_cfg: dict, market_data: str,
     )
     try:
         raw = call_model_api(model_cfg, STRUCTURED_SYSTEM_PROMPT, user_msg)
+        if not raw:
+            return {"analysis": "模型返回为空", "actions": []}
+        # 容错：去掉模型可能输出的 <think>...</think> 思考过程
+        text = re.sub(r"<think>[\s\S]*?</think>\s*", "", raw).strip()
         # 容错：去掉可能的 markdown 代码块标记
-        text = raw.strip()
         if text.startswith("```"):
             text = text.split("\n", 1)[1] if "\n" in text else text[3:]
         if text.endswith("```"):
