@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-23 11:04:15",
+  "timestamp": "2026-03-23 13:00:39",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -14,7 +14,7 @@
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
       "thinking": {
-        "analysis": "AI 返回解析失败: [Claude-4.6] API 调用失败（重试 3 次）: Anthropic HTTP 500: invalid claude code request (request id: 20260323110019444488944amzk030h)",
+        "analysis": "AI 返回解析失败: [Claude-4.6] API 调用失败（重试 3 次）: Anthropic HTTP 500: invalid claude code request (request id: 2026032313001861463483VkgDiZm2)",
         "actions": [],
         "status": "成功"
       },
@@ -70,7 +70,7 @@
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
       "thinking": {
-        "analysis": "AI 返回解析失败: [GLM5] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: EOF",
+        "analysis": "AI 返回解析失败: [GLM5] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: write tcp4 100.100.158.65:59016->10.102.228.25:7891: use of closed network connection",
         "actions": [],
         "status": "成功"
       },
@@ -98,7 +98,7 @@
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
       "thinking": {
-        "analysis": "AI 返回解析失败: [DeepSeek-V3.2] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: write tcp4 100.100.158.65:35068->10.102.228.25:7891: use of closed network connection",
+        "analysis": "AI 返回解析失败: [DeepSeek-V3.2] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: EOF",
         "actions": [],
         "status": "成功"
       },
@@ -182,7 +182,7 @@
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
       "thinking": {
-        "analysis": "AI 返回解析失败: [Intern-S1] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: write tcp4 100.100.158.65:35124->10.102.228.25:7891: use of closed network connection",
+        "analysis": "AI 返回解析失败: [Intern-S1] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: EOF",
         "actions": [],
         "status": "成功"
       },
@@ -235,28 +235,21 @@
           "name": "隆基绿能",
           "qty": 100,
           "avg_cost": 19.24,
-          "current_price": 19.24,
-          "market_value": 1924.0,
-          "unrealized_pnl": -0.0
+          "current_price": 19.12,
+          "market_value": 1912.0,
+          "unrealized_pnl": -12.0
         }
       ],
-      "total_value": 9998.08,
-      "return_pct": -0.02,
+      "total_value": 9986.08,
+      "return_pct": -0.14,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-23 11:00:20",
       "thinking": {
-        "analysis": "大盘重挫超2%，市场避险情绪升温，整体建议多看少动。隆基绿能估值处于历史低位且逆势收红，可极小仓位试错。",
-        "actions": [
-          {
-            "code": "601012",
-            "name": "隆基绿能",
-            "action": "buy",
-            "ratio": 0.2
-          }
-        ],
+        "analysis": "大盘重挫逾2.5%，全市场近5000只个股下跌，系统性风险显著；鉴于当前账户仓位仅不足两成，且持仓的隆基绿能属逆势活跃的绿电板块，建议保持现状，持有八成现金规避风险。",
+        "actions": [],
         "status": "成功"
       },
       "style_tags": [
