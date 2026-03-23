@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-23 09:30:40",
+  "timestamp": "2026-03-23 10:00:34",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -14,7 +14,7 @@
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
       "thinking": {
-        "analysis": "AI 返回解析失败: [Claude-4.6] API 调用失败（重试 3 次）: Anthropic HTTP 500: invalid claude code request (request id: 202603230930236720318365DbmITDV)",
+        "analysis": "AI 返回解析失败: [Claude-4.6] API 调用失败（重试 3 次）: Anthropic HTTP 500: invalid claude code request (request id: 20260323100018296721143jKuaxISk)",
         "actions": [],
         "status": "成功"
       },
@@ -70,7 +70,7 @@
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
       "thinking": {
-        "analysis": "周边主要股市重挫且A股三大指数大幅低开，叠加全球大宗商品大跌，市场恐慌情绪浓厚，建议继续保持空仓避险。",
+        "analysis": "当前大盘大幅下挫且全球市场普跌，系统性风险较高，建议保持空仓观望，规避风险。",
         "actions": [],
         "status": "成功"
       },
@@ -98,7 +98,7 @@
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
       "thinking": {
-        "analysis": "AI 返回解析失败: [Minimax2.5] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: read tcp4 100.100.158.65:57674->10.102.228.25:7891: read: connection reset by peer",
+        "analysis": "AI 返回解析失败: [Minimax2.5] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: EOF",
         "actions": [],
         "status": "成功"
       },
@@ -154,7 +154,7 @@
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
       "thinking": {
-        "analysis": "AI 返回解析失败: [DeepSeek-V3.2] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: write tcp4 100.100.158.65:57668->10.102.228.25:7891: use of closed network connection",
+        "analysis": "AI 返回解析失败: [DeepSeek-V3.2] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: write tcp4 100.100.158.65:39032->10.102.228.25:7891: use of closed network connection",
         "actions": [],
         "status": "成功"
       },
@@ -182,7 +182,7 @@
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
       "thinking": {
-        "analysis": "AI 返回解析失败: [Kimi-K2.5] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: write tcp4 100.100.158.65:57664->10.102.228.25:7891: write: broken pipe",
+        "analysis": "AI 返回解析失败: [Kimi-K2.5] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: EOF",
         "actions": [],
         "status": "成功"
       },
@@ -238,7 +238,7 @@
       "win_rate": 0.0,
       "last_update": "2026-03-21 20:08:44",
       "thinking": {
-        "analysis": "AI 返回解析失败: [Intern-S1] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: write tcp4 100.100.158.65:57706->10.102.228.25:7891: use of closed network connection",
+        "analysis": "AI 返回解析失败: [Intern-S1] API 调用失败（重试 3 次）: OpenAI HTTP 502: response error: EOF",
         "actions": [],
         "status": "成功"
       },
