@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-24 10:46:25",
+  "timestamp": "2026-03-24 10:47:13",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -11,13 +11,13 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.65,
-          "current_price": 10.84,
-          "market_value": 2168.0,
-          "unrealized_pnl": 38.0
+          "current_price": 10.83,
+          "market_value": 2166.0,
+          "unrealized_pnl": 36.0
         }
       ],
-      "total_value": 10035.87,
-      "return_pct": 0.36,
+      "total_value": 10033.87,
+      "return_pct": 0.34,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
@@ -40,7 +40,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.02,
-        "sharpe_ratio": 15.59,
+        "sharpe_ratio": 16.54,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -56,13 +56,13 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.65,
-          "current_price": 10.84,
-          "market_value": 2168.0,
-          "unrealized_pnl": 38.0
+          "current_price": 10.83,
+          "market_value": 2166.0,
+          "unrealized_pnl": 36.0
         }
       ],
-      "total_value": 10035.87,
-      "return_pct": 0.36,
+      "total_value": 10033.87,
+      "return_pct": 0.34,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
@@ -78,7 +78,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.02,
-        "sharpe_ratio": 15.59,
+        "sharpe_ratio": 16.54,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -94,13 +94,13 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.83,
-          "current_price": 10.84,
-          "market_value": 2168.0,
-          "unrealized_pnl": 2.0
+          "current_price": 10.83,
+          "market_value": 2166.0,
+          "unrealized_pnl": 0.0
         }
       ],
-      "total_value": 10021.54,
-      "return_pct": 0.22,
+      "total_value": 10019.54,
+      "return_pct": 0.2,
       "realized_pnl": 23.84,
       "trade_count": 1,
       "win_count": 1,
@@ -124,7 +124,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.02,
-        "sharpe_ratio": 10.71,
+        "sharpe_ratio": 9.94,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -140,13 +140,13 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.65,
-          "current_price": 10.84,
-          "market_value": 2168.0,
-          "unrealized_pnl": 38.0
+          "current_price": 10.83,
+          "market_value": 2166.0,
+          "unrealized_pnl": 36.0
         }
       ],
-      "total_value": 10020.52,
-      "return_pct": 0.21,
+      "total_value": 10018.52,
+      "return_pct": 0.19,
       "realized_pnl": -12.67,
       "trade_count": 1,
       "win_count": 0,
@@ -169,7 +169,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.17,
-        "sharpe_ratio": 6.61,
+        "sharpe_ratio": 7.72,
         "win_streak": 0,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -185,13 +185,13 @@
           "name": "平安银行",
           "qty": 100,
           "avg_cost": 10.65,
-          "current_price": 10.84,
-          "market_value": 1084.0,
-          "unrealized_pnl": 19.0
+          "current_price": 10.83,
+          "market_value": 1083.0,
+          "unrealized_pnl": 18.0
         }
       ],
-      "total_value": 10017.93,
-      "return_pct": 0.18,
+      "total_value": 10016.93,
+      "return_pct": 0.17,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
@@ -207,7 +207,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.01,
-        "sharpe_ratio": 15.59,
+        "sharpe_ratio": 16.54,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -223,9 +223,9 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.77,
-          "current_price": 10.84,
-          "market_value": 2168.0,
-          "unrealized_pnl": 14.0
+          "current_price": 10.83,
+          "market_value": 2166.0,
+          "unrealized_pnl": 12.0
         },
         {
           "code": "601166",
@@ -237,8 +237,8 @@
           "unrealized_pnl": 4.0
         }
       ],
-      "total_value": 10013.99,
-      "return_pct": 0.14,
+      "total_value": 10011.99,
+      "return_pct": 0.12,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
@@ -254,7 +254,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.04,
-        "sharpe_ratio": 9.66,
+        "sharpe_ratio": 12.45,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -270,13 +270,13 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.77,
-          "current_price": 10.84,
-          "market_value": 2168.0,
-          "unrealized_pnl": 14.0
+          "current_price": 10.83,
+          "market_value": 2166.0,
+          "unrealized_pnl": 12.0
         }
       ],
-      "total_value": 10011.85,
-      "return_pct": 0.12,
+      "total_value": 10009.85,
+      "return_pct": 0.1,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
@@ -292,7 +292,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.02,
-        "sharpe_ratio": 10.89,
+        "sharpe_ratio": 14.62,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -308,13 +308,13 @@
           "name": "平安银行",
           "qty": 100,
           "avg_cost": 10.77,
-          "current_price": 10.84,
-          "market_value": 1084.0,
-          "unrealized_pnl": 7.0
+          "current_price": 10.83,
+          "market_value": 1083.0,
+          "unrealized_pnl": 6.0
         }
       ],
-      "total_value": 10005.92,
-      "return_pct": 0.06,
+      "total_value": 10004.92,
+      "return_pct": 0.05,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
@@ -330,7 +330,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.01,
-        "sharpe_ratio": 10.87,
+        "sharpe_ratio": 14.6,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -346,13 +346,13 @@
           "name": "平安银行",
           "qty": 100,
           "avg_cost": 10.65,
-          "current_price": 10.84,
-          "market_value": 1084.0,
-          "unrealized_pnl": 19.0
+          "current_price": 10.83,
+          "market_value": 1083.0,
+          "unrealized_pnl": 18.0
         }
       ],
-      "total_value": 9980.12,
-      "return_pct": -0.2,
+      "total_value": 9979.12,
+      "return_pct": -0.21,
       "realized_pnl": -35.89,
       "trade_count": 1,
       "win_count": 0,
@@ -368,7 +368,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.37,
-        "sharpe_ratio": -7.74,
+        "sharpe_ratio": -6.49,
         "win_streak": 0,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
