@@ -798,5 +798,55 @@
         "return_pct": -0.26
       }
     ]
+  },
+  {
+    "timestamp": "2026-03-25 10:06:29",
+    "models": [
+      {
+        "name": "Claude-4.6",
+        "total_value": 10036.01,
+        "return_pct": 0.36
+      },
+      {
+        "name": "Minimax2.5",
+        "total_value": 10023.54,
+        "return_pct": 0.24
+      },
+      {
+        "name": "DeepSeek-V3.2",
+        "total_value": 10021.53,
+        "return_pct": 0.22
+      },
+      {
+        "name": "Kimi-K2.5",
+        "total_value": 10018.93,
+        "return_pct": 0.19
+      },
+      {
+        "name": "Intern-S1",
+        "total_value": 10018.66,
+        "return_pct": 0.19
+      },
+      {
+        "name": "Intern-S1-Pro",
+        "total_value": 10014.99,
+        "return_pct": 0.15
+      },
+      {
+        "name": "Qwen3.5-397B",
+        "total_value": 10013.85,
+        "return_pct": 0.14
+      },
+      {
+        "name": "GLM5",
+        "total_value": 10006.92,
+        "return_pct": 0.07
+      },
+      {
+        "name": "Gemini-3.1-Pro",
+        "total_value": 9986.04,
+        "return_pct": -0.14
+      }
+    ]
   }
 ]
