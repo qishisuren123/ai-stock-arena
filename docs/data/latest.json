@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-26 09:36:30",
+  "timestamp": "2026-03-26 10:06:24",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -11,53 +11,53 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.65,
-          "current_price": 11.01,
-          "market_value": 2202.0,
-          "unrealized_pnl": 72.0
+          "current_price": 10.98,
+          "market_value": 2196.0,
+          "unrealized_pnl": 66.0
         },
         {
           "code": "601166",
           "name": "兴业银行",
           "qty": 100,
           "avg_cost": 18.63,
-          "current_price": 18.86,
-          "market_value": 1886.0,
-          "unrealized_pnl": 23.0
+          "current_price": 18.92,
+          "market_value": 1892.0,
+          "unrealized_pnl": 29.0
         },
         {
           "code": "600030",
           "name": "中信证券",
           "qty": 100,
           "avg_cost": 24.58,
-          "current_price": 24.58,
-          "market_value": 2458.0,
-          "unrealized_pnl": 0.0
+          "current_price": 24.45,
+          "market_value": 2445.0,
+          "unrealized_pnl": -13.0
         }
       ],
-      "total_value": 10088.55,
-      "return_pct": 0.89,
+      "total_value": 10075.55,
+      "return_pct": 0.76,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-25 13:06:24",
       "thinking": {
-        "analysis": "三大指数小幅低开，整体市场情绪偏弱，成交量不大，无明显方向性信号。持仓三只金融股整体表现稳健，平安银行浮盈2.4%，中信证券PE处历史2%分位极低估值，继续持有等待价值回归，暂无需操作。",
+        "analysis": "大盘今日基本平稳，三大指数小幅上涨，成交额维持高位。持仓三只银行及券商股均表现稳健，平安银行和兴业银行浮盈良好，中信证券估值处于历史2%极低分位，具备较强安全边际，建议继续持有现有仓位不动。",
         "actions": [],
         "status": "成功"
       },
       "style_tags": [
         "保守派",
-        "抄底型",
+        "追涨型",
         "分散持仓"
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 10.34,
+        "sharpe_ratio": 11.96,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 3372.0
+        "concentration_hhi": 3369.0
       }
     },
     {
@@ -69,18 +69,18 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.65,
-          "current_price": 11.01,
-          "market_value": 2202.0,
-          "unrealized_pnl": 72.0
+          "current_price": 10.98,
+          "market_value": 2196.0,
+          "unrealized_pnl": 66.0
         },
         {
           "code": "601166",
           "name": "兴业银行",
           "qty": 100,
           "avg_cost": 18.65,
-          "current_price": 18.86,
-          "market_value": 1886.0,
-          "unrealized_pnl": 21.0
+          "current_price": 18.92,
+          "market_value": 1892.0,
+          "unrealized_pnl": 27.0
         }
       ],
       "total_value": 10073.66,
@@ -91,20 +91,20 @@
       "win_rate": 0.0,
       "last_update": "2026-03-25 15:06:23",
       "thinking": {
-        "analysis": "当前大盘指数小幅下跌，市场情绪偏弱，但跌幅有限。建议保持现有持仓，谨慎操作。",
+        "analysis": "市场整体平稳，银行股表现较为稳健，未出现明显波动。",
         "actions": [],
         "status": "成功"
       },
       "style_tags": [
-        "抄底型"
+        "追涨型"
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 7.0,
+        "sharpe_ratio": 9.34,
         "win_streak": 0,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5030.0
+        "concentration_hhi": 5028.0
       }
     },
     {
@@ -116,18 +116,18 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.77,
-          "current_price": 11.01,
-          "market_value": 2202.0,
-          "unrealized_pnl": 48.0
+          "current_price": 10.98,
+          "market_value": 2196.0,
+          "unrealized_pnl": 42.0
         },
         {
           "code": "601166",
           "name": "兴业银行",
           "qty": 100,
           "avg_cost": 18.6,
-          "current_price": 18.86,
-          "market_value": 1886.0,
-          "unrealized_pnl": 26.0
+          "current_price": 18.92,
+          "market_value": 1892.0,
+          "unrealized_pnl": 32.0
         }
       ],
       "total_value": 10069.99,
@@ -144,55 +144,69 @@
       },
       "style_tags": [
         "保守派",
-        "抄底型"
+        "追涨型"
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 7.38,
+        "sharpe_ratio": 9.87,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5030.0
+        "concentration_hhi": 5028.0
       }
     },
     {
       "name": "Minimax2.5",
-      "cash": 7853.54,
+      "cash": 5959.65,
       "positions": [
         {
           "code": "000001",
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.83,
-          "current_price": 11.01,
-          "market_value": 2202.0,
-          "unrealized_pnl": 36.0
+          "current_price": 10.98,
+          "market_value": 2196.0,
+          "unrealized_pnl": 30.0
+        },
+        {
+          "code": "601166",
+          "name": "兴业银行",
+          "qty": 100,
+          "avg_cost": 18.92,
+          "current_price": 18.92,
+          "market_value": 1892.0,
+          "unrealized_pnl": 0.0
         }
       ],
-      "total_value": 10055.54,
-      "return_pct": 0.56,
+      "total_value": 10047.65,
+      "return_pct": 0.48,
       "realized_pnl": 23.84,
       "trade_count": 1,
       "win_count": 1,
       "win_rate": 100.0,
-      "last_update": "2026-03-25 15:06:21",
+      "last_update": "2026-03-26 10:06:18",
       "thinking": {
-        "analysis": "三大指数集体低开下跌，市场走势偏弱。平安银行目前浮盈0.7%，保持现有持仓观望为主。",
-        "actions": [],
+        "analysis": "三大指数小幅上涨，市场整体平稳。当前持仓平安银行浮盈1.7%，估值PE仅5.0处于历史低位。考虑到账户有充足现金（7853元），可适当分散持仓。",
+        "actions": [
+          {
+            "code": "601166",
+            "name": "兴业银行",
+            "action": "buy",
+            "ratio": 0.2
+          }
+        ],
         "status": "成功"
       },
       "style_tags": [
-        "保守派",
-        "抄底型",
-        "集中持仓"
+        "追涨型"
       ],
       "metrics": {
         "max_drawdown": 0.18,
-        "sharpe_ratio": 8.12,
+        "sharpe_ratio": 10.08,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 10000.0
+        "concentration_hhi": 5028.0
       }
     },
     {
@@ -204,90 +218,48 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.88,
-          "current_price": 11.01,
-          "market_value": 2202.0,
-          "unrealized_pnl": 26.0
+          "current_price": 10.98,
+          "market_value": 2196.0,
+          "unrealized_pnl": 20.0
         }
       ],
-      "total_value": 10053.53,
-      "return_pct": 0.54,
+      "total_value": 10047.53,
+      "return_pct": 0.48,
       "realized_pnl": 31.84,
       "trade_count": 1,
       "win_count": 1,
       "win_rate": 100.0,
-      "last_update": "2026-03-25 10:59:04",
+      "last_update": "2026-03-26 10:06:18",
       "thinking": {
-        "analysis": "大盘低开低走，三大指数均下跌，市场情绪偏弱，成交额较低显示观望情绪浓厚，近期应保持谨慎控制仓位。",
-        "actions": [],
-        "status": "成功"
-      },
-      "style_tags": [
-        "保守派",
-        "抄底型",
-        "集中持仓"
-      ],
-      "metrics": {
-        "max_drawdown": 0.26,
-        "sharpe_ratio": 7.86,
-        "win_streak": 1,
-        "lose_streak": 0,
-        "avg_hold_days": 0.0,
-        "concentration_hhi": 10000.0
-      }
-    },
-    {
-      "name": "Qwen3.5-397B",
-      "cash": 5375.38,
-      "positions": [
-        {
-          "code": "000001",
-          "name": "平安银行",
-          "qty": 200,
-          "avg_cost": 10.77,
-          "current_price": 11.01,
-          "market_value": 2202.0,
-          "unrealized_pnl": 48.0
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "qty": 100,
-          "avg_cost": 24.66,
-          "current_price": 24.58,
-          "market_value": 2458.0,
-          "unrealized_pnl": -8.0
-        }
-      ],
-      "total_value": 10035.38,
-      "return_pct": 0.35,
-      "realized_pnl": 0.0,
-      "trade_count": 0,
-      "win_count": 0,
-      "win_rate": 0.0,
-      "last_update": "2026-03-26 09:36:20",
-      "thinking": {
-        "analysis": "大盘小幅回调，市场情绪谨慎，但持仓股基本面稳健且估值较低。立讯精密融资大幅净流入且涨幅居前，符合低价蓝筹策略，建议利用可用资金建仓以分散风险。",
+        "analysis": "三大指数小幅震荡，市场情绪平稳，但日本加息预期升温可能带来外部波动。重点关注低估值银行股和超跌的优质医药股。",
         "actions": [
           {
-            "code": "002475",
-            "name": "立讯精密",
+            "code": "603259",
+            "name": "药明康德",
             "action": "buy",
             "ratio": 0.25
+          },
+          {
+            "code": "000001",
+            "name": "平安银行",
+            "action": "hold",
+            "ratio": 0.219
           }
         ],
         "status": "成功"
       },
       "style_tags": [
         "保守派",
-        "抄底型"
+        "追涨型",
+        "集中持仓"
       ],
       "metrics": {
-        "max_drawdown": 0.18,
-        "sharpe_ratio": 7.24,
-        "win_streak": 0,
+        "max_drawdown": 0.26,
+        "sharpe_ratio": 9.86,
+        "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5015.0
+        "concentration_hhi": 10000.0
       }
     },
     {
@@ -299,13 +271,13 @@
           "name": "平安银行",
           "qty": 100,
           "avg_cost": 10.65,
-          "current_price": 11.01,
-          "market_value": 1101.0,
-          "unrealized_pnl": 36.0
+          "current_price": 10.98,
+          "market_value": 1098.0,
+          "unrealized_pnl": 33.0
         }
       ],
-      "total_value": 10034.93,
-      "return_pct": 0.35,
+      "total_value": 10031.93,
+      "return_pct": 0.32,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
@@ -321,11 +293,58 @@
       ],
       "metrics": {
         "max_drawdown": 0.09,
-        "sharpe_ratio": 10.82,
+        "sharpe_ratio": 12.65,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
         "concentration_hhi": 10000.0
+      }
+    },
+    {
+      "name": "Qwen3.5-397B",
+      "cash": 5375.38,
+      "positions": [
+        {
+          "code": "000001",
+          "name": "平安银行",
+          "qty": 200,
+          "avg_cost": 10.77,
+          "current_price": 10.98,
+          "market_value": 2196.0,
+          "unrealized_pnl": 42.0
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "qty": 100,
+          "avg_cost": 24.66,
+          "current_price": 24.45,
+          "market_value": 2445.0,
+          "unrealized_pnl": -21.0
+        }
+      ],
+      "total_value": 10016.38,
+      "return_pct": 0.16,
+      "realized_pnl": 0.0,
+      "trade_count": 0,
+      "win_count": 0,
+      "win_rate": 0.0,
+      "last_update": "2026-03-26 09:36:20",
+      "thinking": {
+        "analysis": "大盘窄幅震荡，金融板块估值低位且有融资净买入支撑，当前持仓平安银行和中信证券表现稳健，暂无明显调仓信号。",
+        "actions": [],
+        "status": "成功"
+      },
+      "style_tags": [
+        "保守派"
+      ],
+      "metrics": {
+        "max_drawdown": 0.18,
+        "sharpe_ratio": 8.4,
+        "win_streak": 0,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 5014.0
       }
     },
     {
@@ -337,43 +356,42 @@
           "name": "平安银行",
           "qty": 100,
           "avg_cost": 10.77,
-          "current_price": 11.01,
-          "market_value": 1101.0,
-          "unrealized_pnl": 24.0
+          "current_price": 10.98,
+          "market_value": 1098.0,
+          "unrealized_pnl": 21.0
         },
         {
           "code": "600030",
           "name": "中信证券",
           "qty": 100,
           "avg_cost": 24.63,
-          "current_price": 24.58,
-          "market_value": 2458.0,
-          "unrealized_pnl": -5.0
+          "current_price": 24.45,
+          "market_value": 2445.0,
+          "unrealized_pnl": -18.0
         }
       ],
-      "total_value": 10015.46,
-      "return_pct": 0.15,
+      "total_value": 9999.46,
+      "return_pct": -0.01,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-25 14:06:21",
       "thinking": {
-        "analysis": "三大指数集体低开，市场情绪偏弱，但央行净投放2110亿提供流动性支持。持仓股平安银行表现稳健，中信证券估值处于历史低位，当前无明显卖出信号，建议持股观望。",
+        "analysis": "大盘指数微幅震荡，市场情绪平稳。持仓股平安银行盈利2.2%，走势稳健可继续持有；中信证券小幅亏损，估值处于历史低位，具备持有价值。当前无明确换股信号，维持原仓位。",
         "actions": [],
         "status": "成功"
       },
       "style_tags": [
-        "保守派",
-        "抄底型"
+        "保守派"
       ],
       "metrics": {
         "max_drawdown": 0.09,
-        "sharpe_ratio": 7.3,
+        "sharpe_ratio": 6.65,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5727.0
+        "concentration_hhi": 5723.0
       }
     },
     {
@@ -385,52 +403,48 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.72,
-          "current_price": 11.01,
-          "market_value": 2202.0,
-          "unrealized_pnl": 58.0
+          "current_price": 10.98,
+          "market_value": 2196.0,
+          "unrealized_pnl": 52.0
         },
         {
           "code": "600030",
           "name": "中信证券",
           "qty": 100,
           "avg_cost": 24.63,
-          "current_price": 24.58,
-          "market_value": 2458.0,
-          "unrealized_pnl": -5.0
+          "current_price": 24.45,
+          "market_value": 2445.0,
+          "unrealized_pnl": -18.0
         }
       ],
-      "total_value": 10010.58,
-      "return_pct": 0.11,
+      "total_value": 9991.58,
+      "return_pct": -0.08,
       "realized_pnl": -35.89,
       "trade_count": 1,
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-25 11:05:28",
       "thinking": {
-        "analysis": "三大指数集体低开，市场情绪整体偏弱；当前持仓平安银行与中信证券估值均处于历史低位，具有较高的安全边际，建议暂不操作，持仓观望为主。",
+        "analysis": "大盘指数微幅震荡，市场情绪相对平稳；当前持仓标的估值极低且走势稳定，建议继续持有观望，暂不作仓位调整。",
         "actions": [],
         "status": "成功"
       },
       "style_tags": [
-        "抄底型"
+        "稳健型"
       ],
       "metrics": {
         "max_drawdown": 0.37,
-        "sharpe_ratio": 1.11,
+        "sharpe_ratio": 2.05,
         "win_streak": 0,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5015.0
+        "concentration_hhi": 5014.0
       }
     }
   ],
-  "battle_report": "各位观众朋友们！今天A股三大指数集体“葛优躺”，创业板带头往下出溜，创指-0.54%摔得最疼，大盘成交额加起来才230亿，市场冷得能冻住企鹅！\n\n但您猜怎么着？九位AI选手全部正收益！Claude-4.6闷声发大财，一波+0.89%直接登顶，这波操作稳如老狗。Intern-S1系列也不含糊，哥俩分别捞了+0.74%和+0.70%，看来intern也有春天哪！\n\n最刺激的是Qwen3.5-397B，老哥一看大盘不行，咔嚓一把买入立讯精密，+0.35%收入囊中，典型的“别人恐惧我贪婪”，这股勇气我给满分！\n\n其余七位选手整齐划一选择观望，整得跟商量好似的集体当起了“缩头乌龟”。不过也难怪，大盘这么个跌法，观望不亏钱就算赢，您说是吧？好了，今天的战报就到这里，我们下期再见！",
-  "battle_report_time": "2026-03-26 09:36",
+  "battle_report": "各位观众朋友们！今天AI炒股大赛第二轮战报出炉，大盘玩起了“原地踏步“，三大指数集体微涨，成交量缩到冰点，咱们这些AI选手也集体患上了“选择困难症“！\n\n九位高手中，只有三位敢于亮剑——Minimax2.5重仓兴业银行，DeepSeek-V3.2买入药明康德还死死抱着平安银行不放，这两位都收获了+0.48%的稳健收益。剩下的六位大佬整齐划一地选择了“葛优躺“观望，其中Claude-4.6最离谱，不操作反而躺出+0.76%的全场最高分！这找谁说理去？\n\nIntern-S1系列哥俩也是有意思，+0.74%和+0.70%的高分战绩，愣是全程打酱油。看来在缩量震荡的市场里，最好的操作就是不操作啊！咱们下轮再见分晓！",
+  "battle_report_time": "2026-03-26 10:06",
   "battle_reports": [
-    {
-      "timestamp": "2026-03-25 11:05",
-      "report": "各位观众朋友们！今天A股三大指数全线飘红，大盘涨近1%，成交额更是突破了1.3万亿！这行情，总算让咱们模型选手们有点肉吃了。\n\n要说今天最靓的仔，那必须是Claude-4.6，买入立讯精密怒赚0.45%，这波操作稳如老狗！Intern-S1也不赖，同样买入立讯精密，收获0.28%的小确幸。Qwen3.5-397B虽然也买了立讯精密，但只拿到0.16%，看来抄作业也得看水平啊。\n\n再看反面教材，Gemini-3.1-Pro买入中信证券不幸翻车，倒亏0.14%，证券板块今天确实不太给面子。而其他六位选手集体选择观望，这谨慎程度简直比大妈存定期还保守——你们是来打比赛的还是来当观众的？不过话说回来，在这种震荡行情里，不亏就是赢，留得青山在，不怕没柴烧嘛！让我们下期再见！"
-    },
     {
       "timestamp": "2026-03-25 13:06",
       "report": "大盘今天气势如虹，三大指数齐刷刷往上冲，成交量也是相当给力。来看看各位“AI基金经理”的表现：Claude老兄这波精准买入中信证券，收获+0.47%暂时领跑，看来洋算法也懂A股江湖。Intern-S1买入紫金矿业斩获+0.32%紧随其后，有色金属果然硬气。Minimax和DeepSeek-V3.2分别+0.30%和+0.28%表现稳健。Gemini-3.1-Pro这波选择观望，结果吃了-0.15%，完美错过行情，看来AI也会“踏空焦虑”。GLM5和Kimi-K2.5操作保守，小幅收涨。Qwen3.5-397B一顿操作买了两个，总收益+0.20%还算及格。今天整体还算红彤彤，就看明天谁更能打了！"
@@ -446,6 +460,10 @@
     {
       "timestamp": "2026-03-26 09:36",
       "report": "各位观众朋友们！今天A股三大指数集体“葛优躺”，创业板带头往下出溜，创指-0.54%摔得最疼，大盘成交额加起来才230亿，市场冷得能冻住企鹅！\n\n但您猜怎么着？九位AI选手全部正收益！Claude-4.6闷声发大财，一波+0.89%直接登顶，这波操作稳如老狗。Intern-S1系列也不含糊，哥俩分别捞了+0.74%和+0.70%，看来intern也有春天哪！\n\n最刺激的是Qwen3.5-397B，老哥一看大盘不行，咔嚓一把买入立讯精密，+0.35%收入囊中，典型的“别人恐惧我贪婪”，这股勇气我给满分！\n\n其余七位选手整齐划一选择观望，整得跟商量好似的集体当起了“缩头乌龟”。不过也难怪，大盘这么个跌法，观望不亏钱就算赢，您说是吧？好了，今天的战报就到这里，我们下期再见！"
+    },
+    {
+      "timestamp": "2026-03-26 10:06",
+      "report": "各位观众朋友们！今天AI炒股大赛第二轮战报出炉，大盘玩起了“原地踏步“，三大指数集体微涨，成交量缩到冰点，咱们这些AI选手也集体患上了“选择困难症“！\n\n九位高手中，只有三位敢于亮剑——Minimax2.5重仓兴业银行，DeepSeek-V3.2买入药明康德还死死抱着平安银行不放，这两位都收获了+0.48%的稳健收益。剩下的六位大佬整齐划一地选择了“葛优躺“观望，其中Claude-4.6最离谱，不操作反而躺出+0.76%的全场最高分！这找谁说理去？\n\nIntern-S1系列哥俩也是有意思，+0.74%和+0.70%的高分战绩，愣是全程打酱油。看来在缩量震荡的市场里，最好的操作就是不操作啊！咱们下轮再见分晓！"
     }
   ]
 }
