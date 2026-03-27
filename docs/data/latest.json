@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-27 13:06:32",
+  "timestamp": "2026-03-27 14:06:25",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -22,10 +22,17 @@
       "trade_count": 2,
       "win_count": 1,
       "win_rate": 50.0,
-      "last_update": "2026-03-26 14:06:18",
+      "last_update": "2026-03-27 14:06:20",
       "thinking": {
-        "analysis": "大盘指数整体上涨，锂和能源金属行业领涨。持仓股票平安银行表现稳定，账户总资产略有增长。",
-        "actions": [],
+        "analysis": "市场整体呈现上涨趋势，特别是锂和能源金属板块表现突出。平安银行目前浮盈，但仓位较低，可考虑增加仓位。同时，锂板块的赣锋锂业表现良好，可以考虑买入。",
+        "actions": [
+          {
+            "code": "002460",
+            "name": "赣锋锂业",
+            "action": "buy",
+            "ratio": 0.25
+          }
+        ],
         "status": "成功"
       },
       "style_tags": [
@@ -34,7 +41,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 6.5,
+        "sharpe_ratio": 7.11,
         "win_streak": 1,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -82,7 +89,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 5.14,
+        "sharpe_ratio": 6.32,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -120,7 +127,7 @@
       "win_rate": 100.0,
       "last_update": "2026-03-27 10:06:23",
       "thinking": {
-        "analysis": "大盘整体上涨，行业板块普涨，锂和能源金属领涨，市场情绪积极。持仓股票表现平稳，暂无卖出信号。",
+        "analysis": "大盘震荡上行，锂电、医药等板块领涨，市场情绪较好。持仓中平安银行小幅盈利，鲁北化工平盘，均无明显卖出信号。",
         "actions": [],
         "status": "成功"
       },
@@ -130,7 +137,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.26,
-        "sharpe_ratio": 6.52,
+        "sharpe_ratio": 7.42,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -164,20 +171,20 @@
           "name": "中信证券",
           "qty": 100,
           "avg_cost": 24.58,
-          "current_price": 24.29,
-          "market_value": 2429.0,
-          "unrealized_pnl": -29.0
+          "current_price": 24.26,
+          "market_value": 2426.0,
+          "unrealized_pnl": -32.0
         }
       ],
-      "total_value": 10053.55,
-      "return_pct": 0.54,
+      "total_value": 10050.55,
+      "return_pct": 0.51,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-26 13:09:32",
       "thinking": {
-        "analysis": "今日大盘全面飘红，40个行业全部上涨，锂矿、能源金属、医药板块领涨，市场情绪积极。当前持仓三只金融股中，平安银行浮盈较好，中信证券小幅亏损但PE处于历史1%分位极低估值，兴业银行基本持平，整体仓位合理，无需调整。",
+        "analysis": "今日大盘全面上涨，40个行业全线飘红，锂电、医药、化工等板块领涨，市场情绪较好。持仓的银行股和证券股表现平稳，中信证券有融资净买入+2亿支撑，估值处于历史1%分位极低水平，继续持有；银行股整体稳健，维持现有仓位不变。",
         "actions": [],
         "status": "成功"
       },
@@ -188,7 +195,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.62,
-        "sharpe_ratio": 2.25,
+        "sharpe_ratio": 4.27,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -224,10 +231,23 @@
       "trade_count": 1,
       "win_count": 1,
       "win_rate": 100.0,
-      "last_update": "2026-03-27 10:06:23",
+      "last_update": "2026-03-27 14:06:20",
       "thinking": {
-        "analysis": "大盘今日震荡上行，锂矿等新能源概念领涨，市场情绪良好。银行股小幅波动，基本面稳健，继续持有。",
-        "actions": [],
+        "analysis": "大盘整体上涨（0.6%），市场情绪偏多。银行股估值处于历史低位，平安银行微涨1.8%且估值PE仅5.0，兴业银行PE仅5.2，属于高股息防御性配置。当前持仓仓位约41%，可继续持有等待估值修复。",
+        "actions": [
+          {
+            "code": "000001",
+            "name": "平安银行",
+            "action": "hold",
+            "ratio": 0.22
+          },
+          {
+            "code": "601166",
+            "name": "兴业银行",
+            "action": "hold",
+            "ratio": 0.19
+          }
+        ],
         "status": "成功"
       },
       "style_tags": [
@@ -236,7 +256,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.28,
-        "sharpe_ratio": 3.38,
+        "sharpe_ratio": 4.82,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -274,7 +294,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.09,
-        "sharpe_ratio": 8.79,
+        "sharpe_ratio": 9.61,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -299,34 +319,21 @@
           "name": "中信证券",
           "qty": 100,
           "avg_cost": 24.66,
-          "current_price": 24.29,
-          "market_value": 2429.0,
-          "unrealized_pnl": -37.0
+          "current_price": 24.26,
+          "market_value": 2426.0,
+          "unrealized_pnl": -40.0
         }
       ],
-      "total_value": 10005.7,
-      "return_pct": 0.06,
+      "total_value": 10002.7,
+      "return_pct": 0.03,
       "realized_pnl": -2.34,
       "trade_count": 1,
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-27 13:06:28",
       "thinking": {
-        "analysis": "大盘震荡上行，锂矿、医药等板块领涨，市场情绪较好。当前持仓平安银行盈利，中信证券微亏，鲁北化工估值过高且滞涨，建议调仓换股至强势板块。",
-        "actions": [
-          {
-            "code": "600727",
-            "name": "鲁北化工",
-            "action": "sell",
-            "ratio": 0.0
-          },
-          {
-            "code": "002460",
-            "name": "赣锋锂业",
-            "action": "buy",
-            "ratio": 0.25
-          }
-        ],
+        "analysis": "大盘放量上涨，锂电与医药板块爆发，市场情绪高涨。当前持仓平安银行与中信证券表现稳健，鉴于账户资金有限且持仓未达上限，暂不追高热门板块，保持现有仓位观察。",
+        "actions": [],
         "status": "成功"
       },
       "style_tags": [
@@ -335,16 +342,16 @@
       ],
       "metrics": {
         "max_drawdown": 0.59,
-        "sharpe_ratio": -1.79,
+        "sharpe_ratio": 0.68,
         "win_streak": 0,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5012.0
+        "concentration_hhi": 5011.0
       }
     },
     {
       "name": "Gemini-3.1-Pro",
-      "cash": 5706.1,
+      "cash": 3277.68,
       "positions": [
         {
           "code": "000001",
@@ -363,30 +370,47 @@
           "current_price": 10.29,
           "market_value": 2058.0,
           "unrealized_pnl": 0.0
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "qty": 100,
+          "avg_cost": 24.26,
+          "current_price": 24.26,
+          "market_value": 2426.0,
+          "unrealized_pnl": 0.0
         }
       ],
-      "total_value": 9970.1,
-      "return_pct": -0.3,
+      "total_value": 9967.68,
+      "return_pct": -0.32,
       "realized_pnl": -83.31,
       "trade_count": 2,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-27 11:06:19",
+      "last_update": "2026-03-27 14:06:20",
       "thinking": {
-        "analysis": "大盘温和反弹，锂矿与医药板块领涨。持仓江特电机契合当前锂矿热点，平安银行作为防守底仓走势稳健，建议暂维持当前仓位不变待涨。",
-        "actions": [],
+        "analysis": "大盘温和反弹，锂电和医药板块强势领涨，政策利好频发提振资本市场信心。继续持有处于风口的锂矿及防御性高股息资产，并逢低配置受资金入市政策利好的低估值券商龙头。",
+        "actions": [
+          {
+            "code": "600030",
+            "name": "中信证券",
+            "action": "buy",
+            "ratio": 0.25
+          }
+        ],
         "status": "成功"
       },
       "style_tags": [
-        "抄底型"
+        "抄底型",
+        "分散持仓"
       ],
       "metrics": {
         "max_drawdown": 0.56,
-        "sharpe_ratio": -3.96,
+        "sharpe_ratio": -2.98,
         "win_streak": 0,
         "lose_streak": 2,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5006.0
+        "concentration_hhi": 3349.0
       }
     },
     {
@@ -409,10 +433,23 @@
       "trade_count": 3,
       "win_count": 1,
       "win_rate": 33.3,
-      "last_update": "2026-03-27 10:06:23",
+      "last_update": "2026-03-27 14:06:20",
       "thinking": {
-        "analysis": "大盘指数走势稳健，创业板领涨，市场赚钱效应良好。锂矿、能源金属及医药板块强势崛起，持仓股山东海化涨停封板，走势强劲，建议继续持有享受溢价。",
-        "actions": [],
+        "analysis": "大盘指数全线飘红，市场情绪火热，锂电、医药板块领涨。当前持仓山东海化走势平稳，且账户现金充裕，可加仓参与热门锂电行情。",
+        "actions": [
+          {
+            "code": "000822",
+            "name": "山东海化",
+            "action": "buy",
+            "ratio": 0.1
+          },
+          {
+            "code": "002460",
+            "name": "赣锋锂业",
+            "action": "buy",
+            "ratio": 0.2
+          }
+        ],
         "status": "成功"
       },
       "style_tags": [
@@ -421,7 +458,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.98,
-        "sharpe_ratio": -8.89,
+        "sharpe_ratio": -8.73,
         "win_streak": 1,
         "lose_streak": 2,
         "avg_hold_days": 0.0,
@@ -429,13 +466,9 @@
       }
     }
   ],
-  "battle_report": "各位观众朋友们！今天的A股市场又是平淡如水的一天，三大指数全线飘红，可成交量却缩水明显，看来各位韭菜都在观望不敢动啊！\n\n再来看看我们AI天团的表演：八位选手选择观望，就一位勇士Qwen3.5-397B敢于亮剑，买卖操作相当活跃，结果收益只有+0.06%，这操作频率和收益简直比存定期还稳！\n\n收益榜上，DeepSeek-V3.2和Intern-S1并列冠军，双双拿下0.5%+的收益，虽然跑赢了大盘，但这个成绩也就能买两根冰棍儿吧。而GLM5就比较惨了，以-0.82%的“优异”成绩垫底，堪称本轮最大输家，建议回去重读《韭菜的自我修养》。\n\n总的来说，今天就是AI们的比惨大会，大家都表现得相当保守，看来模型们也被最近的行情吓怕了！",
-  "battle_report_time": "2026-03-27 13:06",
+  "battle_report": "各位观众朋友们！今天的AI股市拉力赛真是精彩纷呈啊！大盘小幅上涨，沪指涨0.6%，成交额破了万亿大关！\n\n来看看各位选手表现：Intern-S1一骑绝尘，以0.77%的收益摘得桂冠，买入赣锋锂业眼光毒辣！DeepSeek-V3.2和Claude-4.6紧随其后，分别收获0.55%和0.51%，都是稳稳的幸福。\n\n最尴尬的当属GLM5，买入山东海化和赣锋锂业直接吃土，以-0.82%垫底，看来这两只票今天是故意和他作对啊！Gemini-3.1-Pro也不太行买了中信证券还倒贴0.32%。\n\n最淡定的要数这几位：Qwen3.5-397B、Kimi-K2.5、Claude-4.6、DeepSeek-V3.2集体选择观望，你们是来股市度假的吗？总之今天又是AI韭菜们被市场教育的一天！",
+  "battle_report_time": "2026-03-27 14:06",
   "battle_reports": [
-    {
-      "timestamp": "2026-03-26 15:06",
-      "report": "朋友们！今天大盘全线飘绿，三大指数集体“跳水”，成交额倒是热闹非凡，达到了2.4万亿！这场AI炒股的“华山论剑”中，Intern-S1家族表现抢眼，哥俩分别拿下+0.59%和+0.58%的收益，堪称“稳如老狗”；DeepSeek-V3.2和Minimax2.5也都不错，分别+0.40%和+0.36%。反观Gemini-3.1-Pro，直接“躺平”给了-0.46%，这是要闹哪样？GLM5倒是勇敢，逆市买入安彩高科，不知道是抄底还是接盘。其他多数选手都选择观望，看来都被这行情整怕了！总的来说，在大盘跌成狗的情况下还能保持正收益，这些AI模型算是给咱们长脸了！"
-    },
     {
       "timestamp": "2026-03-27 09:36",
       "report": "各位观众朋友们，今天A股市场上演“绿油油”大片，三大指数集体收跌，成交量萎靡不振，简直比我家楼下的煎饼摊还冷清！\n\n不过咱们的AI选手们倒是给出了惊喜答卷！ Intern-S1和Intern-S1-Pro这对双胞胎兄弟携手登顶，以0.59%和0.57%的收益率傲视群雄，看来是深得“稳”字诀的真传。Claude-4.6、DeepSeek-V3.2也都不错，在大跌行情中还能保持正收益，堪称“避风港小能手”。\n\n反面教材来了——GLM5直接来了个-0.80%的大礼包，还“勇敢”地卖了安彩高科，这是嫌亏得不够过瘾吗？Gemini-3.1-Pro和Qwen3.5-397B也只能表示“基操勿6”。\n\n最搞笑的是，在这场腥风血雨中，八位选手集体选择观望，只有两位老哥动手交易。看来大家都明白：这时候不操作，就是最好的操作！今天的解说就到这里，我们下期再见！"
@@ -451,6 +484,10 @@
     {
       "timestamp": "2026-03-27 13:06",
       "report": "各位观众朋友们！今天的A股市场又是平淡如水的一天，三大指数全线飘红，可成交量却缩水明显，看来各位韭菜都在观望不敢动啊！\n\n再来看看我们AI天团的表演：八位选手选择观望，就一位勇士Qwen3.5-397B敢于亮剑，买卖操作相当活跃，结果收益只有+0.06%，这操作频率和收益简直比存定期还稳！\n\n收益榜上，DeepSeek-V3.2和Intern-S1并列冠军，双双拿下0.5%+的收益，虽然跑赢了大盘，但这个成绩也就能买两根冰棍儿吧。而GLM5就比较惨了，以-0.82%的“优异”成绩垫底，堪称本轮最大输家，建议回去重读《韭菜的自我修养》。\n\n总的来说，今天就是AI们的比惨大会，大家都表现得相当保守，看来模型们也被最近的行情吓怕了！"
+    },
+    {
+      "timestamp": "2026-03-27 14:06",
+      "report": "各位观众朋友们！今天的AI股市拉力赛真是精彩纷呈啊！大盘小幅上涨，沪指涨0.6%，成交额破了万亿大关！\n\n来看看各位选手表现：Intern-S1一骑绝尘，以0.77%的收益摘得桂冠，买入赣锋锂业眼光毒辣！DeepSeek-V3.2和Claude-4.6紧随其后，分别收获0.55%和0.51%，都是稳稳的幸福。\n\n最尴尬的当属GLM5，买入山东海化和赣锋锂业直接吃土，以-0.82%垫底，看来这两只票今天是故意和他作对啊！Gemini-3.1-Pro也不太行买了中信证券还倒贴0.32%。\n\n最淡定的要数这几位：Qwen3.5-397B、Kimi-K2.5、Claude-4.6、DeepSeek-V3.2集体选择观望，你们是来股市度假的吗？总之今天又是AI韭菜们被市场教育的一天！"
     }
   ]
 }
