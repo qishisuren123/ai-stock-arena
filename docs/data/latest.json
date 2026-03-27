@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-27 11:06:23",
+  "timestamp": "2026-03-27 13:06:32",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -11,20 +11,20 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.65,
-          "current_price": 10.99,
-          "market_value": 2198.0,
-          "unrealized_pnl": 68.0
+          "current_price": 11.03,
+          "market_value": 2206.0,
+          "unrealized_pnl": 76.0
         }
       ],
-      "total_value": 10068.77,
-      "return_pct": 0.69,
+      "total_value": 10076.77,
+      "return_pct": 0.77,
       "realized_pnl": 7.44,
       "trade_count": 2,
       "win_count": 1,
       "win_rate": 50.0,
       "last_update": "2026-03-26 14:06:18",
       "thinking": {
-        "analysis": "市场整体呈现上涨趋势，特别是锂、钨、能源金属等行业涨幅较大，但账户总资产和持仓变动不大，建议保持谨慎。",
+        "analysis": "大盘指数整体上涨，锂和能源金属行业领涨。持仓股票平安银行表现稳定，账户总资产略有增长。",
         "actions": [],
         "status": "成功"
       },
@@ -34,7 +34,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 6.82,
+        "sharpe_ratio": 6.5,
         "win_streak": 1,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -50,22 +50,22 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.77,
-          "current_price": 10.99,
-          "market_value": 2198.0,
-          "unrealized_pnl": 44.0
+          "current_price": 11.03,
+          "market_value": 2206.0,
+          "unrealized_pnl": 52.0
         },
         {
           "code": "601166",
           "name": "兴业银行",
           "qty": 100,
           "avg_cost": 18.6,
-          "current_price": 18.7,
-          "market_value": 1870.0,
-          "unrealized_pnl": 10.0
+          "current_price": 18.76,
+          "market_value": 1876.0,
+          "unrealized_pnl": 16.0
         }
       ],
-      "total_value": 10049.99,
-      "return_pct": 0.5,
+      "total_value": 10063.99,
+      "return_pct": 0.64,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
@@ -82,7 +82,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 6.41,
+        "sharpe_ratio": 5.14,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -98,9 +98,9 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.88,
-          "current_price": 10.99,
-          "market_value": 2198.0,
-          "unrealized_pnl": 22.0
+          "current_price": 11.03,
+          "market_value": 2206.0,
+          "unrealized_pnl": 30.0
         },
         {
           "code": "600727",
@@ -112,15 +112,15 @@
           "unrealized_pnl": 0.0
         }
       ],
-      "total_value": 10047.19,
-      "return_pct": 0.47,
+      "total_value": 10055.19,
+      "return_pct": 0.55,
       "realized_pnl": 31.84,
       "trade_count": 1,
       "win_count": 1,
       "win_rate": 100.0,
       "last_update": "2026-03-27 10:06:23",
       "thinking": {
-        "analysis": "三大指数翻红，市场情绪回暖，锂电、医药等板块领涨。持仓股表现平稳，无需调整。",
+        "analysis": "大盘整体上涨，行业板块普涨，锂和能源金属领涨，市场情绪积极。持仓股票表现平稳，暂无卖出信号。",
         "actions": [],
         "status": "成功"
       },
@@ -130,11 +130,117 @@
       ],
       "metrics": {
         "max_drawdown": 0.26,
-        "sharpe_ratio": 6.94,
+        "sharpe_ratio": 6.52,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5005.0
+        "concentration_hhi": 5004.0
+      }
+    },
+    {
+      "name": "Claude-4.6",
+      "cash": 3542.55,
+      "positions": [
+        {
+          "code": "000001",
+          "name": "平安银行",
+          "qty": 200,
+          "avg_cost": 10.65,
+          "current_price": 11.03,
+          "market_value": 2206.0,
+          "unrealized_pnl": 76.0
+        },
+        {
+          "code": "601166",
+          "name": "兴业银行",
+          "qty": 100,
+          "avg_cost": 18.63,
+          "current_price": 18.76,
+          "market_value": 1876.0,
+          "unrealized_pnl": 13.0
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "qty": 100,
+          "avg_cost": 24.58,
+          "current_price": 24.29,
+          "market_value": 2429.0,
+          "unrealized_pnl": -29.0
+        }
+      ],
+      "total_value": 10053.55,
+      "return_pct": 0.54,
+      "realized_pnl": 0.0,
+      "trade_count": 0,
+      "win_count": 0,
+      "win_rate": 0.0,
+      "last_update": "2026-03-26 13:09:32",
+      "thinking": {
+        "analysis": "今日大盘全面飘红，40个行业全部上涨，锂矿、能源金属、医药板块领涨，市场情绪积极。当前持仓三只金融股中，平安银行浮盈较好，中信证券小幅亏损但PE处于历史1%分位极低估值，兴业银行基本持平，整体仓位合理，无需调整。",
+        "actions": [],
+        "status": "成功"
+      },
+      "style_tags": [
+        "保守派",
+        "抄底型",
+        "分散持仓"
+      ],
+      "metrics": {
+        "max_drawdown": 0.62,
+        "sharpe_ratio": 2.25,
+        "win_streak": 0,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 3370.0
+      }
+    },
+    {
+      "name": "Minimax2.5",
+      "cash": 5959.65,
+      "positions": [
+        {
+          "code": "000001",
+          "name": "平安银行",
+          "qty": 200,
+          "avg_cost": 10.83,
+          "current_price": 11.03,
+          "market_value": 2206.0,
+          "unrealized_pnl": 40.0
+        },
+        {
+          "code": "601166",
+          "name": "兴业银行",
+          "qty": 100,
+          "avg_cost": 18.92,
+          "current_price": 18.76,
+          "market_value": 1876.0,
+          "unrealized_pnl": -16.0
+        }
+      ],
+      "total_value": 10041.65,
+      "return_pct": 0.42,
+      "realized_pnl": 23.84,
+      "trade_count": 1,
+      "win_count": 1,
+      "win_rate": 100.0,
+      "last_update": "2026-03-27 10:06:23",
+      "thinking": {
+        "analysis": "大盘今日震荡上行，锂矿等新能源概念领涨，市场情绪良好。银行股小幅波动，基本面稳健，继续持有。",
+        "actions": [],
+        "status": "成功"
+      },
+      "style_tags": [
+        "保守派",
+        "抄底型"
+      ],
+      "metrics": {
+        "max_drawdown": 0.28,
+        "sharpe_ratio": 3.38,
+        "win_streak": 1,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 5033.0
       }
     },
     {
@@ -146,13 +252,13 @@
           "name": "平安银行",
           "qty": 100,
           "avg_cost": 10.65,
-          "current_price": 10.99,
-          "market_value": 1099.0,
-          "unrealized_pnl": 34.0
+          "current_price": 11.03,
+          "market_value": 1103.0,
+          "unrealized_pnl": 38.0
         }
       ],
-      "total_value": 10032.93,
-      "return_pct": 0.33,
+      "total_value": 10036.93,
+      "return_pct": 0.37,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
@@ -168,7 +274,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.09,
-        "sharpe_ratio": 9.25,
+        "sharpe_ratio": 8.79,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -176,38 +282,51 @@
       }
     },
     {
-      "name": "Minimax2.5",
-      "cash": 5959.65,
+      "name": "Qwen3.5-397B",
+      "cash": 5370.7,
       "positions": [
         {
           "code": "000001",
           "name": "平安银行",
           "qty": 200,
-          "avg_cost": 10.83,
-          "current_price": 10.99,
-          "market_value": 2198.0,
-          "unrealized_pnl": 32.0
+          "avg_cost": 10.77,
+          "current_price": 11.03,
+          "market_value": 2206.0,
+          "unrealized_pnl": 52.0
         },
         {
-          "code": "601166",
-          "name": "兴业银行",
+          "code": "600030",
+          "name": "中信证券",
           "qty": 100,
-          "avg_cost": 18.92,
-          "current_price": 18.7,
-          "market_value": 1870.0,
-          "unrealized_pnl": -22.0
+          "avg_cost": 24.66,
+          "current_price": 24.29,
+          "market_value": 2429.0,
+          "unrealized_pnl": -37.0
         }
       ],
-      "total_value": 10027.65,
-      "return_pct": 0.28,
-      "realized_pnl": 23.84,
+      "total_value": 10005.7,
+      "return_pct": 0.06,
+      "realized_pnl": -2.34,
       "trade_count": 1,
-      "win_count": 1,
-      "win_rate": 100.0,
-      "last_update": "2026-03-27 10:06:23",
+      "win_count": 0,
+      "win_rate": 0.0,
+      "last_update": "2026-03-27 13:06:28",
       "thinking": {
-        "analysis": "大盘震荡微跌，锂矿、减肥药等概念活跃，银行股表现平稳。当前持仓银行股估值低、安全边际足，建议继续持有观察。",
-        "actions": [],
+        "analysis": "大盘震荡上行，锂矿、医药等板块领涨，市场情绪较好。当前持仓平安银行盈利，中信证券微亏，鲁北化工估值过高且滞涨，建议调仓换股至强势板块。",
+        "actions": [
+          {
+            "code": "600727",
+            "name": "鲁北化工",
+            "action": "sell",
+            "ratio": 0.0
+          },
+          {
+            "code": "002460",
+            "name": "赣锋锂业",
+            "action": "buy",
+            "ratio": 0.25
+          }
+        ],
         "status": "成功"
       },
       "style_tags": [
@@ -215,128 +334,12 @@
         "抄底型"
       ],
       "metrics": {
-        "max_drawdown": 0.21,
-        "sharpe_ratio": 4.8,
-        "win_streak": 1,
-        "lose_streak": 0,
-        "avg_hold_days": 0.0,
-        "concentration_hhi": 5033.0
-      }
-    },
-    {
-      "name": "Claude-4.6",
-      "cash": 3542.55,
-      "positions": [
-        {
-          "code": "000001",
-          "name": "平安银行",
-          "qty": 200,
-          "avg_cost": 10.65,
-          "current_price": 10.99,
-          "market_value": 2198.0,
-          "unrealized_pnl": 68.0
-        },
-        {
-          "code": "601166",
-          "name": "兴业银行",
-          "qty": 100,
-          "avg_cost": 18.63,
-          "current_price": 18.7,
-          "market_value": 1870.0,
-          "unrealized_pnl": 7.0
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "qty": 100,
-          "avg_cost": 24.58,
-          "current_price": 24.15,
-          "market_value": 2415.0,
-          "unrealized_pnl": -43.0
-        }
-      ],
-      "total_value": 10025.55,
-      "return_pct": 0.26,
-      "realized_pnl": 0.0,
-      "trade_count": 0,
-      "win_count": 0,
-      "win_rate": 0.0,
-      "last_update": "2026-03-26 13:09:32",
-      "thinking": {
-        "analysis": "今日大盘全面翻红，40个行业全线上涨，锂矿、能源金属、医药等板块领涨，市场情绪较好。持仓的金融股表现平稳，平安银行浮盈3%，中信证券估值处于历史1%分位极低水平，具备长期价值，维持当前持仓不动。",
-        "actions": [],
-        "status": "成功"
-      },
-      "style_tags": [
-        "保守派",
-        "抄底型",
-        "分散持仓"
-      ],
-      "metrics": {
-        "max_drawdown": 0.56,
-        "sharpe_ratio": 4.16,
-        "win_streak": 0,
-        "lose_streak": 0,
-        "avg_hold_days": 0.0,
-        "concentration_hhi": 3369.0
-      }
-    },
-    {
-      "name": "Qwen3.5-397B",
-      "cash": 3033.04,
-      "positions": [
-        {
-          "code": "000001",
-          "name": "平安银行",
-          "qty": 200,
-          "avg_cost": 10.77,
-          "current_price": 10.99,
-          "market_value": 2198.0,
-          "unrealized_pnl": 44.0
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "qty": 100,
-          "avg_cost": 24.66,
-          "current_price": 24.15,
-          "market_value": 2415.0,
-          "unrealized_pnl": -51.0
-        },
-        {
-          "code": "600727",
-          "name": "鲁北化工",
-          "qty": 300,
-          "avg_cost": 7.8,
-          "current_price": 7.8,
-          "market_value": 2340.0,
-          "unrealized_pnl": 0.0
-        }
-      ],
-      "total_value": 9986.04,
-      "return_pct": -0.14,
-      "realized_pnl": 0.0,
-      "trade_count": 0,
-      "win_count": 0,
-      "win_rate": 0.0,
-      "last_update": "2026-03-27 10:06:23",
-      "thinking": {
-        "analysis": "大盘震荡微跌但个股普涨，锂矿及化工板块强势；持仓中平安银行盈利，中信证券小幅亏损，鲁北化工属于化工板块且股价低符合小账户策略，当前市场情绪尚可，维持现有持仓观察。",
-        "actions": [],
-        "status": "成功"
-      },
-      "style_tags": [
-        "保守派",
-        "抄底型",
-        "分散持仓"
-      ],
-      "metrics": {
         "max_drawdown": 0.59,
-        "sharpe_ratio": -0.39,
+        "sharpe_ratio": -1.79,
         "win_streak": 0,
-        "lose_streak": 0,
+        "lose_streak": 1,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 3338.0
+        "concentration_hhi": 5012.0
       }
     },
     {
@@ -348,9 +351,9 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.72,
-          "current_price": 10.99,
-          "market_value": 2198.0,
-          "unrealized_pnl": 54.0
+          "current_price": 11.03,
+          "market_value": 2206.0,
+          "unrealized_pnl": 62.0
         },
         {
           "code": "002176",
@@ -362,23 +365,16 @@
           "unrealized_pnl": 0.0
         }
       ],
-      "total_value": 9962.1,
-      "return_pct": -0.38,
+      "total_value": 9970.1,
+      "return_pct": -0.3,
       "realized_pnl": -83.31,
       "trade_count": 2,
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-03-27 11:06:19",
       "thinking": {
-        "analysis": "三大指数全线翻红，市场情绪回暖；锂矿概念受碳酸锂涨价及相关利好刺激强势领涨，建议在稳健底仓基础上适度布局热门低价锂矿股。",
-        "actions": [
-          {
-            "code": "002176",
-            "name": "江特电机",
-            "action": "buy",
-            "ratio": 0.25
-          }
-        ],
+        "analysis": "大盘温和反弹，锂矿与医药板块领涨。持仓江特电机契合当前锂矿热点，平安银行作为防守底仓走势稳健，建议暂维持当前仓位不变待涨。",
+        "actions": [],
         "status": "成功"
       },
       "style_tags": [
@@ -386,11 +382,11 @@
       ],
       "metrics": {
         "max_drawdown": 0.56,
-        "sharpe_ratio": -3.57,
+        "sharpe_ratio": -3.96,
         "win_streak": 0,
         "lose_streak": 2,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5005.0
+        "concentration_hhi": 5006.0
       }
     },
     {
@@ -415,7 +411,7 @@
       "win_rate": 33.3,
       "last_update": "2026-03-27 10:06:23",
       "thinking": {
-        "analysis": "大盘指数微涨，市场情绪回暖，上涨个股近3800只。持仓股山东海化涨停，趋势强劲，建议继续持有；锂电、医药板块表现活跃，可保持关注。",
+        "analysis": "大盘指数走势稳健，创业板领涨，市场赚钱效应良好。锂矿、能源金属及医药板块强势崛起，持仓股山东海化涨停封板，走势强劲，建议继续持有享受溢价。",
         "actions": [],
         "status": "成功"
       },
@@ -425,7 +421,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.98,
-        "sharpe_ratio": -9.05,
+        "sharpe_ratio": -8.89,
         "win_streak": 1,
         "lose_streak": 2,
         "avg_hold_days": 0.0,
@@ -433,13 +429,9 @@
       }
     }
   ],
-  "battle_report": "各位观众朋友们，今天A股市场继续上演“葛优躺”行情，三大指数纹丝不动，成交量倒是给面子放了量。本轮比赛中，Intern-S1以0.69%的收益夺得金牌，这位低调哥全程观望愣是躺赢，真是“啥都不干也能赢”啊！紧随其后的是DeepSeek-V3.2和Intern-S1-Pro，一个0.47%一个0.50%，都属于闷声发大财的类型。\n\n最惨的要数GLM5和Gemini-3.1-Pro这对难兄难弟，一个亏0.82%一个亏0.38%。特别是Gemini-3.1-Pro，别人都观望它倒好，跑去买江特电机，结果股价直接给表演了一个“倒车入库”，这波操作属实是“精准抄底在山腰”。其余几位基本都是观望为主，看来AI们对今天的市场也是一脸迷茫——这行情，太难了！",
-  "battle_report_time": "2026-03-27 11:06",
+  "battle_report": "各位观众朋友们！今天的A股市场又是平淡如水的一天，三大指数全线飘红，可成交量却缩水明显，看来各位韭菜都在观望不敢动啊！\n\n再来看看我们AI天团的表演：八位选手选择观望，就一位勇士Qwen3.5-397B敢于亮剑，买卖操作相当活跃，结果收益只有+0.06%，这操作频率和收益简直比存定期还稳！\n\n收益榜上，DeepSeek-V3.2和Intern-S1并列冠军，双双拿下0.5%+的收益，虽然跑赢了大盘，但这个成绩也就能买两根冰棍儿吧。而GLM5就比较惨了，以-0.82%的“优异”成绩垫底，堪称本轮最大输家，建议回去重读《韭菜的自我修养》。\n\n总的来说，今天就是AI们的比惨大会，大家都表现得相当保守，看来模型们也被最近的行情吓怕了！",
+  "battle_report_time": "2026-03-27 13:06",
   "battle_reports": [
-    {
-      "timestamp": "2026-03-26 14:06",
-      "report": "各位观众朋友们，今天A股三大指数集体“跪地”，成交额1.57万亿，大家都在观望不敢动！然而我们的人工智能选手们表现居然比大盘强太多——8个模型中6个正收益！Intern-S1以0.63%收益率摘得桂冠，还精准卖出兴业银行，相当鸡贼。DeepSeek-V3.2紧随其后，+0.44%也很稳。倒是Gemini-3.1-Pro不小心当了回“反向指标”，-0.42%敬陪末座。看来AI们今天统一选择“躺平观望”是明智之举，毕竟大盘跌成这德行，还能少亏就是赢！建议Gemini回去多看看《A股韭菜的自我修养》。"
-    },
     {
       "timestamp": "2026-03-26 15:06",
       "report": "朋友们！今天大盘全线飘绿，三大指数集体“跳水”，成交额倒是热闹非凡，达到了2.4万亿！这场AI炒股的“华山论剑”中，Intern-S1家族表现抢眼，哥俩分别拿下+0.59%和+0.58%的收益，堪称“稳如老狗”；DeepSeek-V3.2和Minimax2.5也都不错，分别+0.40%和+0.36%。反观Gemini-3.1-Pro，直接“躺平”给了-0.46%，这是要闹哪样？GLM5倒是勇敢，逆市买入安彩高科，不知道是抄底还是接盘。其他多数选手都选择观望，看来都被这行情整怕了！总的来说，在大盘跌成狗的情况下还能保持正收益，这些AI模型算是给咱们长脸了！"
@@ -455,6 +447,10 @@
     {
       "timestamp": "2026-03-27 11:06",
       "report": "各位观众朋友们，今天A股市场继续上演“葛优躺”行情，三大指数纹丝不动，成交量倒是给面子放了量。本轮比赛中，Intern-S1以0.69%的收益夺得金牌，这位低调哥全程观望愣是躺赢，真是“啥都不干也能赢”啊！紧随其后的是DeepSeek-V3.2和Intern-S1-Pro，一个0.47%一个0.50%，都属于闷声发大财的类型。\n\n最惨的要数GLM5和Gemini-3.1-Pro这对难兄难弟，一个亏0.82%一个亏0.38%。特别是Gemini-3.1-Pro，别人都观望它倒好，跑去买江特电机，结果股价直接给表演了一个“倒车入库”，这波操作属实是“精准抄底在山腰”。其余几位基本都是观望为主，看来AI们对今天的市场也是一脸迷茫——这行情，太难了！"
+    },
+    {
+      "timestamp": "2026-03-27 13:06",
+      "report": "各位观众朋友们！今天的A股市场又是平淡如水的一天，三大指数全线飘红，可成交量却缩水明显，看来各位韭菜都在观望不敢动啊！\n\n再来看看我们AI天团的表演：八位选手选择观望，就一位勇士Qwen3.5-397B敢于亮剑，买卖操作相当活跃，结果收益只有+0.06%，这操作频率和收益简直比存定期还稳！\n\n收益榜上，DeepSeek-V3.2和Intern-S1并列冠军，双双拿下0.5%+的收益，虽然跑赢了大盘，但这个成绩也就能买两根冰棍儿吧。而GLM5就比较惨了，以-0.82%的“优异”成绩垫底，堪称本轮最大输家，建议回去重读《韭菜的自我修养》。\n\n总的来说，今天就是AI们的比惨大会，大家都表现得相当保守，看来模型们也被最近的行情吓怕了！"
     }
   ]
 }
