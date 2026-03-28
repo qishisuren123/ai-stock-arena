@@ -23,6 +23,7 @@ from rich.table import Table
 
 import ai_advisor
 import market_data
+from board_meeting import board_fund, conduct_board_meeting, get_board_summary_for_report
 from model_config import MODELS, get_safe_name
 from simulator import SimAccount, INITIAL_CASH
 
@@ -63,6 +64,7 @@ def _signal_handler(sig, frame):
     console.print("\n[yellow]收到退出信号，正在保存所有模型状态...[/yellow]")
     for r in runners:
         r.account.save()
+    board_fund.save()
     console.print("[green]所有状态已保存，再见！[/green]")
     sys.exit(0)
 
@@ -124,6 +126,11 @@ def generate_battle_report(overview: str, prices: dict):
         "不要用 markdown 格式，直接输出纯文本。"
     )
     user_msg = f"大盘概况：\n{overview}\n\n各模型本轮表现：\n{summary}"
+
+    # 追加董事会信息
+    board_summary = get_board_summary_for_report(prices)
+    if board_summary:
+        user_msg += f"\n\n{board_summary}"
 
     # 从 model_config.py 中取 Minimax 配置用于战报生成（model_config.py 已在 .gitignore）
     reporter_cfg = None
@@ -211,21 +218,29 @@ def _query_single_model(runner: ModelRunner, market_text: str,
 
 
 def query_all_models(market_text: str, prices: dict[str, float]):
-    """并行查询所有模型，总超时 120s"""
+    """并行查询所有模型，总超时 180s，超时的模型标记跳过"""
     console.print(f"[dim]正在并行查询 {len(runners)} 个模型...[/dim]")
     with ThreadPoolExecutor(max_workers=10) as executor:
         futures = {
             executor.submit(_query_single_model, r, market_text, prices): r
             for r in runners
         }
-        for future in as_completed(futures, timeout=120):
-            try:
-                future.result()
-            except Exception as e:
-                r = futures[future]
-                r.status = "超时"
-                r.error = str(e)
-                r.advice = {"analysis": f"超时: {e}", "actions": []}
+        try:
+            for future in as_completed(futures, timeout=180):
+                try:
+                    future.result()
+                except Exception as e:
+                    r = futures[future]
+                    r.status = "失败"
+                    r.error = str(e)
+                    r.advice = {"analysis": f"查询失败: {e}", "actions": []}
+        except TimeoutError:
+            # 标记未完成的模型
+            for future, r in futures.items():
+                if not future.done():
+                    r.status = "超时"
+                    r.advice = {"analysis": "查询超时（180s）", "actions": []}
+                    console.print(f"  [yellow]{r.name} 查询超时[/yellow]")
 
 
 def execute_trades(prices: dict[str, float]):
@@ -340,7 +355,11 @@ def run_trading_cycle():
     console.print("[dim]正在获取市场数据...[/dim]")
     try:
         overview = market_data.get_market_overview()
-        hot = market_data.get_hot_stocks(10)
+        hot = market_data.get_hot_stocks(15)
+        losers = market_data.get_losers(10)
+        sectors = market_data.get_sector_overview()
+        concepts = market_data.get_concept_hot()
+        breadth = market_data.get_market_breadth()
     except Exception as e:
         console.print(f"[red]获取市场数据失败: {e}[/red]")
         return
@@ -361,7 +380,17 @@ def run_trading_cycle():
     deep_codes = list(set(list(all_held_codes) + top_codes))
     deep_info = market_data.get_stock_deep_info(deep_codes) if deep_codes else ""
 
-    market_text = f"【大盘指数】\n{overview}\n\n【涨幅榜TOP10】\n{hot}\n\n{news}"
+    market_text = f"【大盘指数】\n{overview}"
+    if breadth:
+        market_text += f"\n{breadth}"
+    if sectors:
+        market_text += f"\n\n【行业板块】\n{sectors}"
+    if concepts:
+        market_text += f"\n\n【热门概念】\n{concepts}"
+    market_text += f"\n\n【涨幅榜TOP15】\n{hot}"
+    if losers:
+        market_text += f"\n\n【跌幅榜TOP10】\n{losers}"
+    market_text += f"\n\n{news}"
     if deep_info:
         market_text += f"\n\n{deep_info}"
 
@@ -401,6 +430,12 @@ def run_trading_cycle():
     except Exception as e:
         console.print(f"[yellow]战报生成失败（不影响交易）: {e}[/yellow]")
 
+    # 董事会会议：投票 → 决议 → 进化
+    try:
+        conduct_board_meeting(runners, market_text, prices)
+    except Exception as e:
+        console.print(f"[yellow]董事会会议异常: {e}[/yellow]")
+
     console.print("[dim]所有模型状态已保存[/dim]")
 
     # 保存最新价格快照并推送到 GitHub
@@ -423,11 +458,54 @@ def run_trading_cycle():
         console.print(f"[yellow]同步异常（不影响交易）: {e}[/yellow]")
 
 
+def _sync_now():
+    """手动触发同步：导出数据并推送 GitHub"""
+    console.print("[cyan]手动同步中...[/cyan]")
+    try:
+        prices_file = os.path.join(STATES_DIR, "_latest_prices.json")
+        # 刷新价格
+        all_held_codes = set()
+        for r in runners:
+            all_held_codes.update(r.account.positions.keys())
+        prices = market_data.get_realtime_prices(list(all_held_codes)) if all_held_codes else {}
+        with open(prices_file, "w", encoding="utf-8") as f:
+            json.dump(prices, f, ensure_ascii=False, indent=2)
+        sync_script = os.path.join(BASE_DIR, "sync_to_github.sh")
+        if os.path.exists(sync_script):
+            result = subprocess.run(["bash", sync_script], capture_output=True, text=True, timeout=60)
+            if result.returncode == 0:
+                console.print("[green]手动同步完成[/green]")
+            else:
+                console.print(f"[yellow]同步失败: {result.stderr[:200]}[/yellow]")
+    except Exception as e:
+        console.print(f"[yellow]同步异常: {e}[/yellow]")
+
+
+def _wait_with_input(seconds: float):
+    """等待指定秒数，期间按回车立即触发同步，输入 q 退出"""
+    import select
+    console.print("[dim]按回车立即同步网站，输入 q 退出[/dim]")
+    end_time = time.time() + seconds
+    while _running and time.time() < end_time:
+        # 检查 stdin 是否有输入（非阻塞，等 1 秒）
+        ready, _, _ = select.select([sys.stdin], [], [], 1.0)
+        if ready:
+            line = sys.stdin.readline().strip().lower()
+            if line == "q":
+                console.print("[yellow]收到退出指令[/yellow]")
+                for r in runners:
+                    r.account.save()
+                sys.exit(0)
+            else:
+                _sync_now()
+
+
 def main():
     """主循环"""
     console.print(Panel(
         f"[bold]多模型对比自动交易系统[/bold]\n"
         f"模型数量: {len(runners)} | 初始资金: 10,000 元/模型\n"
+        f"董事会公共基金: 10,000 元（共同管理）\n"
         f"交易时间: 周一至周五 9:30-11:30, 13:00-15:00\n"
         f"按 Ctrl+C 退出并保存所有状态",
         title="启动",
@@ -474,9 +552,7 @@ def main():
                 f"（等待 {int(wait_secs // 60)} 分钟）[/dim]"
             )
 
-            end_time = time.time() + wait_secs
-            while _running and time.time() < end_time:
-                time.sleep(1)
+            _wait_with_input(wait_secs)
         else:
             now_ts = time.time()
             if now_ts - last_heartbeat >= heartbeat_interval:
@@ -486,7 +562,7 @@ def main():
                     f"非交易时间，下一交易窗口: {next_win}[/dim]"
                 )
                 last_heartbeat = now_ts
-            time.sleep(10)
+            _wait_with_input(10)
 
 
 if __name__ == "__main__":

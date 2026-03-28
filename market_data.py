@@ -75,10 +75,174 @@ def get_market_overview() -> str:
         return f"获取指数数据失败: {e}"
 
 
+def _eastmoney_rank(sort_field: str = "f3", ascending: bool = False,
+                    count: int = 30) -> list[dict]:
+    """通过东方财富 API 获取沪深A股实时排行
+    sort_field: f3=涨跌幅 f6=成交额 f8=换手率
+    返回 [{code, name, price, change_pct, amount, turnover_rate}, ...]
+    """
+    url = "http://push2.eastmoney.com/api/qt/clist/get"
+    params = {
+        "pn": 1, "pz": count, "po": 0 if ascending else 1,
+        "np": 1, "fltt": 2, "invt": 2, "fid": sort_field,
+        "fs": "m:0+t:6,m:0+t:80,m:1+t:2,m:1+t:23",
+        "fields": "f2,f3,f5,f6,f8,f12,f14",
+    }
+    headers = {"User-Agent": "Mozilla/5.0"}
+    resp = requests.get(url, params=params, headers=headers, timeout=10)
+    data = resp.json()
+    items = data.get("data", {}).get("diff", [])
+    result = []
+    for d in items:
+        if not d.get("f2") or d["f2"] == "-":
+            continue
+        result.append({
+            "code": str(d["f12"]),
+            "name": d["f14"],
+            "price": float(d["f2"]),
+            "change_pct": float(d.get("f3", 0)),
+            "amount": float(d.get("f6", 0)),
+            "turnover_rate": float(d.get("f8", 0)),
+        })
+    return result
+
+
 def get_hot_stocks(top_n: int = 15) -> str:
-    """获取一批主流股票行情，按涨跌幅排序"""
+    """获取实时涨幅榜 + 成交额榜，合并去重后返回"""
     try:
-        # 覆盖各行业的代表性股票
+        # 涨幅榜 TOP15 + 成交额榜 TOP10，给模型更广视野
+        gainers = _eastmoney_rank("f3", ascending=False, count=top_n)
+        volume_leaders = _eastmoney_rank("f6", ascending=False, count=10)
+
+        # 合并去重
+        seen = set()
+        merged = []
+        for d in gainers + volume_leaders:
+            if d["code"] not in seen:
+                seen.add(d["code"])
+                merged.append(d)
+
+        # 按涨幅排序
+        merged.sort(key=lambda x: x["change_pct"], reverse=True)
+
+        lines = []
+        for i, d in enumerate(merged[:top_n + 5], 1):
+            lines.append(
+                f"{i:2d}. {d['name']}({d['code']}) "
+                f"现价:{d['price']:.2f} "
+                f"涨幅:{d['change_pct']:.2f}% "
+                f"换手:{d['turnover_rate']:.2f}% "
+                f"成交额:{d['amount'] / 1e8:.1f}亿"
+            )
+        return "\n".join(lines) if lines else "未获取到行情数据"
+    except Exception as e:
+        # 回退到固定列表
+        return _get_hot_stocks_fallback(top_n)
+
+
+def get_sector_overview() -> str:
+    """获取行业板块涨跌幅排行，展示全局资金流向"""
+    try:
+        url = "http://push2.eastmoney.com/api/qt/clist/get"
+        headers = {"User-Agent": "Mozilla/5.0"}
+        # 行业板块按涨幅排序
+        params = {
+            "pn": 1, "pz": 40, "po": 1, "np": 1,
+            "fltt": 2, "invt": 2, "fid": "f3",
+            "fs": "m:90+t:2",
+            "fields": "f3,f8,f14",
+        }
+        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        items = resp.json().get("data", {}).get("diff", [])
+        if not items:
+            return ""
+
+        # 取涨幅前10和跌幅前5
+        top = items[:10]
+        bottom = sorted(items, key=lambda x: x["f3"])[:5]
+
+        lines = ["领涨行业:"]
+        for d in top:
+            lines.append(f"  {d['f14']} {d['f3']:+.2f}%")
+        lines.append("领跌行业:")
+        for d in bottom:
+            lines.append(f"  {d['f14']} {d['f3']:+.2f}%")
+
+        # 统计涨跌家数
+        up = sum(1 for d in items if d["f3"] > 0)
+        down = sum(1 for d in items if d["f3"] < 0)
+        lines.append(f"行业涨跌: {up}涨 {down}跌")
+
+        return "\n".join(lines)
+    except Exception:
+        return ""
+
+
+def get_concept_hot() -> str:
+    """获取热门概念板块（过滤掉连板/涨停类纯技术概念）"""
+    try:
+        url = "http://push2.eastmoney.com/api/qt/clist/get"
+        headers = {"User-Agent": "Mozilla/5.0"}
+        params = {
+            "pn": 1, "pz": 30, "po": 1, "np": 1,
+            "fltt": 2, "invt": 2, "fid": "f3",
+            "fs": "m:90+t:3",
+            "fields": "f3,f14",
+        }
+        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        items = resp.json().get("data", {}).get("diff", [])
+
+        # 过滤掉 "昨日连板/涨停/首板" 等纯技术概念
+        skip_keywords = {"昨日连板", "昨日涨停", "昨日首板", "含一字"}
+        filtered = [d for d in items
+                    if not any(kw in d["f14"] for kw in skip_keywords)]
+
+        lines = []
+        for d in filtered[:10]:
+            lines.append(f"  {d['f14']} {d['f3']:+.2f}%")
+        return "\n".join(lines) if lines else ""
+    except Exception:
+        return ""
+
+
+def get_market_breadth() -> str:
+    """获取市场涨跌家数（分页拉取全A股）"""
+    try:
+        url = "http://push2.eastmoney.com/api/qt/clist/get"
+        headers = {"User-Agent": "Mozilla/5.0"}
+        up = down = flat = 0
+        for page in range(1, 6):  # 最多拉5页，每页1000
+            params = {
+                "pn": page, "pz": 1000, "np": 1, "fltt": 2,
+                "invt": 2, "fid": "f12",
+                "fs": "m:0+t:6,m:0+t:80,m:1+t:2,m:1+t:23",
+                "fields": "f3",
+            }
+            resp = requests.get(url, params=params, headers=headers, timeout=8)
+            items = resp.json().get("data", {}).get("diff", [])
+            if not items:
+                break
+            for d in items:
+                pct = d.get("f3", 0)
+                if pct > 0:
+                    up += 1
+                elif pct < 0:
+                    down += 1
+                else:
+                    flat += 1
+        total = up + down + flat
+        if total == 0:
+            return ""
+        ratio = up / max(down, 1)
+        return (f"全市场涨跌: {up}涨/{down}跌/{flat}平 "
+                f"(涨跌比 {ratio:.2f}, 共{total}只)")
+    except Exception:
+        return ""
+
+
+def _get_hot_stocks_fallback(top_n: int = 15) -> str:
+    """固定股票池兜底（东方财富 API 不可用时）"""
+    try:
         watch_list = [
             "sh600519", "sh601318", "sh600036", "sh600900", "sh601012",
             "sz000858", "sz000333", "sz002594", "sz300750", "sz002475",
@@ -87,7 +251,6 @@ def get_hot_stocks(top_n: int = 15) -> str:
             "sh601888", "sz002714", "sh688012", "sz300760", "sh600276",
         ]
         data = _qq_fetch(watch_list)
-        # 按涨跌幅排序
         sorted_items = sorted(data.values(), key=lambda x: x["change_pct"], reverse=True)
         lines = []
         for i, d in enumerate(sorted_items[:top_n], 1):
@@ -172,21 +335,43 @@ def get_stock_info(code: str) -> str:
         return f"获取个股信息失败: {e}"
 
 
+def get_losers(top_n: int = 10) -> str:
+    """获取实时跌幅榜"""
+    try:
+        losers = _eastmoney_rank("f3", ascending=True, count=top_n)
+        lines = []
+        for i, d in enumerate(losers[:top_n], 1):
+            lines.append(
+                f"{i:2d}. {d['name']}({d['code']}) "
+                f"现价:{d['price']:.2f} "
+                f"跌幅:{d['change_pct']:.2f}% "
+                f"成交额:{d['amount'] / 1e8:.1f}亿"
+            )
+        return "\n".join(lines) if lines else ""
+    except Exception:
+        return ""
+
+
 def get_hot_stock_codes(top_n: int = 5) -> list[str]:
     """获取涨幅榜前 N 只股票的纯数字代码"""
     try:
-        watch_list = [
-            "sh600519", "sh601318", "sh600036", "sh600900", "sh601012",
-            "sz000858", "sz000333", "sz002594", "sz300750", "sz002475",
-            "sh688981", "sh601899", "sh600030", "sh601166", "sz000001",
-            "sz002230", "sz300059", "sh603259", "sh600809", "sz000568",
-            "sh601888", "sz002714", "sh688012", "sz300760", "sh600276",
-        ]
-        data = _qq_fetch(watch_list)
-        sorted_items = sorted(data.values(), key=lambda x: x["change_pct"], reverse=True)
-        return [d["code"] for d in sorted_items[:top_n]]
+        gainers = _eastmoney_rank("f3", ascending=False, count=top_n)
+        return [d["code"] for d in gainers[:top_n]]
     except Exception:
-        return []
+        # 回退
+        try:
+            watch_list = [
+                "sh600519", "sh601318", "sh600036", "sh600900", "sh601012",
+                "sz000858", "sz000333", "sz002594", "sz300750", "sz002475",
+                "sh688981", "sh601899", "sh600030", "sh601166", "sz000001",
+                "sz002230", "sz300059", "sh603259", "sh600809", "sz000568",
+                "sh601888", "sz002714", "sh688012", "sz300760", "sh600276",
+            ]
+            data = _qq_fetch(watch_list)
+            sorted_items = sorted(data.values(), key=lambda x: x["change_pct"], reverse=True)
+            return [d["code"] for d in sorted_items[:top_n]]
+        except Exception:
+            return []
 
 
 def get_margin_data(codes: list[str]) -> str:

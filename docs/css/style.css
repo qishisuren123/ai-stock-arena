@@ -372,3 +372,200 @@ footer {
     .model-grid { grid-template-columns: 1fr; }
     th, td { padding: 0.4rem 0.5rem; font-size: 0.8rem; }
 }
+
+/* === 董事会基金 === */
+.board-fund-section {
+    border-color: #d4a017;
+}
+
+.board-fund-section h2 {
+    color: #d4a017;
+}
+
+.board-fund-summary {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.board-stat {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    flex: 1;
+    min-width: 140px;
+}
+
+.board-stat .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+}
+
+.board-stat .stat-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 0.2rem;
+}
+
+.board-positions {
+    margin-top: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+}
+
+.board-positions .pos-item {
+    display: inline-block;
+    background: var(--bg);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    margin: 0.15rem 0.1rem;
+    border: 1px solid var(--border);
+}
+
+.board-decisions-title {
+    font-size: 0.85rem;
+    color: #d4a017;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.decision-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.decision-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.82rem;
+}
+
+.decision-action {
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+}
+
+.decision-action-buy { background: rgba(239, 68, 68, 0.15); color: var(--up); }
+.decision-action-sell { background: rgba(34, 197, 94, 0.15); color: var(--down); }
+
+.decision-approved { border-left: 3px solid #d4a017; }
+.decision-rejected { border-left: 3px solid var(--border); opacity: 0.5; }
+
+.decision-score {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+/* === 进化面板 === */
+.evolution-section {
+    border-color: #10b981;
+}
+
+.evolution-section h2 {
+    color: #10b981;
+}
+
+.evo-genome-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.evo-genome-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.6rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+
+.evo-genome-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+    min-width: 120px;
+}
+
+.evo-influence-bar {
+    flex: 1;
+    height: 8px;
+    background: #21262d;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.evo-influence-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #d4a017);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.evo-genome-stats {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    min-width: 200px;
+    text-align: right;
+}
+
+.evo-generation-badge {
+    font-size: 0.68rem;
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    padding: 0.1rem 0.4rem;
+    border-radius: 999px;
+    font-weight: 500;
+}
+
+.evo-capsules-title {
+    font-size: 0.85rem;
+    color: #10b981;
+    margin: 1rem 0 0.5rem;
+    font-weight: 600;
+}
+
+.evo-capsule-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.evo-capsule-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    border-left: 3px solid #10b981;
+    flex: 1;
+    min-width: 200px;
+}
+
+.evo-capsule-card .cap-header {
+    font-weight: 600;
+    color: #10b981;
+    margin-bottom: 0.2rem;
+}
+
+.evo-capsule-card .cap-detail {
+    color: var(--text-dim);
+    font-size: 0.75rem;
+}
+
+.evo-capsule-card .cap-pnl {
+    color: var(--up);
+    font-weight: 600;
+}

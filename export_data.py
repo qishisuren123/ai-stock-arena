@@ -17,6 +17,9 @@ THINKING_FILE = os.path.join(STATES_DIR, "_thinking.json")
 HOT_CODES_FILE = os.path.join(STATES_DIR, "_hot_codes.json")
 BATTLE_REPORT_FILE = os.path.join(STATES_DIR, "_battle_report.json")
 BATTLE_REPORTS_HIST_FILE = os.path.join(STATES_DIR, "_battle_reports_history.json")
+BOARD_STATE_FILE = os.path.join(STATES_DIR, "sim_state_board_fund.json")
+BOARD_GENES_FILE = os.path.join(STATES_DIR, "board_genes.json")
+BOARD_CAPSULES_FILE = os.path.join(STATES_DIR, "board_capsules.json")
 
 INITIAL_CASH = 10000.0
 HISTORY_MAX = 720  # 历史记录上限（每小时1条，约30天）
@@ -375,6 +378,62 @@ def export():
     if battle_reports_hist:
         latest["battle_reports"] = battle_reports_hist[-5:]
 
+    # 嵌入董事会基金数据
+    board_state = _load_json(BOARD_STATE_FILE, {})
+    if board_state:
+        board_cash = board_state.get("cash", INITIAL_CASH)
+        board_positions = board_state.get("positions", {})
+        board_mv = 0.0
+        board_pos_list = []
+        for code, pos in board_positions.items():
+            cp = prices.get(code, pos.get("avg_cost", 0))
+            qty = pos.get("qty", 0)
+            mv = cp * qty
+            board_mv += mv
+            cost = pos.get("total_cost", pos.get("avg_cost", 0) * qty)
+            board_pos_list.append({
+                "code": code,
+                "name": pos.get("name", code),
+                "qty": qty,
+                "avg_cost": pos.get("avg_cost", 0),
+                "current_price": round(cp, 2),
+                "market_value": round(mv, 2),
+                "unrealized_pnl": round(mv - cost, 2),
+            })
+        board_total = board_cash + board_mv
+        board_return = (board_total - INITIAL_CASH) / INITIAL_CASH * 100
+        latest["board_fund"] = {
+            "total_value": round(board_total, 2),
+            "return_pct": round(board_return, 2),
+            "cash": round(board_cash, 2),
+            "positions": board_pos_list,
+            "pending_trades": board_state.get("pending_trades", {}),
+            "recent_decisions": board_state.get("last_decisions", []),
+        }
+
+    # 嵌入进化数据
+    genes_data = _load_json(BOARD_GENES_FILE, {})
+    capsules_data = _load_json(BOARD_CAPSULES_FILE, {})
+    if genes_data.get("genes"):
+        genomes_export = []
+        for g in genes_data["genes"]:
+            genomes_export.append({
+                "model": g.get("model", ""),
+                "influence": g.get("influence", 1.0),
+                "proposal_accuracy": g.get("proposal_accuracy", 0.0),
+                "vote_accuracy": g.get("vote_accuracy", 0.0),
+                "generation": g.get("generation", 0),
+            })
+        # 按影响力排序
+        genomes_export.sort(key=lambda x: x["influence"], reverse=True)
+        recent_capsules = capsules_data.get("capsules", [])[-5:] if capsules_data else []
+        latest["evolution"] = {
+            "generation": max((g.get("generation", 0) for g in genes_data["genes"]), default=0),
+            "genomes": genomes_export,
+            "recent_capsules": recent_capsules,
+            "total_capsules": len(capsules_data.get("capsules", [])) if capsules_data else 0,
+        }
+
     latest_file = os.path.join(DOCS_DATA_DIR, "latest.json")
     with open(latest_file, "w", encoding="utf-8") as f:
         json.dump(latest, f, ensure_ascii=False, indent=2)
@@ -392,6 +451,9 @@ def export():
             for m in models_data
         ],
     }
+    # 董事会基金走势
+    if "board_fund" in latest:
+        snapshot["board_return_pct"] = latest["board_fund"]["return_pct"]
     history.append(snapshot)
 
     # 裁剪到上限
@@ -406,6 +468,8 @@ def export():
     print(f"  history.json: {len(history)} 条记录")
     print(f"  thinking: {'有' if thinking_data else '无'}")
     print(f"  battle_report: {'有' if battle_report_data else '无'}")
+    print(f"  board_fund: {'有' if 'board_fund' in latest else '无'}")
+    print(f"  evolution: {'有' if 'evolution' in latest else '无'}")
     print(f"  style_tags: 已计算")
 
 

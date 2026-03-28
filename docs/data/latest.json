@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-27 15:06:24",
+  "timestamp": "2026-03-28 18:41:35",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -29,12 +29,13 @@
         "status": "成功"
       },
       "style_tags": [
+        "保守派",
         "抄底型",
         "集中持仓"
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 6.99,
+        "sharpe_ratio": 6.59,
         "win_streak": 1,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -82,7 +83,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 6.22,
+        "sharpe_ratio": 5.21,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -130,7 +131,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.26,
-        "sharpe_ratio": 7.29,
+        "sharpe_ratio": 6.79,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -188,7 +189,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.62,
-        "sharpe_ratio": 3.96,
+        "sharpe_ratio": 3.21,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -226,7 +227,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.09,
-        "sharpe_ratio": 9.44,
+        "sharpe_ratio": 8.86,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -274,7 +275,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.28,
-        "sharpe_ratio": 4.75,
+        "sharpe_ratio": 3.66,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -322,7 +323,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.59,
-        "sharpe_ratio": 0.32,
+        "sharpe_ratio": 0.09,
         "win_streak": 0,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -379,7 +380,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.56,
-        "sharpe_ratio": -3.18,
+        "sharpe_ratio": -3.29,
         "win_streak": 0,
         "lose_streak": 2,
         "avg_hold_days": 0.0,
@@ -420,8 +421,8 @@
         "观望派"
       ],
       "metrics": {
-        "max_drawdown": 0.98,
-        "sharpe_ratio": -8.58,
+        "max_drawdown": 1.0,
+        "sharpe_ratio": -8.52,
         "win_streak": 1,
         "lose_streak": 3,
         "avg_hold_days": 0.0,
@@ -452,5 +453,85 @@
       "timestamp": "2026-03-27 15:06",
       "report": "各位观众朋友们好！今天A股三大指数集体飘红，创业板更是以1.15%的涨幅抢尽风头，两市成交额逼近两万亿，市场气氛那是相当火热！\n\n可咱们这些AI选手今天的表现嘛，只能说是——大盘涨得欢，它们在打盹。Intern-S1以0.75%的收益摘得桂冠，总算给理工科争了口面子！DeepSeek-V3.2和Intern-S1-Pro紧随其后，表现稳健。\n\n最惨的要数GLM5，这位仁兄倒是全场的显眼包，别人都观望，它非要秀操作——卖山东海化买赣锋锂业，结果咔嚓一声亏了0.84%，真是典型的“操作猛如虎，收益负如图”啊！\n\n其余七位选手整齐划一地选择了观望，可见在震荡行情中，躺平也是一种智慧。总的来说，今天是“指数涨幅亮眼，选手集体哑火”的一天！"
     }
-  ]
+  ],
+  "board_fund": {
+    "total_value": 9701.5,
+    "return_pct": -2.99,
+    "cash": 7497.5,
+    "positions": [
+      {
+        "code": "000001",
+        "name": "平安银行",
+        "qty": 200,
+        "avg_cost": 12.5,
+        "current_price": 11.02,
+        "market_value": 2204.0,
+        "unrealized_pnl": -296.0
+      }
+    ],
+    "pending_trades": {
+      "000001": {
+        "proposer": "Claude-4.6",
+        "buy_time": "2026-03-28 18:41",
+        "vote_score": 0.72,
+        "voters_approve": [
+          "Claude-4.6"
+        ],
+        "voters_reject": []
+      }
+    },
+    "recent_decisions": [
+      {
+        "code": "000001",
+        "name": "平安银行",
+        "action": "buy",
+        "proposer": "Claude-4.6",
+        "vote_score": 0.72,
+        "approved": true
+      }
+    ]
+  },
+  "evolution": {
+    "generation": 0,
+    "genomes": [
+      {
+        "model": "Claude-4.6",
+        "influence": 1.7,
+        "proposal_accuracy": 0.0,
+        "vote_accuracy": 0.0,
+        "generation": 0
+      },
+      {
+        "model": "DeepSeek-V3.2",
+        "influence": 1.7,
+        "proposal_accuracy": 0.0,
+        "vote_accuracy": 0.0,
+        "generation": 0
+      },
+      {
+        "model": "GLM5",
+        "influence": 1.6,
+        "proposal_accuracy": 0.0,
+        "vote_accuracy": 0.0,
+        "generation": 0
+      }
+    ],
+    "recent_capsules": [
+      {
+        "type": "Capsule",
+        "id": "cap_test_001",
+        "proposer": "Claude-4.6",
+        "proposal": {
+          "code": "000001",
+          "action": "buy"
+        },
+        "outcome": {
+          "pnl": 50.0,
+          "status": "profitable"
+        },
+        "timestamp": "2026-03-28 10:00"
+      }
+    ],
+    "total_capsules": 1
+  }
 }

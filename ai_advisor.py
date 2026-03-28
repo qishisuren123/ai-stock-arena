@@ -231,6 +231,8 @@ def _call_openai(base_url: str, api_key: str, model: str,
     payload = {
         "model": model,
         "max_tokens": 2048,
+        # 禁用思考模式，让模型直接输出到 content（GLM5/Qwen3.5 等思考模型需要）
+        "chat_template_kwargs": {"enable_thinking": False},
         "messages": [
             {"role": "system", "content": system},
             {"role": "user", "content": user_msg},
@@ -239,8 +241,12 @@ def _call_openai(base_url: str, api_key: str, model: str,
     resp = client.post(url, headers=headers, json=payload)
     if resp.status_code == 200:
         data = resp.json()
-        content = data["choices"][0]["message"]["content"]
-        return content if content else ""
+        msg = data["choices"][0]["message"]
+        content = msg.get("content")
+        # 部分思考模型（GLM5/Qwen3.5）content 为 None，实际回答在 reasoning 字段
+        if not content:
+            content = msg.get("reasoning") or msg.get("reasoning_content") or ""
+        return content
     err_msg = resp.text
     try:
         err_data = resp.json()

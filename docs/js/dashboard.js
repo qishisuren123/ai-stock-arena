@@ -64,6 +64,8 @@ function renderAll(latest, history) {
 
     renderLeaderboard(latest.models);
     renderBattleReport(latest);
+    renderBoardFund(latest);
+    renderEvolution(latest);
     renderChart(history);
     renderModelGrid(latest.models);
 }
@@ -185,6 +187,24 @@ function renderChart(history) {
             spanGaps: true,
         };
     });
+
+    // 董事会基金曲线（金色虚线）
+    const boardData = history.map(h => h.board_return_pct != null ? h.board_return_pct : null);
+    const hasBoard = boardData.some(v => v !== null);
+    if (hasBoard) {
+        datasets.push({
+            label: "董事会基金",
+            data: boardData,
+            borderColor: "#d4a017",
+            backgroundColor: "#d4a01720",
+            borderWidth: 3,
+            borderDash: [6, 3],
+            pointRadius: 0,
+            pointHoverRadius: 5,
+            tension: 0.3,
+            spanGaps: true,
+        });
+    }
 
     if (chartInstance) {
         chartInstance.destroy();
@@ -328,6 +348,137 @@ function renderModelGrid(models) {
         `;
         grid.appendChild(card);
     });
+}
+
+// === 董事会基金 ===
+function renderBoardFund(latest) {
+    const section = document.getElementById("boardFundSection");
+    const summaryDiv = document.getElementById("boardFundSummary");
+    const decisionsDiv = document.getElementById("boardDecisions");
+
+    if (!latest.board_fund) {
+        section.style.display = "none";
+        return;
+    }
+
+    section.style.display = "";
+    const bf = latest.board_fund;
+
+    // 收益率样式
+    const pnlClass = bf.return_pct > 0 ? "pnl-up" : (bf.return_pct < 0 ? "pnl-down" : "pnl-flat");
+    const pnlPrefix = bf.return_pct > 0 ? "+" : "";
+
+    // 统计摘要
+    summaryDiv.innerHTML = `
+        <div class="board-stat">
+            <div class="stat-label">总资产</div>
+            <div class="stat-value">&yen;${bf.total_value.toLocaleString("zh-CN", {minimumFractionDigits: 2})}</div>
+        </div>
+        <div class="board-stat">
+            <div class="stat-label">收益率</div>
+            <div class="stat-value ${pnlClass}">${pnlPrefix}${bf.return_pct.toFixed(2)}%</div>
+        </div>
+        <div class="board-stat">
+            <div class="stat-label">可用现金</div>
+            <div class="stat-value">&yen;${bf.cash.toLocaleString("zh-CN", {minimumFractionDigits: 2})}</div>
+        </div>
+    `;
+
+    // 持仓
+    if (bf.positions && bf.positions.length > 0) {
+        const posHTML = bf.positions.map(p => {
+            const pnlColor = p.unrealized_pnl > 0 ? "var(--up)" : (p.unrealized_pnl < 0 ? "var(--down)" : "var(--flat)");
+            return `<span class="pos-item">${p.name} <span style="color:${pnlColor}">${p.unrealized_pnl >= 0 ? "+" : ""}${p.unrealized_pnl.toFixed(0)}</span></span>`;
+        }).join(" ");
+        summaryDiv.innerHTML += `<div class="board-positions" style="width:100%">持仓: ${posHTML}</div>`;
+    }
+
+    // 最近决议
+    const decisions = bf.recent_decisions || [];
+    if (decisions.length > 0) {
+        let html = '<div class="board-decisions-title">最近决议</div><div class="decision-list">';
+        decisions.forEach(d => {
+            const actionClass = d.action === "buy" ? "decision-action-buy" : "decision-action-sell";
+            const statusClass = d.approved ? "decision-approved" : "decision-rejected";
+            const statusText = d.approved ? "通过" : "否决";
+            const score = d.vote_score != null ? (d.vote_score * 100).toFixed(0) + "%" : "-";
+            html += `
+                <div class="decision-item ${statusClass}">
+                    <span class="decision-action ${actionClass}">${d.action.toUpperCase()}</span>
+                    <span>${d.name || d.code}</span>
+                    <span style="color:var(--text-dim);font-size:0.75rem">by ${d.proposer}</span>
+                    <span class="decision-score">${score} ${statusText}</span>
+                </div>`;
+        });
+        html += '</div>';
+        decisionsDiv.innerHTML = html;
+    } else {
+        decisionsDiv.innerHTML = '<div style="color:var(--text-dim);font-size:0.82rem">暂无决议记录</div>';
+    }
+}
+
+// === 进化面板 ===
+function renderEvolution(latest) {
+    const section = document.getElementById("evolutionSection");
+    const genomesDiv = document.getElementById("evoGenomes");
+    const capsulesDiv = document.getElementById("evoCapsules");
+
+    if (!latest.evolution) {
+        section.style.display = "none";
+        return;
+    }
+
+    section.style.display = "";
+    const evo = latest.evolution;
+
+    // 基因组排行
+    let html = `<div style="font-size:0.8rem;color:var(--text-dim);margin-bottom:0.5rem">第 ${evo.generation} 代</div>`;
+    html += '<div class="evo-genome-list">';
+
+    (evo.genomes || []).forEach(g => {
+        const color = MODEL_COLORS[g.model] || "#58a6ff";
+        // 影响力进度条 (0.3 ~ 3.0 映射为 0% ~ 100%)
+        const pct = Math.min(100, Math.max(0, (g.influence - 0.3) / 2.7 * 100));
+        const propAcc = (g.proposal_accuracy * 100).toFixed(0);
+        const voteAcc = (g.vote_accuracy * 100).toFixed(0);
+
+        html += `
+            <div class="evo-genome-row">
+                <span class="evo-genome-name" style="color:${color}">${g.model}</span>
+                <div class="evo-influence-bar">
+                    <div class="evo-influence-fill" style="width:${pct}%"></div>
+                </div>
+                <span class="evo-genome-stats">
+                    影响力 ${g.influence.toFixed(2)} | 提案 ${propAcc}% | 投票 ${voteAcc}%
+                </span>
+                <span class="evo-generation-badge">G${g.generation}</span>
+            </div>`;
+    });
+    html += '</div>';
+    genomesDiv.innerHTML = html;
+
+    // 成功策略 Capsule
+    const capsules = evo.recent_capsules || [];
+    if (capsules.length > 0) {
+        let capHTML = `<div class="evo-capsules-title">成功策略 (${evo.total_capsules} 个)</div>`;
+        capHTML += '<div class="evo-capsule-list">';
+        capsules.forEach(c => {
+            const pnl = c.outcome ? c.outcome.pnl : 0;
+            capHTML += `
+                <div class="evo-capsule-card">
+                    <div class="cap-header">${c.proposer || "?"}</div>
+                    <div class="cap-detail">
+                        ${c.proposal ? (c.proposal.action || "").toUpperCase() + " " + (c.proposal.code || "") : ""}
+                        <span class="cap-pnl">+${pnl.toFixed(2)}</span>
+                    </div>
+                    <div class="cap-detail">${c.timestamp || ""}</div>
+                </div>`;
+        });
+        capHTML += '</div>';
+        capsulesDiv.innerHTML = capHTML;
+    } else {
+        capsulesDiv.innerHTML = '';
+    }
 }
 
 // === 工具函数 ===
