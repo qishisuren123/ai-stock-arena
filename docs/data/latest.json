@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-28 18:54:06",
+  "timestamp": "2026-03-28 19:00:51",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -22,7 +22,7 @@
       "trade_count": 2,
       "win_count": 1,
       "win_rate": 50.0,
-      "last_update": "2026-03-27 14:06:20",
+      "last_update": "2026-03-28 19:00:42",
       "thinking": {
         "analysis": "市场整体上涨，多个行业板块表现强劲，尤其是锂和能源金属板块。持仓股票平安银行表现稳定，略有浮盈。",
         "actions": [],
@@ -35,7 +35,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 6.39,
+        "sharpe_ratio": 6.3,
         "win_streak": 1,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -71,7 +71,7 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-26 13:09:32",
+      "last_update": "2026-03-28 19:00:42",
       "thinking": {
         "analysis": "AI 返回解析失败: [Intern-S1-Pro] API 调用失败（重试 3 次）: timed out",
         "actions": [],
@@ -83,7 +83,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 5.06,
+        "sharpe_ratio": 4.99,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -119,7 +119,7 @@
       "trade_count": 1,
       "win_count": 1,
       "win_rate": 100.0,
-      "last_update": "2026-03-27 10:06:23",
+      "last_update": "2026-03-28 19:00:42",
       "thinking": {
         "analysis": "大盘指数全面上涨，行业板块普涨，市场情绪乐观，但部分热门股涨幅过大需警惕风险。",
         "actions": [],
@@ -131,7 +131,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.26,
-        "sharpe_ratio": 6.59,
+        "sharpe_ratio": 6.5,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -176,7 +176,7 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-26 13:09:32",
+      "last_update": "2026-03-28 19:00:42",
       "thinking": {
         "analysis": "今日大盘全面上涨，市场情绪极度乐观，锂矿、医药、能源金属领涨，40个行业全线飘红。持仓三只金融股（平安银行、兴业银行、中信证券）涨幅有限，但估值均处历史低位，基本面稳健，无明显卖出信号，维持持有。",
         "actions": [],
@@ -189,7 +189,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.62,
-        "sharpe_ratio": 3.12,
+        "sharpe_ratio": 3.08,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -216,7 +216,7 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-26 13:09:32",
+      "last_update": "2026-03-28 19:00:42",
       "thinking": {
         "analysis": "AI 返回解析失败: Expecting value: line 1 column 1 (char 0)",
         "actions": [],
@@ -227,7 +227,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.09,
-        "sharpe_ratio": 8.59,
+        "sharpe_ratio": 8.47,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -263,7 +263,7 @@
       "trade_count": 1,
       "win_count": 1,
       "win_rate": 100.0,
-      "last_update": "2026-03-27 14:06:20",
+      "last_update": "2026-03-28 19:00:42",
       "thinking": {
         "analysis": "大盘震荡上涨，锂电、减肥药等概念活跃，银行股小幅波动。当前持仓银行股估值偏低但弹性不足，整体市场热点集中在题材概念。",
         "actions": [],
@@ -275,7 +275,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.28,
-        "sharpe_ratio": 3.56,
+        "sharpe_ratio": 3.51,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -311,7 +311,7 @@
       "trade_count": 1,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-27 13:06:28",
+      "last_update": "2026-03-28 19:00:42",
       "thinking": {
         "analysis": "大盘放量上涨，锂矿与医药板块领涨，市场情绪高涨。当前持仓平安银行与中信证券走势稳健，暂无明显卖出信号，且可用资金不足以新开一手低价龙头股，故维持现有持仓不动。",
         "actions": [],
@@ -368,7 +368,7 @@
       "trade_count": 2,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-27 14:06:20",
+      "last_update": "2026-03-28 19:00:42",
       "thinking": {
         "analysis": "两市放量上涨，成交活跃，锂矿等新能源板块强势领涨。当前持仓中的江特电机契合今日主线，中信证券受益于大盘放量，且受限于单股30%仓位上限及整手买入规则，暂无加仓空间，建议继续持股待涨。",
         "actions": [],
@@ -380,7 +380,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.56,
-        "sharpe_ratio": -3.2,
+        "sharpe_ratio": -3.15,
         "win_streak": 0,
         "lose_streak": 2,
         "avg_hold_days": 0.0,
@@ -397,7 +397,7 @@
       "trade_count": 4,
       "win_count": 1,
       "win_rate": 25.0,
-      "last_update": "2026-03-27 15:06:20",
+      "last_update": "2026-03-28 19:00:42",
       "thinking": {
         "analysis": "市场全线大涨，上证指数强势上涨，锂矿、医药板块领涨，赚钱效应极好。当前持仓山东海化走势弱于大盘且估值偏高，建议止损调仓至热门板块龙头赣锋锂业以把握行情。",
         "actions": [
@@ -422,7 +422,7 @@
       ],
       "metrics": {
         "max_drawdown": 1.0,
-        "sharpe_ratio": -8.26,
+        "sharpe_ratio": -8.14,
         "win_streak": 1,
         "lose_streak": 3,
         "avg_hold_days": 0.0,
