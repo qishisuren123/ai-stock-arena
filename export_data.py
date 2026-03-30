@@ -20,6 +20,7 @@ BATTLE_REPORTS_HIST_FILE = os.path.join(STATES_DIR, "_battle_reports_history.jso
 BOARD_STATE_FILE = os.path.join(STATES_DIR, "sim_state_board_fund.json")
 BOARD_GENES_FILE = os.path.join(STATES_DIR, "board_genes.json")
 BOARD_CAPSULES_FILE = os.path.join(STATES_DIR, "board_capsules.json")
+BOARD_RULES_FILE = os.path.join(STATES_DIR, "board_rules.json")
 
 INITIAL_CASH = 10000.0
 HISTORY_MAX = 720  # 历史记录上限（每小时1条，约30天）
@@ -434,6 +435,24 @@ def export():
             "total_capsules": len(capsules_data.get("capsules", [])) if capsules_data else 0,
         }
 
+    # 嵌入董事会规则数据
+    rules_data = _load_json(BOARD_RULES_FILE, {})
+    if rules_data:
+        rule_history = rules_data.get("rule_history", [])
+        latest["rules"] = {
+            "generation": rules_data.get("generation", 0),
+            "current": {
+                "pass_threshold": rules_data.get("pass_threshold", 0.5),
+                "proposal_weight": rules_data.get("proposal_weight", 1.0),
+                "vote_weight": rules_data.get("vote_weight", 0.5),
+                "co_proposal_bonus": rules_data.get("co_proposal_bonus", 0.0),
+                "max_position_ratio": rules_data.get("max_position_ratio", 0.3),
+                "max_positions": rules_data.get("max_positions", 3),
+            },
+            "fitness": rules_data.get("fitness", 0.0),
+            "recent_changes": rule_history[-5:] if rule_history else [],
+        }
+
     latest_file = os.path.join(DOCS_DATA_DIR, "latest.json")
     with open(latest_file, "w", encoding="utf-8") as f:
         json.dump(latest, f, ensure_ascii=False, indent=2)
@@ -470,6 +489,7 @@ def export():
     print(f"  battle_report: {'有' if battle_report_data else '无'}")
     print(f"  board_fund: {'有' if 'board_fund' in latest else '无'}")
     print(f"  evolution: {'有' if 'evolution' in latest else '无'}")
+    print(f"  rules: {'有' if 'rules' in latest else '无'}")
     print(f"  style_tags: 已计算")
 
 

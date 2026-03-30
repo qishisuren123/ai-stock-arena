@@ -31,10 +31,268 @@ GENES_FILE = os.path.join(STATES_DIR, "board_genes.json")
 CAPSULES_FILE = os.path.join(STATES_DIR, "board_capsules.json")
 EVENTS_FILE = os.path.join(STATES_DIR, "board_events.jsonl")
 BOARD_STATE_FILE = os.path.join(STATES_DIR, "sim_state_board_fund.json")
+BOARD_RULES_FILE = os.path.join(STATES_DIR, "board_rules.json")
 
-# 影响力范围
+# 影响力范围（默认值，运行时从 BoardRuleset 读取）
 INFLUENCE_MIN = 0.3
 INFLUENCE_MAX = 3.0
+
+
+# ============================================================
+# 董事会规则集 — 可进化的参数
+# ============================================================
+
+class BoardRuleset:
+    """持久化的董事会规则集，所有原本硬编码的参数都从这里读取"""
+
+    DEFAULTS = {
+        "generation": 0,
+        "pass_threshold": 0.50,
+        "proposal_weight": 1.0,
+        "vote_weight": 0.5,
+        "co_proposal_bonus": 0.0,
+        "max_position_ratio": 0.30,
+        "max_positions": 3,
+        "influence_range": [0.3, 3.0],
+        "recent_trades": [],
+        "fitness": 0.0,
+        "fitness_prev": 0.0,
+        "trades_since_evolution": 0,
+        "evolution_interval": 5,
+        "amendment_interval": 20,
+        "trades_since_amendment": 0,
+        "rule_history": [],
+    }
+
+    # 参数钳位范围
+    CLAMP = {
+        "pass_threshold": (0.30, 0.80),
+        "proposal_weight": (0.3, 3.0),
+        "vote_weight": (0.1, 2.0),
+        "co_proposal_bonus": (0.0, 0.15),
+        "max_position_ratio": (0.10, 0.50),
+        "max_positions": (1, 5),
+    }
+
+    def __init__(self, path: str = BOARD_RULES_FILE):
+        self._path = path
+        self._data = dict(self.DEFAULTS)
+        # 深拷贝列表类型默认值
+        self._data["recent_trades"] = []
+        self._data["influence_range"] = [0.3, 3.0]
+        self._data["rule_history"] = []
+        self._load()
+
+    def _load(self):
+        """从文件加载规则，不存在则用默认值"""
+        if os.path.exists(self._path):
+            try:
+                with open(self._path, "r", encoding="utf-8") as f:
+                    saved = json.load(f)
+                for k, v in saved.items():
+                    self._data[k] = v
+            except (json.JSONDecodeError, ValueError):
+                pass
+
+    def save(self):
+        """持久化到文件"""
+        os.makedirs(os.path.dirname(self._path), exist_ok=True)
+        with open(self._path, "w", encoding="utf-8") as f:
+            json.dump(self._data, f, ensure_ascii=False, indent=2)
+
+    def __getattr__(self, name):
+        if name.startswith("_"):
+            raise AttributeError(name)
+        if name in self._data:
+            return self._data[name]
+        raise AttributeError(f"BoardRuleset has no attribute '{name}'")
+
+    def _clamp(self, key: str, value):
+        """将参数钳位到合法范围"""
+        if key in self.CLAMP:
+            lo, hi = self.CLAMP[key]
+            if isinstance(value, float):
+                return round(max(lo, min(hi, value)), 4)
+            return max(lo, min(hi, value))
+        return value
+
+    def record_trade(self, pnl: float, cost: float):
+        """记录一笔交易结果，递增计数器"""
+        self._data["recent_trades"].append({
+            "pnl": round(pnl, 2),
+            "cost": round(cost, 2),
+            "time": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        })
+        # 只保留最近 50 笔
+        if len(self._data["recent_trades"]) > 50:
+            self._data["recent_trades"] = self._data["recent_trades"][-50:]
+        self._data["trades_since_evolution"] += 1
+        self._data["trades_since_amendment"] += 1
+        self.save()
+
+    def should_auto_evolve(self) -> bool:
+        """是否触发绩效反馈自适应"""
+        return self._data["trades_since_evolution"] >= self._data["evolution_interval"]
+
+    def auto_evolve(self):
+        """轨道1：绩效反馈自适应 — 计算 fitness，微调参数"""
+        trades = self._data["recent_trades"]
+        if not trades:
+            return
+
+        # 计算适应度
+        total = len(trades)
+        profitable = sum(1 for t in trades if t["pnl"] > 0)
+        win_rate = profitable / total if total > 0 else 0
+        pnl_pcts = [t["pnl"] / max(abs(t["cost"]), 1) for t in trades]
+        avg_pnl_pct = sum(pnl_pcts) / len(pnl_pcts) if pnl_pcts else 0
+        fitness = win_rate * (1 + avg_pnl_pct)
+
+        prev_fitness = self._data["fitness"]
+        self._data["fitness_prev"] = prev_fitness
+        self._data["fitness"] = round(fitness, 4)
+
+        changes = {}
+        if fitness < prev_fitness:
+            # fitness 下降 → 收紧
+            changes["pass_threshold"] = self._data["pass_threshold"] + 0.03
+            changes["max_position_ratio"] = self._data["max_position_ratio"] - 0.02
+        elif fitness > prev_fitness:
+            # fitness 上升 → 放宽
+            changes["pass_threshold"] = self._data["pass_threshold"] - 0.02
+            changes["co_proposal_bonus"] = self._data["co_proposal_bonus"] + 0.01
+        else:
+            # 持平 → 微调权重
+            changes["proposal_weight"] = self._data["proposal_weight"] + 0.05
+            changes["vote_weight"] = self._data["vote_weight"] - 0.02
+
+        # 应用钳位后的变更
+        for k, v in changes.items():
+            self._data[k] = self._clamp(k, v)
+
+        self._data["generation"] += 1
+        self._data["trades_since_evolution"] = 0
+
+        # 记录 rule_history
+        self._data["rule_history"].append({
+            "generation": self._data["generation"],
+            "trigger": "auto",
+            "fitness": round(fitness, 4),
+            "changes": {k: round(self._data[k], 4) if isinstance(self._data[k], float) else self._data[k] for k in changes},
+            "time": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        })
+        if len(self._data["rule_history"]) > 50:
+            self._data["rule_history"] = self._data["rule_history"][-50:]
+
+        self.save()
+
+        # 追加进化事件
+        append_event({
+            "type": "RuleEvolution",
+            "trigger": "auto",
+            "generation": self._data["generation"],
+            "fitness": round(fitness, 4),
+            "changes": changes,
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        })
+
+        console.print(
+            f"  [bold #10b981]规则自适应[/bold #10b981] "
+            f"G{self._data['generation']} fitness={fitness:.3f} "
+            f"调整: {', '.join(f'{k}={self._data[k]}' for k in changes)}"
+        )
+
+        return changes
+
+    def should_amend(self, pending_changes: dict = None) -> bool:
+        """是否触发修宪投票"""
+        if self._data["trades_since_amendment"] >= self._data["amendment_interval"]:
+            return True
+        if pending_changes:
+            for k, v in pending_changes.items():
+                current = self._data.get(k, 0)
+                if current != 0 and abs(v - current) / abs(current) >= 0.15:
+                    return True
+        return False
+
+    def generate_amendments(self) -> list:
+        """基于数据分析生成修宪提案列表"""
+        proposals = []
+        trades = self._data["recent_trades"]
+        if not trades:
+            return proposals
+
+        total = len(trades)
+        profitable = sum(1 for t in trades if t["pnl"] > 0)
+        win_rate = profitable / total if total > 0 else 0
+
+        # 提案1：根据胜率调整 pass_threshold
+        if win_rate < 0.3:
+            proposals.append({
+                "description": f"胜率仅 {win_rate:.0%}，建议提高通过门槛至 {min(0.8, self._data['pass_threshold'] + 0.05):.2f}",
+                "changes": {"pass_threshold": self._clamp("pass_threshold", self._data["pass_threshold"] + 0.05)},
+            })
+        elif win_rate > 0.7:
+            proposals.append({
+                "description": f"胜率高达 {win_rate:.0%}，可适当降低门槛至 {max(0.3, self._data['pass_threshold'] - 0.05):.2f}",
+                "changes": {"pass_threshold": self._clamp("pass_threshold", self._data["pass_threshold"] - 0.05)},
+            })
+
+        # 提案2：根据亏损幅度调整仓位上限
+        losses = [t for t in trades if t["pnl"] < 0]
+        if losses:
+            avg_loss_pct = sum(t["pnl"] / max(abs(t["cost"]), 1) for t in losses) / len(losses)
+            if avg_loss_pct < -0.05:
+                proposals.append({
+                    "description": f"平均亏损 {avg_loss_pct:.1%}，建议降低仓位上限至 {max(0.1, self._data['max_position_ratio'] - 0.05):.2f}",
+                    "changes": {"max_position_ratio": self._clamp("max_position_ratio", self._data["max_position_ratio"] - 0.05)},
+                })
+
+        # 提案3：调整投票/提案权重平衡
+        if self._data["proposal_weight"] > self._data["vote_weight"] * 3:
+            proposals.append({
+                "description": "提案权重过高，建议平衡投票权重",
+                "changes": {
+                    "proposal_weight": self._clamp("proposal_weight", self._data["proposal_weight"] - 0.1),
+                    "vote_weight": self._clamp("vote_weight", self._data["vote_weight"] + 0.1),
+                },
+            })
+
+        return proposals[:3]
+
+    def apply_amendment(self, changes: dict):
+        """应用修宪结果"""
+        for k, v in changes.items():
+            if k in self._data:
+                self._data[k] = self._clamp(k, v)
+
+        self._data["generation"] += 1
+        self._data["trades_since_amendment"] = 0
+
+        self._data["rule_history"].append({
+            "generation": self._data["generation"],
+            "trigger": "amendment",
+            "changes": {k: round(v, 4) if isinstance(v, float) else v for k, v in changes.items()},
+            "time": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        })
+        if len(self._data["rule_history"]) > 50:
+            self._data["rule_history"] = self._data["rule_history"][-50:]
+
+        self.save()
+
+        append_event({
+            "type": "RuleEvolution",
+            "trigger": "amendment",
+            "generation": self._data["generation"],
+            "changes": changes,
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        })
+
+        console.print(
+            f"  [bold #d4a017]修宪通过[/bold #d4a017] "
+            f"G{self._data['generation']} "
+            f"变更: {', '.join(f'{k}={self._data[k]}' for k in changes)}"
+        )
 
 
 # ============================================================
@@ -185,7 +443,8 @@ class BoardFund(SimAccount):
         return result
 
     def sell_with_evolution(self, code: str, price: float,
-                           genomes: dict, market_summary: str = "") -> str | None:
+                           genomes: dict, market_summary: str = "",
+                           ruleset: "BoardRuleset" = None) -> str | None:
         """卖出并触发进化更新"""
         if code not in self.positions:
             return None
@@ -199,6 +458,7 @@ class BoardFund(SimAccount):
         commission = max(income * 0.001, 1.0)
         net_income = income - commission
         pnl = net_income - pos["total_cost"]
+        cost = pos["total_cost"]
         profitable = pnl > 0
 
         # 执行卖出
@@ -206,7 +466,11 @@ class BoardFund(SimAccount):
 
         # 进化更新
         if attribution and result:
-            evolve_genomes(genomes, attribution, profitable, pnl, market_summary)
+            evolve_genomes(genomes, attribution, profitable, pnl, market_summary,
+                           ruleset=ruleset)
+            # 记录交易到 ruleset
+            if ruleset:
+                ruleset.record_trade(pnl, cost)
 
         return result
 
@@ -348,9 +612,13 @@ def _vote_all(runners, vote_prompt: str) -> dict:
     return all_votes
 
 
-def _tally_votes(proposals: list, all_votes: dict, genomes: dict) -> list:
-    """计票，返回带得票结果的提案列表"""
+def _tally_votes(proposals: list, all_votes: dict, genomes: dict,
+                  ruleset: "BoardRuleset" = None) -> list:
+    """计票，返回带得票结果的提案列表。使用 ruleset 中的 pass_threshold 和 co_proposal_bonus"""
     results = []
+    threshold = ruleset.pass_threshold if ruleset else 0.5
+    co_bonus = ruleset.co_proposal_bonus if ruleset else 0.0
+
     for prop in proposals:
         pid = prop["proposal_id"]
         approve_weight = 0.0
@@ -376,9 +644,14 @@ def _tally_votes(proposals: list, all_votes: dict, genomes: dict) -> list:
                     reject_weight += influence
                     voters_reject.append(model_name)
 
+        # 共同推荐加分
+        co_count = len(prop.get("co_proposers", []))
+        if co_count > 0 and co_bonus > 0:
+            approve_weight += co_count * co_bonus
+
         total_weight = approve_weight + reject_weight
         score = approve_weight / total_weight if total_weight > 0 else 0
-        approved = score > 0.5
+        approved = score > threshold
 
         result = dict(prop)
         result["vote_score"] = round(score, 3)
@@ -395,11 +668,18 @@ def _tally_votes(proposals: list, all_votes: dict, genomes: dict) -> list:
 # ============================================================
 
 def evolve_genomes(genomes: dict, attribution: dict, profitable: bool,
-                   pnl: float, market_summary: str = ""):
-    """根据交易结果更新基因组"""
+                   pnl: float, market_summary: str = "",
+                   ruleset: "BoardRuleset" = None):
+    """根据交易结果更新基因组，使用 ruleset 中的 proposal_weight/vote_weight/influence_range"""
     proposer = attribution.get("proposer", "")
     voters_approve = attribution.get("voters_approve", [])
     voters_reject = attribution.get("voters_reject", [])
+
+    # 从 ruleset 读取权重参数
+    prop_w = ruleset.proposal_weight if ruleset else 1.0
+    vote_w = ruleset.vote_weight if ruleset else 0.5
+    inf_range = ruleset.influence_range if ruleset else [INFLUENCE_MIN, INFLUENCE_MAX]
+    inf_min, inf_max = inf_range[0], inf_range[1]
 
     # 更新提案者的 proposal_accuracy
     if proposer in genomes:
@@ -424,7 +704,7 @@ def evolve_genomes(genomes: dict, attribution: dict, profitable: bool,
                 # 正确的反对也算
                 g["votes_correct"] = g.get("votes_correct", 0) + 1
 
-    # 重算所有参与者的影响力
+    # 重算所有参与者的影响力（使用 ruleset 权重）
     involved = set([proposer] + voters_approve + voters_reject)
     for name in involved:
         if name not in genomes:
@@ -432,8 +712,8 @@ def evolve_genomes(genomes: dict, attribution: dict, profitable: bool,
         g = genomes[name]
         accuracy = g.get("proposals_profitable", 0) / max(g.get("proposals_total", 0), 1)
         vote_acc = g.get("votes_correct", 0) / max(g.get("votes_total", 0), 1)
-        influence = 1.0 + accuracy * 1.0 + vote_acc * 0.5
-        g["influence"] = round(max(INFLUENCE_MIN, min(INFLUENCE_MAX, influence)), 3)
+        influence = 1.0 + accuracy * prop_w + vote_acc * vote_w
+        g["influence"] = round(max(inf_min, min(inf_max, influence)), 3)
         g["proposal_accuracy"] = round(accuracy, 3)
         g["vote_accuracy"] = round(vote_acc, 3)
         g["generation"] = g.get("generation", 0) + 1
@@ -486,16 +766,149 @@ def evolve_genomes(genomes: dict, attribution: dict, profitable: bool,
 
 # 全局单例
 board_fund = BoardFund()
+board_ruleset = BoardRuleset()
+
+
+# ============================================================
+# 修宪投票
+# ============================================================
+
+AMENDMENT_SYSTEM_PROMPT = """你是 AI 股票董事会的一位董事成员，正在参与修宪投票。
+
+你需要对每个规则修改提案投票（approve 或 reject），并给出简短理由。
+
+你必须严格以 JSON 格式返回，不要输出任何其他内容（不要 markdown 代码块标记）。
+
+JSON 格式：
+[
+    {"proposal_id": "amend_001", "vote": "approve", "reason": "一句话理由"},
+    {"proposal_id": "amend_002", "vote": "reject", "reason": "一句话理由"}
+]
+
+投票原则：
+1. 审慎判断规则变更的合理性
+2. 考虑变更对基金整体运作的影响
+3. 过于激进的变更应投反对票
+4. 基于绩效数据做出判断"""
+
+
+def conduct_rule_amendment(runners, ruleset: BoardRuleset):
+    """执行修宪投票流程"""
+    amendments = ruleset.generate_amendments()
+    if not amendments:
+        console.print("  [dim]无修宪提案[/dim]")
+        return
+
+    console.print(f"  [bold #d4a017]修宪投票[/bold #d4a017] 共 {len(amendments)} 条提案")
+
+    # 构造投票 prompt
+    prop_lines = []
+    for i, a in enumerate(amendments):
+        pid = f"amend_{i + 1:03d}"
+        a["proposal_id"] = pid
+        changes_text = ", ".join(f"{k}={v}" for k, v in a["changes"].items())
+        prop_lines.append(f"- {pid}: {a['description']}\n  具体变更: {changes_text}")
+
+    current_rules = (
+        f"pass_threshold={ruleset.pass_threshold}, "
+        f"proposal_weight={ruleset.proposal_weight}, "
+        f"vote_weight={ruleset.vote_weight}, "
+        f"co_proposal_bonus={ruleset.co_proposal_bonus}, "
+        f"max_position_ratio={ruleset.max_position_ratio}"
+    )
+
+    vote_prompt = (
+        f"【当前规则】\n{current_rules}\n"
+        f"【当前适应度】fitness={ruleset.fitness:.4f}\n"
+        f"【规则代数】G{ruleset.generation}\n\n"
+        f"【修宪提案】\n" + "\n".join(prop_lines) + "\n\n"
+        f"请对以上每个提案投票（纯 JSON 数组）。"
+    )
+
+    # 并行投票（复用投票框架）
+    all_votes = {}
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        futures = {
+            executor.submit(_query_single_vote_amendment, r, vote_prompt): r
+            for r in runners
+        }
+        try:
+            for future in as_completed(futures, timeout=120):
+                try:
+                    name, votes = future.result()
+                    all_votes[name] = votes
+                except Exception:
+                    r = futures[future]
+                    all_votes[r.name] = []
+        except TimeoutError:
+            pass
+
+    # 计票（用 pass_threshold 自身作门槛）
+    genomes = load_genomes()
+    for a in amendments:
+        pid = a["proposal_id"]
+        approve_w = 0.0
+        reject_w = 0.0
+        for model_name, votes in all_votes.items():
+            genome = genomes.get(model_name, _default_genome(model_name))
+            influence = genome.get("influence", 1.0)
+            for v in votes:
+                if v.get("proposal_id") == pid:
+                    if v.get("vote") == "approve":
+                        approve_w += influence
+                    else:
+                        reject_w += influence
+                    break
+
+        total_w = approve_w + reject_w
+        score = approve_w / total_w if total_w > 0 else 0
+        passed = score > ruleset.pass_threshold
+
+        if passed:
+            ruleset.apply_amendment(a["changes"])
+            console.print(
+                f"    [{pid}] [bold green]通过[/bold green] "
+                f"({score:.0%}) {a['description']}"
+            )
+        else:
+            console.print(
+                f"    [{pid}] [dim]否决[/dim] "
+                f"({score:.0%}) {a['description']}"
+            )
+
+
+def _query_single_vote_amendment(runner, vote_prompt: str) -> tuple:
+    """查询单个模型的修宪投票（复用投票解析逻辑）"""
+    try:
+        raw = ai_advisor.call_model_api(
+            runner.cfg, AMENDMENT_SYSTEM_PROMPT, vote_prompt, max_retries=2
+        )
+        if not raw:
+            return runner.name, []
+        text = re.sub(r"<think>[\s\S]*?</think>\s*", "", raw).strip()
+        if text.startswith("```"):
+            text = text.split("\n", 1)[1] if "\n" in text else text[3:]
+        if text.endswith("```"):
+            text = text[:-3]
+        text = text.strip()
+        votes = json.loads(text)
+        if not isinstance(votes, list):
+            return runner.name, []
+        return runner.name, votes
+    except Exception as e:
+        console.print(f"  [dim]{runner.name} 修宪投票解析失败: {e}[/dim]")
+        return runner.name, []
 
 
 def conduct_board_meeting(runners, market_text: str, prices: dict):
-    """执行董事会会议：提案 → 投票 → 决议 → 进化"""
+    """执行董事会会议：提案 → 投票 → 决议 → 进化 → 规则自适应"""
     import market_data
 
     console.rule("[bold #d4a017]AI 董事会会议[/bold #d4a017]")
 
-    # 加载/初始化基因组
+    # 加载/初始化基因组和规则集
     genomes = load_genomes()
+    ruleset = board_ruleset
     for r in runners:
         if r.name not in genomes:
             genomes[r.name] = _default_genome(r.name)
@@ -526,8 +939,8 @@ def conduct_board_meeting(runners, market_text: str, prices: dict):
     vote_time = time.time() - t0
     console.print(f"[dim]投票完成，耗时 {vote_time:.1f}s[/dim]")
 
-    # --- 阶段 3: 计票 & 决议 ---
-    results = _tally_votes(proposals, all_votes, genomes)
+    # --- 阶段 3: 计票 & 决议（使用 ruleset 参数）---
+    results = _tally_votes(proposals, all_votes, genomes, ruleset=ruleset)
 
     # 刷新买入标的价格
     buy_codes = [r["code"] for r in results if r["approved"] and r["action"] == "buy"]
@@ -535,7 +948,7 @@ def conduct_board_meeting(runners, market_text: str, prices: dict):
         fresh_buy = market_data.get_realtime_prices(buy_codes)
         fund_prices.update(fresh_buy)
 
-    # 先卖
+    # 先卖（传递 ruleset）
     for r in results:
         if not r["approved"] or r["action"] != "sell":
             continue
@@ -543,20 +956,22 @@ def conduct_board_meeting(runners, market_text: str, prices: dict):
         sell_price = fund_prices.get(code)
         if sell_price:
             msg = board_fund.sell_with_evolution(
-                code, sell_price, genomes, market_text[:200]
+                code, sell_price, genomes, market_text[:200],
+                ruleset=ruleset,
             )
             if msg:
                 console.print(f"  [green]卖出决议执行: {msg}[/green]")
 
-    # 后买
+    # 后买（使用 ruleset.max_position_ratio）
     for r in results:
         if not r["approved"] or r["action"] != "buy":
             continue
         code = r["code"]
         buy_price = fund_prices.get(code)
         if buy_price:
+            ratio = min(r["ratio"], ruleset.max_position_ratio)
             msg = board_fund.buy_with_attribution(
-                code, r["name"], buy_price, r["ratio"], fund_prices,
+                code, r["name"], buy_price, ratio, fund_prices,
                 proposer=r["proposer"],
                 vote_score=r["vote_score"],
                 voters_approve=r["voters_approve"],
@@ -579,6 +994,15 @@ def conduct_board_meeting(runners, market_text: str, prices: dict):
     ]
     board_fund.save()
     save_genomes(genomes)
+
+    # --- 阶段 4: 规则自进化 ---
+    if ruleset.should_auto_evolve():
+        changes = ruleset.auto_evolve()
+        # 检查是否需要修宪
+        if ruleset.should_amend(pending_changes=changes):
+            conduct_rule_amendment(runners, ruleset)
+    elif ruleset.should_amend():
+        conduct_rule_amendment(runners, ruleset)
 
     # --- 打印决议面板 ---
     _print_board_table(results, fund_prices, genomes)

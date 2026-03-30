@@ -569,3 +569,150 @@ footer {
     color: var(--up);
     font-weight: 600;
 }
+
+/* === 规则进化面板 === */
+.evo-rules {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.evo-rules-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.evo-rules-title {
+    font-size: 0.85rem;
+    color: #d4a017;
+    font-weight: 600;
+}
+
+.evo-rules-gen {
+    font-size: 0.72rem;
+    background: rgba(212, 160, 23, 0.15);
+    color: #d4a017;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+}
+
+.evo-rules-fitness {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+.evo-rule-params {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.evo-rule-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0.6rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+
+.evo-rule-name {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    min-width: 130px;
+    white-space: nowrap;
+}
+
+.evo-rule-bar {
+    flex: 1;
+    height: 8px;
+    background: #21262d;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.evo-rule-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.evo-rule-fill-threshold { background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
+.evo-rule-fill-weight { background: linear-gradient(90deg, #10b981, #06b6d4); }
+.evo-rule-fill-position { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+
+.evo-rule-value {
+    font-size: 0.75rem;
+    color: var(--text);
+    min-width: 50px;
+    text-align: right;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* 规则变更时间线 */
+.evo-rule-timeline {
+    margin-top: 0.75rem;
+}
+
+.evo-rule-timeline-title {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    margin-bottom: 0.4rem;
+}
+
+.evo-timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.evo-timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.72rem;
+    border-radius: 4px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+}
+
+.evo-timeline-item.trigger-auto {
+    border-left: 3px solid #6e7681;
+}
+
+.evo-timeline-item.trigger-amendment {
+    border-left: 3px solid #d4a017;
+}
+
+.evo-timeline-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.trigger-auto .evo-timeline-dot { background: #6e7681; }
+.trigger-amendment .evo-timeline-dot { background: #d4a017; }
+
+.evo-timeline-gen {
+    color: var(--accent);
+    font-weight: 600;
+    min-width: 28px;
+}
+
+.evo-timeline-changes {
+    color: var(--text-dim);
+    flex: 1;
+}
+
+.evo-timeline-time {
+    color: #6e7681;
+    margin-left: auto;
+    white-space: nowrap;
+}

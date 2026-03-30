@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-28 19:00:51",
+  "timestamp": "2026-03-30 17:22:34",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -11,22 +11,22 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.65,
-          "current_price": 11.02,
-          "market_value": 2204.0,
-          "unrealized_pnl": 74.0
+          "current_price": 10.99,
+          "market_value": 2198.0,
+          "unrealized_pnl": 68.0
         }
       ],
-      "total_value": 10074.77,
-      "return_pct": 0.75,
+      "total_value": 10068.77,
+      "return_pct": 0.69,
       "realized_pnl": 7.44,
       "trade_count": 2,
       "win_count": 1,
       "win_rate": 50.0,
-      "last_update": "2026-03-28 19:00:42",
+      "last_update": "2026-03-30 09:30:06",
       "thinking": {
-        "analysis": "市场整体上涨，多个行业板块表现强劲，尤其是锂和能源金属板块。持仓股票平安银行表现稳定，略有浮盈。",
+        "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
         "actions": [],
-        "status": "成功"
+        "status": "失败"
       },
       "style_tags": [
         "保守派",
@@ -35,59 +35,11 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 6.3,
+        "sharpe_ratio": 5.96,
         "win_streak": 1,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
         "concentration_hhi": 10000.0
-      }
-    },
-    {
-      "name": "Intern-S1-Pro",
-      "cash": 5981.99,
-      "positions": [
-        {
-          "code": "000001",
-          "name": "平安银行",
-          "qty": 200,
-          "avg_cost": 10.77,
-          "current_price": 11.02,
-          "market_value": 2204.0,
-          "unrealized_pnl": 50.0
-        },
-        {
-          "code": "601166",
-          "name": "兴业银行",
-          "qty": 100,
-          "avg_cost": 18.6,
-          "current_price": 18.7,
-          "market_value": 1870.0,
-          "unrealized_pnl": 10.0
-        }
-      ],
-      "total_value": 10055.99,
-      "return_pct": 0.56,
-      "realized_pnl": 0.0,
-      "trade_count": 0,
-      "win_count": 0,
-      "win_rate": 0.0,
-      "last_update": "2026-03-28 19:00:42",
-      "thinking": {
-        "analysis": "AI 返回解析失败: [Intern-S1-Pro] API 调用失败（重试 3 次）: timed out",
-        "actions": [],
-        "status": "成功"
-      },
-      "style_tags": [
-        "保守派",
-        "抄底型"
-      ],
-      "metrics": {
-        "max_drawdown": 0.3,
-        "sharpe_ratio": 4.99,
-        "win_streak": 0,
-        "lose_streak": 0,
-        "avg_hold_days": 0.0,
-        "concentration_hhi": 5034.0
       }
     },
     {
@@ -99,31 +51,31 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.88,
-          "current_price": 11.02,
-          "market_value": 2204.0,
-          "unrealized_pnl": 28.0
+          "current_price": 10.99,
+          "market_value": 2198.0,
+          "unrealized_pnl": 22.0
         },
         {
           "code": "600727",
           "name": "鲁北化工",
           "qty": 300,
           "avg_cost": 7.8,
-          "current_price": 7.8,
-          "market_value": 2340.0,
-          "unrealized_pnl": 0.0
+          "current_price": 7.85,
+          "market_value": 2355.0,
+          "unrealized_pnl": 15.0
         }
       ],
-      "total_value": 10053.19,
-      "return_pct": 0.53,
+      "total_value": 10062.19,
+      "return_pct": 0.62,
       "realized_pnl": 31.84,
       "trade_count": 1,
       "win_count": 1,
       "win_rate": 100.0,
-      "last_update": "2026-03-28 19:00:42",
+      "last_update": "2026-03-30 09:30:06",
       "thinking": {
-        "analysis": "大盘指数全面上涨，行业板块普涨，市场情绪乐观，但部分热门股涨幅过大需警惕风险。",
+        "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
         "actions": [],
-        "status": "成功"
+        "status": "失败"
       },
       "style_tags": [
         "保守派",
@@ -131,69 +83,59 @@
       ],
       "metrics": {
         "max_drawdown": 0.26,
-        "sharpe_ratio": 6.5,
+        "sharpe_ratio": 7.94,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5004.0
+        "concentration_hhi": 5006.0
       }
     },
     {
-      "name": "Claude-4.6",
-      "cash": 3542.55,
+      "name": "Intern-S1-Pro",
+      "cash": 5981.99,
       "positions": [
         {
           "code": "000001",
           "name": "平安银行",
           "qty": 200,
-          "avg_cost": 10.65,
-          "current_price": 11.02,
-          "market_value": 2204.0,
-          "unrealized_pnl": 74.0
+          "avg_cost": 10.77,
+          "current_price": 10.99,
+          "market_value": 2198.0,
+          "unrealized_pnl": 44.0
         },
         {
           "code": "601166",
           "name": "兴业银行",
           "qty": 100,
-          "avg_cost": 18.63,
-          "current_price": 18.7,
-          "market_value": 1870.0,
-          "unrealized_pnl": 7.0
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "qty": 100,
-          "avg_cost": 24.58,
-          "current_price": 24.26,
-          "market_value": 2426.0,
-          "unrealized_pnl": -32.0
+          "avg_cost": 18.6,
+          "current_price": 18.69,
+          "market_value": 1869.0,
+          "unrealized_pnl": 9.0
         }
       ],
-      "total_value": 10042.55,
-      "return_pct": 0.43,
+      "total_value": 10048.99,
+      "return_pct": 0.49,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-28 19:00:42",
+      "last_update": "2026-03-30 09:30:06",
       "thinking": {
-        "analysis": "今日大盘全面上涨，市场情绪极度乐观，锂矿、医药、能源金属领涨，40个行业全线飘红。持仓三只金融股（平安银行、兴业银行、中信证券）涨幅有限，但估值均处历史低位，基本面稳健，无明显卖出信号，维持持有。",
+        "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
         "actions": [],
-        "status": "成功"
+        "status": "失败"
       },
       "style_tags": [
         "保守派",
-        "抄底型",
-        "分散持仓"
+        "抄底型"
       ],
       "metrics": {
-        "max_drawdown": 0.62,
-        "sharpe_ratio": 3.08,
+        "max_drawdown": 0.3,
+        "sharpe_ratio": 4.58,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 3370.0
+        "concentration_hhi": 5033.0
       }
     },
     {
@@ -205,129 +147,33 @@
           "name": "平安银行",
           "qty": 100,
           "avg_cost": 10.65,
-          "current_price": 11.02,
-          "market_value": 1102.0,
-          "unrealized_pnl": 37.0
+          "current_price": 10.99,
+          "market_value": 1099.0,
+          "unrealized_pnl": 34.0
         }
       ],
-      "total_value": 10035.93,
-      "return_pct": 0.36,
+      "total_value": 10032.93,
+      "return_pct": 0.33,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-28 19:00:42",
+      "last_update": "2026-03-30 09:30:06",
       "thinking": {
-        "analysis": "AI 返回解析失败: Expecting value: line 1 column 1 (char 0)",
+        "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
         "actions": [],
-        "status": "成功"
+        "status": "失败"
       },
       "style_tags": [
         "新手上路"
       ],
       "metrics": {
         "max_drawdown": 0.09,
-        "sharpe_ratio": 8.47,
+        "sharpe_ratio": 7.98,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
         "concentration_hhi": 10000.0
-      }
-    },
-    {
-      "name": "Minimax2.5",
-      "cash": 5959.65,
-      "positions": [
-        {
-          "code": "000001",
-          "name": "平安银行",
-          "qty": 200,
-          "avg_cost": 10.83,
-          "current_price": 11.02,
-          "market_value": 2204.0,
-          "unrealized_pnl": 38.0
-        },
-        {
-          "code": "601166",
-          "name": "兴业银行",
-          "qty": 100,
-          "avg_cost": 18.92,
-          "current_price": 18.7,
-          "market_value": 1870.0,
-          "unrealized_pnl": -22.0
-        }
-      ],
-      "total_value": 10033.65,
-      "return_pct": 0.34,
-      "realized_pnl": 23.84,
-      "trade_count": 1,
-      "win_count": 1,
-      "win_rate": 100.0,
-      "last_update": "2026-03-28 19:00:42",
-      "thinking": {
-        "analysis": "大盘震荡上涨，锂电、减肥药等概念活跃，银行股小幅波动。当前持仓银行股估值偏低但弹性不足，整体市场热点集中在题材概念。",
-        "actions": [],
-        "status": "成功"
-      },
-      "style_tags": [
-        "保守派",
-        "抄底型"
-      ],
-      "metrics": {
-        "max_drawdown": 0.28,
-        "sharpe_ratio": 3.51,
-        "win_streak": 1,
-        "lose_streak": 0,
-        "avg_hold_days": 0.0,
-        "concentration_hhi": 5034.0
-      }
-    },
-    {
-      "name": "Qwen3.5-397B",
-      "cash": 5370.7,
-      "positions": [
-        {
-          "code": "000001",
-          "name": "平安银行",
-          "qty": 200,
-          "avg_cost": 10.77,
-          "current_price": 11.02,
-          "market_value": 2204.0,
-          "unrealized_pnl": 50.0
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "qty": 100,
-          "avg_cost": 24.66,
-          "current_price": 24.26,
-          "market_value": 2426.0,
-          "unrealized_pnl": -40.0
-        }
-      ],
-      "total_value": 10000.7,
-      "return_pct": 0.01,
-      "realized_pnl": -2.34,
-      "trade_count": 1,
-      "win_count": 0,
-      "win_rate": 0.0,
-      "last_update": "2026-03-28 19:00:42",
-      "thinking": {
-        "analysis": "大盘放量上涨，锂矿与医药板块领涨，市场情绪高涨。当前持仓平安银行与中信证券走势稳健，暂无明显卖出信号，且可用资金不足以新开一手低价龙头股，故维持现有持仓不动。",
-        "actions": [],
-        "status": "成功"
-      },
-      "style_tags": [
-        "保守派",
-        "抄底型"
-      ],
-      "metrics": {
-        "max_drawdown": 0.59,
-        "sharpe_ratio": 0.09,
-        "win_streak": 0,
-        "lose_streak": 1,
-        "avg_hold_days": 0.0,
-        "concentration_hhi": 5011.0
       }
     },
     {
@@ -339,40 +185,40 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.72,
-          "current_price": 11.02,
-          "market_value": 2204.0,
-          "unrealized_pnl": 60.0
+          "current_price": 10.99,
+          "market_value": 2198.0,
+          "unrealized_pnl": 54.0
         },
         {
           "code": "002176",
           "name": "江特电机",
           "qty": 200,
           "avg_cost": 10.29,
-          "current_price": 10.29,
-          "market_value": 2058.0,
-          "unrealized_pnl": 0.0
+          "current_price": 10.71,
+          "market_value": 2142.0,
+          "unrealized_pnl": 84.0
         },
         {
           "code": "600030",
           "name": "中信证券",
           "qty": 100,
           "avg_cost": 24.26,
-          "current_price": 24.26,
-          "market_value": 2426.0,
-          "unrealized_pnl": 0.0
+          "current_price": 24.1,
+          "market_value": 2410.0,
+          "unrealized_pnl": -16.0
         }
       ],
-      "total_value": 9965.68,
-      "return_pct": -0.34,
+      "total_value": 10027.68,
+      "return_pct": 0.28,
       "realized_pnl": -83.31,
       "trade_count": 2,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-28 19:00:42",
+      "last_update": "2026-03-30 09:30:06",
       "thinking": {
-        "analysis": "两市放量上涨，成交活跃，锂矿等新能源板块强势领涨。当前持仓中的江特电机契合今日主线，中信证券受益于大盘放量，且受限于单股30%仓位上限及整手买入规则，暂无加仓空间，建议继续持股待涨。",
+        "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
         "actions": [],
-        "status": "成功"
+        "status": "失败"
       },
       "style_tags": [
         "抄底型",
@@ -380,11 +226,165 @@
       ],
       "metrics": {
         "max_drawdown": 0.56,
-        "sharpe_ratio": -3.15,
+        "sharpe_ratio": 2.02,
         "win_streak": 0,
         "lose_streak": 2,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 3349.0
+        "concentration_hhi": 3342.0
+      }
+    },
+    {
+      "name": "Minimax2.5",
+      "cash": 5959.65,
+      "positions": [
+        {
+          "code": "000001",
+          "name": "平安银行",
+          "qty": 200,
+          "avg_cost": 10.83,
+          "current_price": 10.99,
+          "market_value": 2198.0,
+          "unrealized_pnl": 32.0
+        },
+        {
+          "code": "601166",
+          "name": "兴业银行",
+          "qty": 100,
+          "avg_cost": 18.92,
+          "current_price": 18.69,
+          "market_value": 1869.0,
+          "unrealized_pnl": -23.0
+        }
+      ],
+      "total_value": 10026.65,
+      "return_pct": 0.27,
+      "realized_pnl": 23.84,
+      "trade_count": 1,
+      "win_count": 1,
+      "win_rate": 100.0,
+      "last_update": "2026-03-30 09:30:06",
+      "thinking": {
+        "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
+        "actions": [],
+        "status": "失败"
+      },
+      "style_tags": [
+        "保守派",
+        "抄底型"
+      ],
+      "metrics": {
+        "max_drawdown": 0.28,
+        "sharpe_ratio": 3.1,
+        "win_streak": 1,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 5033.0
+      }
+    },
+    {
+      "name": "Claude-4.6",
+      "cash": 3542.55,
+      "positions": [
+        {
+          "code": "000001",
+          "name": "平安银行",
+          "qty": 200,
+          "avg_cost": 10.65,
+          "current_price": 10.99,
+          "market_value": 2198.0,
+          "unrealized_pnl": 68.0
+        },
+        {
+          "code": "601166",
+          "name": "兴业银行",
+          "qty": 100,
+          "avg_cost": 18.63,
+          "current_price": 18.69,
+          "market_value": 1869.0,
+          "unrealized_pnl": 6.0
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "qty": 100,
+          "avg_cost": 24.58,
+          "current_price": 24.1,
+          "market_value": 2410.0,
+          "unrealized_pnl": -48.0
+        }
+      ],
+      "total_value": 10019.55,
+      "return_pct": 0.2,
+      "realized_pnl": 0.0,
+      "trade_count": 0,
+      "win_count": 0,
+      "win_rate": 0.0,
+      "last_update": "2026-03-30 09:30:06",
+      "thinking": {
+        "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
+        "actions": [],
+        "status": "失败"
+      },
+      "style_tags": [
+        "保守派",
+        "抄底型",
+        "分散持仓"
+      ],
+      "metrics": {
+        "max_drawdown": 0.64,
+        "sharpe_ratio": 1.61,
+        "win_streak": 0,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 3369.0
+      }
+    },
+    {
+      "name": "Qwen3.5-397B",
+      "cash": 5370.7,
+      "positions": [
+        {
+          "code": "000001",
+          "name": "平安银行",
+          "qty": 200,
+          "avg_cost": 10.77,
+          "current_price": 10.99,
+          "market_value": 2198.0,
+          "unrealized_pnl": 44.0
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "qty": 100,
+          "avg_cost": 24.66,
+          "current_price": 24.1,
+          "market_value": 2410.0,
+          "unrealized_pnl": -56.0
+        }
+      ],
+      "total_value": 9978.7,
+      "return_pct": -0.21,
+      "realized_pnl": -2.34,
+      "trade_count": 1,
+      "win_count": 0,
+      "win_rate": 0.0,
+      "last_update": "2026-03-30 09:30:06",
+      "thinking": {
+        "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
+        "actions": [],
+        "status": "失败"
+      },
+      "style_tags": [
+        "保守派",
+        "抄底型"
+      ],
+      "metrics": {
+        "max_drawdown": 0.59,
+        "sharpe_ratio": -1.67,
+        "win_streak": 0,
+        "lose_streak": 1,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 5011.0
       }
     },
     {
@@ -397,24 +397,11 @@
       "trade_count": 4,
       "win_count": 1,
       "win_rate": 25.0,
-      "last_update": "2026-03-28 19:00:42",
+      "last_update": "2026-03-30 09:30:06",
       "thinking": {
-        "analysis": "市场全线大涨，上证指数强势上涨，锂矿、医药板块领涨，赚钱效应极好。当前持仓山东海化走势弱于大盘且估值偏高，建议止损调仓至热门板块龙头赣锋锂业以把握行情。",
-        "actions": [
-          {
-            "code": "000822",
-            "name": "山东海化",
-            "action": "sell",
-            "ratio": 0
-          },
-          {
-            "code": "002460",
-            "name": "赣锋锂业",
-            "action": "buy",
-            "ratio": 0.3
-          }
-        ],
-        "status": "成功"
+        "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
+        "actions": [],
+        "status": "失败"
       },
       "style_tags": [
         "抄底型",
@@ -422,7 +409,7 @@
       ],
       "metrics": {
         "max_drawdown": 1.0,
-        "sharpe_ratio": -8.14,
+        "sharpe_ratio": -7.91,
         "win_streak": 1,
         "lose_streak": 3,
         "avg_hold_days": 0.0,
@@ -430,28 +417,82 @@
       }
     }
   ],
-  "battle_report": "各位观众朋友们好！今天A股三大指数集体飘红，创业板更是以1.15%的涨幅抢尽风头，两市成交额逼近两万亿，市场气氛那是相当火热！\n\n可咱们这些AI选手今天的表现嘛，只能说是——大盘涨得欢，它们在打盹。Intern-S1以0.75%的收益摘得桂冠，总算给理工科争了口面子！DeepSeek-V3.2和Intern-S1-Pro紧随其后，表现稳健。\n\n最惨的要数GLM5，这位仁兄倒是全场的显眼包，别人都观望，它非要秀操作——卖山东海化买赣锋锂业，结果咔嚓一声亏了0.84%，真是典型的“操作猛如虎，收益负如图”啊！\n\n其余七位选手整齐划一地选择了观望，可见在震荡行情中，躺平也是一种智慧。总的来说，今天是“指数涨幅亮眼，选手集体哑火”的一天！",
-  "battle_report_time": "2026-03-27 15:06",
-  "battle_reports": [
-    {
-      "timestamp": "2026-03-27 10:06",
-      "report": "各位观众朋友们，今天A股市场继续保持震荡走势，三大指数小幅收跌，成交量萎缩至5750亿。而在AI操盘手的赛道上今天可是热闹非凡！\n\nDeepSeek-V3.2买入鲁北化工，斩获0.49%暂时领跑；Intern-S1则上演“躺赢”戏码，纯粹观望不动如山，反而拿到0.71%的最高收益，简直是“不动则已，一动惊人”！Intern-S1-Pro紧随其后收益0.60%，同样是观望派代表。\n\nGLM5就没那么幸运了，入手山东海化直接吃土，亏损0.82%成为本轮“冤大头”。Qwen3.5-397B忙得不可开交，又是银行又是券商还买了化工，结果忙活半天收益-0.03%，纯属给券商打工。\n\n今天最魔幻的场面：那些持股不动的模型反而收益率最高，频繁操作的反而被市场教育。看来在A股市场，有时候最好的策略就是——什么也不干！"
-    },
-    {
-      "timestamp": "2026-03-27 11:06",
-      "report": "各位观众朋友们，今天A股市场继续上演“葛优躺”行情，三大指数纹丝不动，成交量倒是给面子放了量。本轮比赛中，Intern-S1以0.69%的收益夺得金牌，这位低调哥全程观望愣是躺赢，真是“啥都不干也能赢”啊！紧随其后的是DeepSeek-V3.2和Intern-S1-Pro，一个0.47%一个0.50%，都属于闷声发大财的类型。\n\n最惨的要数GLM5和Gemini-3.1-Pro这对难兄难弟，一个亏0.82%一个亏0.38%。特别是Gemini-3.1-Pro，别人都观望它倒好，跑去买江特电机，结果股价直接给表演了一个“倒车入库”，这波操作属实是“精准抄底在山腰”。其余几位基本都是观望为主，看来AI们对今天的市场也是一脸迷茫——这行情，太难了！"
-    },
-    {
-      "timestamp": "2026-03-27 13:06",
-      "report": "各位观众朋友们！今天的A股市场又是平淡如水的一天，三大指数全线飘红，可成交量却缩水明显，看来各位韭菜都在观望不敢动啊！\n\n再来看看我们AI天团的表演：八位选手选择观望，就一位勇士Qwen3.5-397B敢于亮剑，买卖操作相当活跃，结果收益只有+0.06%，这操作频率和收益简直比存定期还稳！\n\n收益榜上，DeepSeek-V3.2和Intern-S1并列冠军，双双拿下0.5%+的收益，虽然跑赢了大盘，但这个成绩也就能买两根冰棍儿吧。而GLM5就比较惨了，以-0.82%的“优异”成绩垫底，堪称本轮最大输家，建议回去重读《韭菜的自我修养》。\n\n总的来说，今天就是AI们的比惨大会，大家都表现得相当保守，看来模型们也被最近的行情吓怕了！"
-    },
-    {
-      "timestamp": "2026-03-27 14:06",
-      "report": "各位观众朋友们！今天的AI股市拉力赛真是精彩纷呈啊！大盘小幅上涨，沪指涨0.6%，成交额破了万亿大关！\n\n来看看各位选手表现：Intern-S1一骑绝尘，以0.77%的收益摘得桂冠，买入赣锋锂业眼光毒辣！DeepSeek-V3.2和Claude-4.6紧随其后，分别收获0.55%和0.51%，都是稳稳的幸福。\n\n最尴尬的当属GLM5，买入山东海化和赣锋锂业直接吃土，以-0.82%垫底，看来这两只票今天是故意和他作对啊！Gemini-3.1-Pro也不太行买了中信证券还倒贴0.32%。\n\n最淡定的要数这几位：Qwen3.5-397B、Kimi-K2.5、Claude-4.6、DeepSeek-V3.2集体选择观望，你们是来股市度假的吗？总之今天又是AI韭菜们被市场教育的一天！"
-    },
-    {
-      "timestamp": "2026-03-27 15:06",
-      "report": "各位观众朋友们好！今天A股三大指数集体飘红，创业板更是以1.15%的涨幅抢尽风头，两市成交额逼近两万亿，市场气氛那是相当火热！\n\n可咱们这些AI选手今天的表现嘛，只能说是——大盘涨得欢，它们在打盹。Intern-S1以0.75%的收益摘得桂冠，总算给理工科争了口面子！DeepSeek-V3.2和Intern-S1-Pro紧随其后，表现稳健。\n\n最惨的要数GLM5，这位仁兄倒是全场的显眼包，别人都观望，它非要秀操作——卖山东海化买赣锋锂业，结果咔嚓一声亏了0.84%，真是典型的“操作猛如虎，收益负如图”啊！\n\n其余七位选手整齐划一地选择了观望，可见在震荡行情中，躺平也是一种智慧。总的来说，今天是“指数涨幅亮眼，选手集体哑火”的一天！"
-    }
-  ]
+  "board_fund": {
+    "total_value": 10000.0,
+    "return_pct": 0.0,
+    "cash": 10000.0,
+    "positions": [],
+    "pending_trades": {},
+    "recent_decisions": []
+  },
+  "evolution": {
+    "generation": 0,
+    "genomes": [
+      {
+        "model": "Claude-4.6",
+        "influence": 1.0,
+        "proposal_accuracy": 0.0,
+        "vote_accuracy": 0.0,
+        "generation": 0
+      },
+      {
+        "model": "Gemini-3.1-Pro",
+        "influence": 1.0,
+        "proposal_accuracy": 0.0,
+        "vote_accuracy": 0.0,
+        "generation": 0
+      },
+      {
+        "model": "Minimax2.5",
+        "influence": 1.0,
+        "proposal_accuracy": 0.0,
+        "vote_accuracy": 0.0,
+        "generation": 0
+      },
+      {
+        "model": "GLM5",
+        "influence": 1.0,
+        "proposal_accuracy": 0.0,
+        "vote_accuracy": 0.0,
+        "generation": 0
+      },
+      {
+        "model": "DeepSeek-V3.2",
+        "influence": 1.0,
+        "proposal_accuracy": 0.0,
+        "vote_accuracy": 0.0,
+        "generation": 0
+      },
+      {
+        "model": "Kimi-K2.5",
+        "influence": 1.0,
+        "proposal_accuracy": 0.0,
+        "vote_accuracy": 0.0,
+        "generation": 0
+      },
+      {
+        "model": "Qwen3.5-397B",
+        "influence": 1.0,
+        "proposal_accuracy": 0.0,
+        "vote_accuracy": 0.0,
+        "generation": 0
+      },
+      {
+        "model": "Intern-S1",
+        "influence": 1.0,
+        "proposal_accuracy": 0.0,
+        "vote_accuracy": 0.0,
+        "generation": 0
+      },
+      {
+        "model": "Intern-S1-Pro",
+        "influence": 1.0,
+        "proposal_accuracy": 0.0,
+        "vote_accuracy": 0.0,
+        "generation": 0
+      }
+    ],
+    "recent_capsules": [],
+    "total_capsules": 0
+  }
 }

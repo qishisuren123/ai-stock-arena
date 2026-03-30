@@ -422,8 +422,9 @@ function renderEvolution(latest) {
     const section = document.getElementById("evolutionSection");
     const genomesDiv = document.getElementById("evoGenomes");
     const capsulesDiv = document.getElementById("evoCapsules");
+    const rulesDiv = document.getElementById("evoRules");
 
-    if (!latest.evolution) {
+    if (!latest.evolution && !latest.rules) {
         section.style.display = "none";
         return;
     }
@@ -432,53 +433,136 @@ function renderEvolution(latest) {
     const evo = latest.evolution;
 
     // 基因组排行
-    let html = `<div style="font-size:0.8rem;color:var(--text-dim);margin-bottom:0.5rem">第 ${evo.generation} 代</div>`;
-    html += '<div class="evo-genome-list">';
+    if (evo) {
+        let html = `<div style="font-size:0.8rem;color:var(--text-dim);margin-bottom:0.5rem">第 ${evo.generation} 代</div>`;
+        html += '<div class="evo-genome-list">';
 
-    (evo.genomes || []).forEach(g => {
-        const color = MODEL_COLORS[g.model] || "#58a6ff";
-        // 影响力进度条 (0.3 ~ 3.0 映射为 0% ~ 100%)
-        const pct = Math.min(100, Math.max(0, (g.influence - 0.3) / 2.7 * 100));
-        const propAcc = (g.proposal_accuracy * 100).toFixed(0);
-        const voteAcc = (g.vote_accuracy * 100).toFixed(0);
+        (evo.genomes || []).forEach(g => {
+            const color = MODEL_COLORS[g.model] || "#58a6ff";
+            const pct = Math.min(100, Math.max(0, (g.influence - 0.3) / 2.7 * 100));
+            const propAcc = (g.proposal_accuracy * 100).toFixed(0);
+            const voteAcc = (g.vote_accuracy * 100).toFixed(0);
 
-        html += `
-            <div class="evo-genome-row">
-                <span class="evo-genome-name" style="color:${color}">${g.model}</span>
-                <div class="evo-influence-bar">
-                    <div class="evo-influence-fill" style="width:${pct}%"></div>
-                </div>
-                <span class="evo-genome-stats">
-                    影响力 ${g.influence.toFixed(2)} | 提案 ${propAcc}% | 投票 ${voteAcc}%
-                </span>
-                <span class="evo-generation-badge">G${g.generation}</span>
-            </div>`;
-    });
-    html += '</div>';
-    genomesDiv.innerHTML = html;
-
-    // 成功策略 Capsule
-    const capsules = evo.recent_capsules || [];
-    if (capsules.length > 0) {
-        let capHTML = `<div class="evo-capsules-title">成功策略 (${evo.total_capsules} 个)</div>`;
-        capHTML += '<div class="evo-capsule-list">';
-        capsules.forEach(c => {
-            const pnl = c.outcome ? c.outcome.pnl : 0;
-            capHTML += `
-                <div class="evo-capsule-card">
-                    <div class="cap-header">${c.proposer || "?"}</div>
-                    <div class="cap-detail">
-                        ${c.proposal ? (c.proposal.action || "").toUpperCase() + " " + (c.proposal.code || "") : ""}
-                        <span class="cap-pnl">+${pnl.toFixed(2)}</span>
+            html += `
+                <div class="evo-genome-row">
+                    <span class="evo-genome-name" style="color:${color}">${g.model}</span>
+                    <div class="evo-influence-bar">
+                        <div class="evo-influence-fill" style="width:${pct}%"></div>
                     </div>
-                    <div class="cap-detail">${c.timestamp || ""}</div>
+                    <span class="evo-genome-stats">
+                        影响力 ${g.influence.toFixed(2)} | 提案 ${propAcc}% | 投票 ${voteAcc}%
+                    </span>
+                    <span class="evo-generation-badge">G${g.generation}</span>
                 </div>`;
         });
-        capHTML += '</div>';
-        capsulesDiv.innerHTML = capHTML;
+        html += '</div>';
+        genomesDiv.innerHTML = html;
+    } else {
+        genomesDiv.innerHTML = '';
+    }
+
+    // 规则可视化
+    renderRules(latest.rules, rulesDiv);
+
+    // 成功策略 Capsule
+    if (evo) {
+        const capsules = evo.recent_capsules || [];
+        if (capsules.length > 0) {
+            let capHTML = `<div class="evo-capsules-title">成功策略 (${evo.total_capsules} 个)</div>`;
+            capHTML += '<div class="evo-capsule-list">';
+            capsules.forEach(c => {
+                const pnl = c.outcome ? c.outcome.pnl : 0;
+                capHTML += `
+                    <div class="evo-capsule-card">
+                        <div class="cap-header">${c.proposer || "?"}</div>
+                        <div class="cap-detail">
+                            ${c.proposal ? (c.proposal.action || "").toUpperCase() + " " + (c.proposal.code || "") : ""}
+                            <span class="cap-pnl">+${pnl.toFixed(2)}</span>
+                        </div>
+                        <div class="cap-detail">${c.timestamp || ""}</div>
+                    </div>`;
+            });
+            capHTML += '</div>';
+            capsulesDiv.innerHTML = capHTML;
+        } else {
+            capsulesDiv.innerHTML = '';
+        }
     } else {
         capsulesDiv.innerHTML = '';
     }
+}
+
+// === 规则参数可视化 ===
+function renderRules(rules, container) {
+    if (!rules || !container) {
+        if (container) container.innerHTML = '';
+        return;
+    }
+
+    const cur = rules.current || {};
+
+    // 参数定义：name, key, min, max, fillClass
+    const params = [
+        { name: "通过门槛", key: "pass_threshold", min: 0.3, max: 0.8, fill: "evo-rule-fill-threshold" },
+        { name: "提案权重", key: "proposal_weight", min: 0.3, max: 3.0, fill: "evo-rule-fill-weight" },
+        { name: "投票权重", key: "vote_weight", min: 0.1, max: 2.0, fill: "evo-rule-fill-weight" },
+        { name: "联合推荐加分", key: "co_proposal_bonus", min: 0.0, max: 0.15, fill: "evo-rule-fill-weight" },
+        { name: "仓位上限", key: "max_position_ratio", min: 0.1, max: 0.5, fill: "evo-rule-fill-position" },
+    ];
+
+    let html = '<div class="evo-rules-header">';
+    html += '<span class="evo-rules-title">规则参数</span>';
+    html += `<span class="evo-rules-gen">规则 G${rules.generation}</span>`;
+    html += `<span class="evo-rules-fitness">适应度: ${rules.fitness.toFixed(4)}</span>`;
+    html += '</div>';
+
+    html += '<div class="evo-rule-params">';
+    params.forEach(p => {
+        const val = cur[p.key] != null ? cur[p.key] : 0;
+        const pct = Math.min(100, Math.max(0, (val - p.min) / (p.max - p.min) * 100));
+        const display = p.key === "max_position_ratio" || p.key === "pass_threshold"
+            ? (val * 100).toFixed(0) + "%"
+            : val.toFixed(2);
+
+        html += `
+            <div class="evo-rule-row">
+                <span class="evo-rule-name">${p.name}</span>
+                <div class="evo-rule-bar">
+                    <div class="evo-rule-fill ${p.fill}" style="width:${pct}%"></div>
+                </div>
+                <span class="evo-rule-value">${display}</span>
+            </div>`;
+    });
+    html += '</div>';
+
+    // 变更时间线
+    const changes = rules.recent_changes || [];
+    if (changes.length > 0) {
+        html += '<div class="evo-rule-timeline">';
+        html += '<div class="evo-rule-timeline-title">变更记录</div>';
+        html += '<div class="evo-timeline-list">';
+        // 倒序：最新的在上面
+        [...changes].reverse().forEach(c => {
+            const trigger = c.trigger || "auto";
+            const triggerClass = `trigger-${trigger}`;
+            const triggerLabel = trigger === "amendment" ? "修宪" : "自适应";
+            const changesText = c.changes
+                ? Object.entries(c.changes).map(([k, v]) => `${k}=${typeof v === 'number' ? v.toFixed(2) : v}`).join(", ")
+                : "";
+            const fitnessText = c.fitness != null ? ` fitness=${c.fitness.toFixed(3)}` : "";
+
+            html += `
+                <div class="evo-timeline-item ${triggerClass}">
+                    <span class="evo-timeline-dot"></span>
+                    <span class="evo-timeline-gen">G${c.generation || "?"}</span>
+                    <span class="evo-timeline-changes">[${triggerLabel}]${fitnessText} ${changesText}</span>
+                    <span class="evo-timeline-time">${c.time || ""}</span>
+                </div>`;
+        });
+        html += '</div></div>';
+    }
+
+    container.innerHTML = html;
 }
 
 // === 工具函数 ===
