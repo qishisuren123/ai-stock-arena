@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-30 17:22:34",
+  "timestamp": "2026-03-30 23:20:17",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -22,7 +22,7 @@
       "trade_count": 2,
       "win_count": 1,
       "win_rate": 50.0,
-      "last_update": "2026-03-30 09:30:06",
+      "last_update": "2026-03-30 23:16:40",
       "thinking": {
         "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
         "actions": [],
@@ -35,7 +35,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 5.96,
+        "sharpe_ratio": 5.54,
         "win_streak": 1,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -71,7 +71,7 @@
       "trade_count": 1,
       "win_count": 1,
       "win_rate": 100.0,
-      "last_update": "2026-03-30 09:30:06",
+      "last_update": "2026-03-30 23:16:40",
       "thinking": {
         "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
         "actions": [],
@@ -83,7 +83,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.26,
-        "sharpe_ratio": 7.94,
+        "sharpe_ratio": 6.56,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -119,7 +119,7 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-30 09:30:06",
+      "last_update": "2026-03-30 23:16:40",
       "thinking": {
         "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
         "actions": [],
@@ -131,7 +131,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 4.58,
+        "sharpe_ratio": 4.17,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -158,7 +158,7 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-30 09:30:06",
+      "last_update": "2026-03-30 23:16:40",
       "thinking": {
         "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
         "actions": [],
@@ -169,7 +169,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.09,
-        "sharpe_ratio": 7.98,
+        "sharpe_ratio": 7.37,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -214,7 +214,7 @@
       "trade_count": 2,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-30 09:30:06",
+      "last_update": "2026-03-30 23:16:40",
       "thinking": {
         "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
         "actions": [],
@@ -226,7 +226,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.56,
-        "sharpe_ratio": 2.02,
+        "sharpe_ratio": 1.76,
         "win_streak": 0,
         "lose_streak": 2,
         "avg_hold_days": 0.0,
@@ -262,7 +262,7 @@
       "trade_count": 1,
       "win_count": 1,
       "win_rate": 100.0,
-      "last_update": "2026-03-30 09:30:06",
+      "last_update": "2026-03-30 23:16:40",
       "thinking": {
         "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
         "actions": [],
@@ -273,8 +273,8 @@
         "抄底型"
       ],
       "metrics": {
-        "max_drawdown": 0.28,
-        "sharpe_ratio": 3.1,
+        "max_drawdown": 0.29,
+        "sharpe_ratio": 2.66,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -319,7 +319,7 @@
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-30 09:30:06",
+      "last_update": "2026-03-30 23:16:40",
       "thinking": {
         "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
         "actions": [],
@@ -331,8 +331,8 @@
         "分散持仓"
       ],
       "metrics": {
-        "max_drawdown": 0.64,
-        "sharpe_ratio": 1.61,
+        "max_drawdown": 0.68,
+        "sharpe_ratio": 1.32,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -368,7 +368,7 @@
       "trade_count": 1,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-03-30 09:30:06",
+      "last_update": "2026-03-30 23:16:40",
       "thinking": {
         "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
         "actions": [],
@@ -380,7 +380,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.59,
-        "sharpe_ratio": -1.67,
+        "sharpe_ratio": -2.03,
         "win_streak": 0,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -397,7 +397,7 @@
       "trade_count": 4,
       "win_count": 1,
       "win_rate": 25.0,
-      "last_update": "2026-03-30 09:30:06",
+      "last_update": "2026-03-30 23:16:40",
       "thinking": {
         "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
         "actions": [],
@@ -409,7 +409,7 @@
       ],
       "metrics": {
         "max_drawdown": 1.0,
-        "sharpe_ratio": -7.91,
+        "sharpe_ratio": -7.81,
         "win_streak": 1,
         "lose_streak": 3,
         "avg_hold_days": 0.0,
@@ -494,5 +494,67 @@
     ],
     "recent_capsules": [],
     "total_capsules": 0
+  },
+  "rules": {
+    "generation": 5,
+    "current": {
+      "pass_threshold": 0.49,
+      "proposal_weight": 1.05,
+      "vote_weight": 0.48,
+      "co_proposal_bonus": 0.02,
+      "max_position_ratio": 0.23,
+      "max_positions": 3
+    },
+    "fitness": 0.3937,
+    "recent_changes": [
+      {
+        "generation": 1,
+        "trigger": "auto",
+        "fitness": 0.0,
+        "changes": {
+          "proposal_weight": 1.05,
+          "vote_weight": 0.48
+        },
+        "time": "2026-03-30 23:19"
+      },
+      {
+        "generation": 2,
+        "trigger": "auto",
+        "fitness": 0.3005,
+        "changes": {
+          "pass_threshold": 0.48,
+          "co_proposal_bonus": 0.01
+        },
+        "time": "2026-03-30 23:19"
+      },
+      {
+        "generation": 3,
+        "trigger": "auto",
+        "fitness": 0.5932,
+        "changes": {
+          "pass_threshold": 0.46,
+          "co_proposal_bonus": 0.02
+        },
+        "time": "2026-03-30 23:19"
+      },
+      {
+        "generation": 4,
+        "trigger": "auto",
+        "fitness": 0.3937,
+        "changes": {
+          "pass_threshold": 0.49,
+          "max_position_ratio": 0.28
+        },
+        "time": "2026-03-30 23:19"
+      },
+      {
+        "generation": 5,
+        "trigger": "amendment",
+        "changes": {
+          "max_position_ratio": 0.23
+        },
+        "time": "2026-03-30 23:19"
+      }
+    ]
   }
 }
