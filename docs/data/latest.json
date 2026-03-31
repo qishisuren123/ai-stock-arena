@@ -1,55 +1,7 @@
 {
-  "timestamp": "2026-03-31 14:00:05",
+  "timestamp": "2026-03-31 15:00:04",
   "initial_cash": 10000.0,
   "models": [
-    {
-      "name": "Intern-S1-Pro",
-      "cash": 5981.99,
-      "positions": [
-        {
-          "code": "000001",
-          "name": "平安银行",
-          "qty": 200,
-          "avg_cost": 10.77,
-          "current_price": 11.14,
-          "market_value": 2228.0,
-          "unrealized_pnl": 74.0
-        },
-        {
-          "code": "601166",
-          "name": "兴业银行",
-          "qty": 100,
-          "avg_cost": 18.6,
-          "current_price": 18.93,
-          "market_value": 1893.0,
-          "unrealized_pnl": 33.0
-        }
-      ],
-      "total_value": 10102.99,
-      "return_pct": 1.03,
-      "realized_pnl": 0.0,
-      "trade_count": 0,
-      "win_count": 0,
-      "win_rate": 0.0,
-      "last_update": "2026-03-30 23:16:40",
-      "thinking": {
-        "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
-        "actions": [],
-        "status": "失败"
-      },
-      "style_tags": [
-        "保守派",
-        "抄底型"
-      ],
-      "metrics": {
-        "max_drawdown": 0.3,
-        "sharpe_ratio": 6.47,
-        "win_streak": 0,
-        "lose_streak": 0,
-        "avg_hold_days": 0.0,
-        "concentration_hhi": 5033.0
-      }
-    },
     {
       "name": "Intern-S1",
       "cash": 7870.77,
@@ -59,13 +11,13 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.65,
-          "current_price": 11.14,
-          "market_value": 2228.0,
-          "unrealized_pnl": 98.0
+          "current_price": 11.08,
+          "market_value": 2216.0,
+          "unrealized_pnl": 86.0
         }
       ],
-      "total_value": 10098.77,
-      "return_pct": 0.99,
+      "total_value": 10086.77,
+      "return_pct": 0.87,
       "realized_pnl": 7.44,
       "trade_count": 2,
       "win_count": 1,
@@ -83,11 +35,107 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 6.96,
+        "sharpe_ratio": 7.03,
         "win_streak": 1,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
         "concentration_hhi": 10000.0
+      }
+    },
+    {
+      "name": "Intern-S1-Pro",
+      "cash": 5981.99,
+      "positions": [
+        {
+          "code": "000001",
+          "name": "平安银行",
+          "qty": 200,
+          "avg_cost": 10.77,
+          "current_price": 11.08,
+          "market_value": 2216.0,
+          "unrealized_pnl": 62.0
+        },
+        {
+          "code": "601166",
+          "name": "兴业银行",
+          "qty": 100,
+          "avg_cost": 18.6,
+          "current_price": 18.87,
+          "market_value": 1887.0,
+          "unrealized_pnl": 27.0
+        }
+      ],
+      "total_value": 10084.99,
+      "return_pct": 0.85,
+      "realized_pnl": 0.0,
+      "trade_count": 0,
+      "win_count": 0,
+      "win_rate": 0.0,
+      "last_update": "2026-03-30 23:16:40",
+      "thinking": {
+        "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
+        "actions": [],
+        "status": "失败"
+      },
+      "style_tags": [
+        "保守派",
+        "抄底型"
+      ],
+      "metrics": {
+        "max_drawdown": 0.3,
+        "sharpe_ratio": 6.85,
+        "win_streak": 0,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 5032.0
+      }
+    },
+    {
+      "name": "Minimax2.5",
+      "cash": 5959.65,
+      "positions": [
+        {
+          "code": "000001",
+          "name": "平安银行",
+          "qty": 200,
+          "avg_cost": 10.83,
+          "current_price": 11.08,
+          "market_value": 2216.0,
+          "unrealized_pnl": 50.0
+        },
+        {
+          "code": "601166",
+          "name": "兴业银行",
+          "qty": 100,
+          "avg_cost": 18.92,
+          "current_price": 18.87,
+          "market_value": 1887.0,
+          "unrealized_pnl": -5.0
+        }
+      ],
+      "total_value": 10062.65,
+      "return_pct": 0.63,
+      "realized_pnl": 23.84,
+      "trade_count": 1,
+      "win_count": 1,
+      "win_rate": 100.0,
+      "last_update": "2026-03-30 23:16:40",
+      "thinking": {
+        "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
+        "actions": [],
+        "status": "失败"
+      },
+      "style_tags": [
+        "保守派",
+        "抄底型"
+      ],
+      "metrics": {
+        "max_drawdown": 0.29,
+        "sharpe_ratio": 5.92,
+        "win_streak": 1,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 5032.0
       }
     },
     {
@@ -99,31 +147,31 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.65,
-          "current_price": 11.14,
-          "market_value": 2228.0,
-          "unrealized_pnl": 98.0
+          "current_price": 11.08,
+          "market_value": 2216.0,
+          "unrealized_pnl": 86.0
         },
         {
           "code": "601166",
           "name": "兴业银行",
           "qty": 100,
           "avg_cost": 18.63,
-          "current_price": 18.93,
-          "market_value": 1893.0,
-          "unrealized_pnl": 30.0
+          "current_price": 18.87,
+          "market_value": 1887.0,
+          "unrealized_pnl": 24.0
         },
         {
           "code": "600030",
           "name": "中信证券",
           "qty": 100,
           "avg_cost": 24.58,
-          "current_price": 24.2,
-          "market_value": 2420.0,
-          "unrealized_pnl": -38.0
+          "current_price": 24.04,
+          "market_value": 2404.0,
+          "unrealized_pnl": -54.0
         }
       ],
-      "total_value": 10083.55,
-      "return_pct": 0.84,
+      "total_value": 10049.55,
+      "return_pct": 0.5,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
@@ -141,59 +189,11 @@
       ],
       "metrics": {
         "max_drawdown": 0.68,
-        "sharpe_ratio": 3.97,
+        "sharpe_ratio": 4.22,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 3367.0
-      }
-    },
-    {
-      "name": "Minimax2.5",
-      "cash": 5959.65,
-      "positions": [
-        {
-          "code": "000001",
-          "name": "平安银行",
-          "qty": 200,
-          "avg_cost": 10.83,
-          "current_price": 11.14,
-          "market_value": 2228.0,
-          "unrealized_pnl": 62.0
-        },
-        {
-          "code": "601166",
-          "name": "兴业银行",
-          "qty": 100,
-          "avg_cost": 18.92,
-          "current_price": 18.93,
-          "market_value": 1893.0,
-          "unrealized_pnl": 1.0
-        }
-      ],
-      "total_value": 10080.65,
-      "return_pct": 0.81,
-      "realized_pnl": 23.84,
-      "trade_count": 1,
-      "win_count": 1,
-      "win_rate": 100.0,
-      "last_update": "2026-03-30 23:16:40",
-      "thinking": {
-        "analysis": "[Errno 2] No such file or directory: '/mnt/shared-storage-user/renyiming/tonghuashun/config.json'",
-        "actions": [],
-        "status": "失败"
-      },
-      "style_tags": [
-        "保守派",
-        "抄底型"
-      ],
-      "metrics": {
-        "max_drawdown": 0.29,
-        "sharpe_ratio": 5.49,
-        "win_streak": 1,
-        "lose_streak": 0,
-        "avg_hold_days": 0.0,
-        "concentration_hhi": 5033.0
+        "concentration_hhi": 3366.0
       }
     },
     {
@@ -205,13 +205,13 @@
           "name": "平安银行",
           "qty": 100,
           "avg_cost": 10.65,
-          "current_price": 11.14,
-          "market_value": 1114.0,
-          "unrealized_pnl": 49.0
+          "current_price": 11.08,
+          "market_value": 1108.0,
+          "unrealized_pnl": 43.0
         }
       ],
-      "total_value": 10047.93,
-      "return_pct": 0.48,
+      "total_value": 10041.93,
+      "return_pct": 0.42,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
@@ -227,7 +227,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.09,
-        "sharpe_ratio": 8.98,
+        "sharpe_ratio": 9.07,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -243,22 +243,22 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.88,
-          "current_price": 11.14,
-          "market_value": 2228.0,
-          "unrealized_pnl": 52.0
+          "current_price": 11.08,
+          "market_value": 2216.0,
+          "unrealized_pnl": 40.0
         },
         {
           "code": "600727",
           "name": "鲁北化工",
           "qty": 300,
           "avg_cost": 7.8,
-          "current_price": 7.68,
-          "market_value": 2304.0,
-          "unrealized_pnl": -36.0
+          "current_price": 7.65,
+          "market_value": 2295.0,
+          "unrealized_pnl": -45.0
         }
       ],
-      "total_value": 10041.19,
-      "return_pct": 0.41,
+      "total_value": 10020.19,
+      "return_pct": 0.2,
       "realized_pnl": 31.84,
       "trade_count": 1,
       "win_count": 1,
@@ -275,11 +275,11 @@
       ],
       "metrics": {
         "max_drawdown": 0.42,
-        "sharpe_ratio": 3.03,
+        "sharpe_ratio": 3.4,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5001.0
+        "concentration_hhi": 5002.0
       }
     },
     {
@@ -291,22 +291,22 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.77,
-          "current_price": 11.14,
-          "market_value": 2228.0,
-          "unrealized_pnl": 74.0
+          "current_price": 11.08,
+          "market_value": 2216.0,
+          "unrealized_pnl": 62.0
         },
         {
           "code": "600030",
           "name": "中信证券",
           "qty": 100,
           "avg_cost": 24.66,
-          "current_price": 24.2,
-          "market_value": 2420.0,
-          "unrealized_pnl": -46.0
+          "current_price": 24.04,
+          "market_value": 2404.0,
+          "unrealized_pnl": -62.0
         }
       ],
-      "total_value": 10018.7,
-      "return_pct": 0.19,
+      "total_value": 9990.7,
+      "return_pct": -0.09,
       "realized_pnl": -2.34,
       "trade_count": 1,
       "win_count": 0,
@@ -323,11 +323,11 @@
       ],
       "metrics": {
         "max_drawdown": 0.59,
-        "sharpe_ratio": 1.28,
+        "sharpe_ratio": 1.34,
         "win_streak": 0,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5009.0
+        "concentration_hhi": 5008.0
       }
     },
     {
@@ -339,31 +339,31 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.72,
-          "current_price": 11.14,
-          "market_value": 2228.0,
-          "unrealized_pnl": 84.0
+          "current_price": 11.08,
+          "market_value": 2216.0,
+          "unrealized_pnl": 72.0
         },
         {
           "code": "002176",
           "name": "江特电机",
           "qty": 200,
           "avg_cost": 10.29,
-          "current_price": 10.33,
-          "market_value": 2066.0,
-          "unrealized_pnl": 8.0
+          "current_price": 10.26,
+          "market_value": 2052.0,
+          "unrealized_pnl": -6.0
         },
         {
           "code": "600030",
           "name": "中信证券",
           "qty": 100,
           "avg_cost": 24.26,
-          "current_price": 24.2,
-          "market_value": 2420.0,
-          "unrealized_pnl": -6.0
+          "current_price": 24.04,
+          "market_value": 2404.0,
+          "unrealized_pnl": -22.0
         }
       ],
-      "total_value": 9991.68,
-      "return_pct": -0.08,
+      "total_value": 9949.68,
+      "return_pct": -0.5,
       "realized_pnl": -83.31,
       "trade_count": 2,
       "win_count": 0,
@@ -380,7 +380,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.56,
-        "sharpe_ratio": -0.66,
+        "sharpe_ratio": -0.3,
         "win_streak": 0,
         "lose_streak": 2,
         "avg_hold_days": 0.0,
@@ -409,7 +409,7 @@
       ],
       "metrics": {
         "max_drawdown": 1.0,
-        "sharpe_ratio": -7.34,
+        "sharpe_ratio": -7.25,
         "win_streak": 1,
         "lose_streak": 3,
         "avg_hold_days": 0.0,
