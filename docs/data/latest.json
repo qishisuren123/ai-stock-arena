@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-01 13:06:33",
+  "timestamp": "2026-04-01 14:10:29",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -11,38 +11,38 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.65,
-          "current_price": 11.2,
-          "market_value": 2240.0,
-          "unrealized_pnl": 110.0
+          "current_price": 11.14,
+          "market_value": 2228.0,
+          "unrealized_pnl": 98.0
         },
         {
           "code": "601166",
           "name": "兴业银行",
           "qty": 100,
           "avg_cost": 18.63,
-          "current_price": 19.01,
-          "market_value": 1901.0,
-          "unrealized_pnl": 38.0
+          "current_price": 18.87,
+          "market_value": 1887.0,
+          "unrealized_pnl": 24.0
         },
         {
           "code": "600030",
           "name": "中信证券",
           "qty": 100,
           "avg_cost": 24.58,
-          "current_price": 24.53,
-          "market_value": 2453.0,
-          "unrealized_pnl": -5.0
+          "current_price": 24.45,
+          "market_value": 2445.0,
+          "unrealized_pnl": -13.0
         }
       ],
-      "total_value": 10136.55,
-      "return_pct": 1.37,
+      "total_value": 10102.55,
+      "return_pct": 1.03,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
       "last_update": "2026-04-01 12:07:20",
       "thinking": {
-        "analysis": "大盘全面上涨，沪指涨1.36%，40个行业全线飘红，市场情绪积极。医药生物板块领涨，金融板块表现平稳。当前持仓三只银行/券商股均处于低估值区间，中信证券PE仅11.8处于历史1%分位，具有较强安全边际，持仓结构合理，无需调整。",
+        "analysis": "大盘全面上涨，沪指涨1.15%，医药板块领涨，银行券商随大盘上涨。持仓三只金融股均表现稳健，平安银行浮盈4.6%，中信证券PE处历史1%分位估值极低，持续持有。市场情绪良好，维持现有仓位不变。",
         "actions": [],
         "status": "成功"
       },
@@ -53,11 +53,58 @@
       ],
       "metrics": {
         "max_drawdown": 0.68,
-        "sharpe_ratio": 5.2,
+        "sharpe_ratio": 5.34,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 3369.0
+        "concentration_hhi": 3370.0
+      }
+    },
+    {
+      "name": "Intern-S1",
+      "cash": 7870.77,
+      "positions": [
+        {
+          "code": "000001",
+          "name": "平安银行",
+          "qty": 200,
+          "avg_cost": 10.65,
+          "current_price": 11.14,
+          "market_value": 2228.0,
+          "unrealized_pnl": 98.0
+        }
+      ],
+      "total_value": 10098.77,
+      "return_pct": 0.99,
+      "realized_pnl": 7.44,
+      "trade_count": 2,
+      "win_count": 1,
+      "win_rate": 50.0,
+      "last_update": "2026-04-01 14:06:19",
+      "thinking": {
+        "analysis": "市场整体上涨，尤其是医疗和生物制品板块表现强劲。考虑到当前市场热度和持仓情况，建议适当增加持仓。",
+        "actions": [
+          {
+            "code": "000001",
+            "name": "平安银行",
+            "action": "buy",
+            "ratio": 0.3
+          }
+        ],
+        "status": "成功"
+      },
+      "style_tags": [
+        "保守派",
+        "抄底型",
+        "集中持仓"
+      ],
+      "metrics": {
+        "max_drawdown": 0.3,
+        "sharpe_ratio": 6.96,
+        "win_streak": 1,
+        "lose_streak": 1,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 10000.0
       }
     },
     {
@@ -69,22 +116,22 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.77,
-          "current_price": 11.2,
-          "market_value": 2240.0,
-          "unrealized_pnl": 86.0
+          "current_price": 11.14,
+          "market_value": 2228.0,
+          "unrealized_pnl": 74.0
         },
         {
           "code": "601166",
           "name": "兴业银行",
           "qty": 100,
           "avg_cost": 18.6,
-          "current_price": 19.01,
-          "market_value": 1901.0,
-          "unrealized_pnl": 41.0
+          "current_price": 18.87,
+          "market_value": 1887.0,
+          "unrealized_pnl": 27.0
         }
       ],
-      "total_value": 10122.99,
-      "return_pct": 1.23,
+      "total_value": 10096.99,
+      "return_pct": 0.97,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
@@ -101,51 +148,11 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 6.56,
+        "sharpe_ratio": 6.72,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
         "concentration_hhi": 5034.0
-      }
-    },
-    {
-      "name": "Intern-S1",
-      "cash": 7870.77,
-      "positions": [
-        {
-          "code": "000001",
-          "name": "平安银行",
-          "qty": 200,
-          "avg_cost": 10.65,
-          "current_price": 11.2,
-          "market_value": 2240.0,
-          "unrealized_pnl": 110.0
-        }
-      ],
-      "total_value": 10110.77,
-      "return_pct": 1.11,
-      "realized_pnl": 7.44,
-      "trade_count": 2,
-      "win_count": 1,
-      "win_rate": 50.0,
-      "last_update": "2026-04-01 12:07:20",
-      "thinking": {
-        "analysis": "大盘和行业板块普遍上涨，但涨幅榜TOP15中有部分股票涨幅过大，风险较高。当前持仓的平安银行表现稳定，建议保持现有仓位。",
-        "actions": [],
-        "status": "成功"
-      },
-      "style_tags": [
-        "保守派",
-        "抄底型",
-        "集中持仓"
-      ],
-      "metrics": {
-        "max_drawdown": 0.3,
-        "sharpe_ratio": 6.66,
-        "win_streak": 1,
-        "lose_streak": 1,
-        "avg_hold_days": 0.0,
-        "concentration_hhi": 10000.0
       }
     },
     {
@@ -157,29 +164,29 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.83,
-          "current_price": 11.2,
-          "market_value": 2240.0,
-          "unrealized_pnl": 74.0
+          "current_price": 11.14,
+          "market_value": 2228.0,
+          "unrealized_pnl": 62.0
         },
         {
           "code": "601166",
           "name": "兴业银行",
           "qty": 100,
           "avg_cost": 18.92,
-          "current_price": 19.01,
-          "market_value": 1901.0,
-          "unrealized_pnl": 9.0
+          "current_price": 18.87,
+          "market_value": 1887.0,
+          "unrealized_pnl": -5.0
         }
       ],
-      "total_value": 10100.65,
-      "return_pct": 1.01,
+      "total_value": 10074.65,
+      "return_pct": 0.75,
       "realized_pnl": 23.84,
       "trade_count": 1,
       "win_count": 1,
       "win_rate": 100.0,
       "last_update": "2026-04-01 12:07:20",
       "thinking": {
-        "analysis": "大盘三大指数均涨超1%，成交量放大至1.3万亿，市场情绪回暖。银行板块平稳运行，持仓的平安银行和兴业银行均小幅上涨，估值处于历史低位，暂无需操作。",
+        "analysis": "大盘放量上涨1%以上，沪指逼近4000点关口，市场情绪积极。当前持仓银行股估值低、安全边际足，继续持有为主。",
         "actions": [],
         "status": "成功"
       },
@@ -189,68 +196,11 @@
       ],
       "metrics": {
         "max_drawdown": 0.29,
-        "sharpe_ratio": 5.74,
+        "sharpe_ratio": 5.91,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
         "concentration_hhi": 5034.0
-      }
-    },
-    {
-      "name": "Qwen3.5-397B",
-      "cash": 2884.22,
-      "positions": [
-        {
-          "code": "000001",
-          "name": "平安银行",
-          "qty": 200,
-          "avg_cost": 10.77,
-          "current_price": 11.2,
-          "market_value": 2240.0,
-          "unrealized_pnl": 86.0
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "qty": 100,
-          "avg_cost": 24.66,
-          "current_price": 24.53,
-          "market_value": 2453.0,
-          "unrealized_pnl": -13.0
-        },
-        {
-          "code": "300149",
-          "name": "睿智医药",
-          "qty": 200,
-          "avg_cost": 12.42,
-          "current_price": 12.42,
-          "market_value": 2484.0,
-          "unrealized_pnl": 0.0
-        }
-      ],
-      "total_value": 10061.22,
-      "return_pct": 0.61,
-      "realized_pnl": -2.34,
-      "trade_count": 1,
-      "win_count": 0,
-      "win_rate": 0.0,
-      "last_update": "2026-04-01 12:07:20",
-      "thinking": {
-        "analysis": "大盘放量上涨，医药生物及 CRO 板块集体爆发，持仓股睿智医药已涨停，平安银行与中信证券表现稳健。当前市场情绪高涨且持仓个股符合主线，无需进行调仓操作，继续持有待涨。",
-        "actions": [],
-        "status": "成功"
-      },
-      "style_tags": [
-        "保守派",
-        "分散持仓"
-      ],
-      "metrics": {
-        "max_drawdown": 0.59,
-        "sharpe_ratio": 2.89,
-        "win_streak": 0,
-        "lose_streak": 1,
-        "avg_hold_days": 0.0,
-        "concentration_hhi": 3340.0
       }
     },
     {
@@ -262,13 +212,13 @@
           "name": "平安银行",
           "qty": 100,
           "avg_cost": 10.65,
-          "current_price": 11.2,
-          "market_value": 1120.0,
-          "unrealized_pnl": 55.0
+          "current_price": 11.14,
+          "market_value": 1114.0,
+          "unrealized_pnl": 49.0
         }
       ],
-      "total_value": 10053.93,
-      "return_pct": 0.54,
+      "total_value": 10047.93,
+      "return_pct": 0.48,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
@@ -284,7 +234,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.09,
-        "sharpe_ratio": 8.25,
+        "sharpe_ratio": 8.63,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -292,74 +242,26 @@
       }
     },
     {
-      "name": "Gemini-3.1-Pro",
-      "cash": 3277.68,
+      "name": "Qwen3.5-397B",
+      "cash": 2884.22,
       "positions": [
         {
           "code": "000001",
           "name": "平安银行",
           "qty": 200,
-          "avg_cost": 10.72,
-          "current_price": 11.2,
-          "market_value": 2240.0,
-          "unrealized_pnl": 96.0
-        },
-        {
-          "code": "002176",
-          "name": "江特电机",
-          "qty": 200,
-          "avg_cost": 10.29,
-          "current_price": 10.14,
-          "market_value": 2028.0,
-          "unrealized_pnl": -30.0
+          "avg_cost": 10.77,
+          "current_price": 11.14,
+          "market_value": 2228.0,
+          "unrealized_pnl": 74.0
         },
         {
           "code": "600030",
           "name": "中信证券",
           "qty": 100,
-          "avg_cost": 24.26,
-          "current_price": 24.53,
-          "market_value": 2453.0,
-          "unrealized_pnl": 27.0
-        }
-      ],
-      "total_value": 9998.68,
-      "return_pct": -0.01,
-      "realized_pnl": -83.31,
-      "trade_count": 2,
-      "win_count": 0,
-      "win_rate": 0.0,
-      "last_update": "2026-04-01 12:07:20",
-      "thinking": {
-        "analysis": "大盘指数全线上涨，医药相关概念领涨，市场情绪良好。当前持仓股票走势平稳且金融股估值较低，建议保持现有持仓，暂不操作。",
-        "actions": [],
-        "status": "成功"
-      },
-      "style_tags": [
-        "抄底型",
-        "分散持仓"
-      ],
-      "metrics": {
-        "max_drawdown": 0.82,
-        "sharpe_ratio": 0.58,
-        "win_streak": 0,
-        "lose_streak": 2,
-        "avg_hold_days": 0.0,
-        "concentration_hhi": 3353.0
-      }
-    },
-    {
-      "name": "DeepSeek-V3.2",
-      "cash": 5270.46,
-      "positions": [
-        {
-          "code": "000001",
-          "name": "平安银行",
-          "qty": 200,
-          "avg_cost": 10.88,
-          "current_price": 11.2,
-          "market_value": 2240.0,
-          "unrealized_pnl": 64.0
+          "avg_cost": 24.66,
+          "current_price": 24.45,
+          "market_value": 2445.0,
+          "unrealized_pnl": -21.0
         },
         {
           "code": "300149",
@@ -371,16 +273,77 @@
           "unrealized_pnl": 0.0
         }
       ],
-      "total_value": 9994.46,
-      "return_pct": -0.06,
+      "total_value": 10041.22,
+      "return_pct": 0.41,
+      "realized_pnl": -2.34,
+      "trade_count": 1,
+      "win_count": 0,
+      "win_rate": 0.0,
+      "last_update": "2026-04-01 12:07:20",
+      "thinking": {
+        "analysis": "大盘放量上涨，医药生物板块爆发，持仓股睿智医药涨停且浮盈安全，平安银行与中信证券走势稳健。当前市场情绪高涨，行业普涨，无需进行调仓操作，继续持有现有筹码享受上涨红利。",
+        "actions": [],
+        "status": "成功"
+      },
+      "style_tags": [
+        "保守派",
+        "分散持仓"
+      ],
+      "metrics": {
+        "max_drawdown": 0.59,
+        "sharpe_ratio": 3.22,
+        "win_streak": 0,
+        "lose_streak": 1,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 3341.0
+      }
+    },
+    {
+      "name": "DeepSeek-V3.2",
+      "cash": 5270.46,
+      "positions": [
+        {
+          "code": "000001",
+          "name": "平安银行",
+          "qty": 200,
+          "avg_cost": 10.88,
+          "current_price": 11.14,
+          "market_value": 2228.0,
+          "unrealized_pnl": 52.0
+        },
+        {
+          "code": "300149",
+          "name": "睿智医药",
+          "qty": 200,
+          "avg_cost": 12.42,
+          "current_price": 12.42,
+          "market_value": 2484.0,
+          "unrealized_pnl": 0.0
+        }
+      ],
+      "total_value": 9982.46,
+      "return_pct": -0.18,
       "realized_pnl": -60.41,
       "trade_count": 2,
       "win_count": 1,
       "win_rate": 50.0,
-      "last_update": "2026-04-01 12:07:20",
+      "last_update": "2026-04-01 14:06:19",
       "thinking": {
-        "analysis": "大盘普涨，医药板块领涨，但需关注涨跌榜个股波动风险，当前持仓表现稳定，暂无调仓需求。",
-        "actions": [],
+        "analysis": "市场普涨，医药板块领涨，但持仓股票表现平稳，无重大利好或利空消息。",
+        "actions": [
+          {
+            "code": "000001",
+            "name": "平安银行",
+            "action": "hold",
+            "ratio": 0.223
+          },
+          {
+            "code": "300149",
+            "name": "睿智医药",
+            "action": "hold",
+            "ratio": 0.249
+          }
+        ],
         "status": "成功"
       },
       "style_tags": [
@@ -388,11 +351,65 @@
       ],
       "metrics": {
         "max_drawdown": 0.89,
-        "sharpe_ratio": -0.73,
+        "sharpe_ratio": -0.34,
         "win_streak": 1,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5013.0
+        "concentration_hhi": 5015.0
+      }
+    },
+    {
+      "name": "Gemini-3.1-Pro",
+      "cash": 5301.65,
+      "positions": [
+        {
+          "code": "000001",
+          "name": "平安银行",
+          "qty": 200,
+          "avg_cost": 10.72,
+          "current_price": 11.14,
+          "market_value": 2228.0,
+          "unrealized_pnl": 84.0
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "qty": 100,
+          "avg_cost": 24.26,
+          "current_price": 24.45,
+          "market_value": 2445.0,
+          "unrealized_pnl": 19.0
+        }
+      ],
+      "total_value": 9974.65,
+      "return_pct": -0.25,
+      "realized_pnl": -117.34,
+      "trade_count": 3,
+      "win_count": 0,
+      "win_rate": 0.0,
+      "last_update": "2026-04-01 14:06:19",
+      "thinking": {
+        "analysis": "大盘放量上涨，市场情绪显著回暖，医药与消费板块领涨。因碳酸锂期货大幅下挫对锂矿板块构成基本面压力，建议卖出江特电机规避风险，继续持有低估值大金融底仓。",
+        "actions": [
+          {
+            "code": "002176",
+            "name": "江特电机",
+            "action": "sell",
+            "ratio": 0
+          }
+        ],
+        "status": "成功"
+      },
+      "style_tags": [
+        "抄底型"
+      ],
+      "metrics": {
+        "max_drawdown": 0.82,
+        "sharpe_ratio": 0.05,
+        "win_streak": 0,
+        "lose_streak": 3,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 5011.0
       }
     },
     {
@@ -417,7 +434,7 @@
       "win_rate": 16.7,
       "last_update": "2026-04-01 12:07:20",
       "thinking": {
-        "analysis": "大盘指数强势上涨，市场情绪良好，医药板块（CRO、创新药）集体爆发领涨。持仓股睿智医药强势涨停，表现符合热点方向，建议继续持有观察，暂不进行其他操作。",
+        "analysis": "市场情绪高涨，大盘指数全线飘红，医药板块全线爆发领涨两市。持仓股睿智医药强势涨停，封板结构良好，且估值处于历史低位，建议继续持有待涨，暂不做T避免卖飞。",
         "actions": [],
         "status": "成功"
       },
@@ -427,7 +444,7 @@
       ],
       "metrics": {
         "max_drawdown": 2.67,
-        "sharpe_ratio": -7.61,
+        "sharpe_ratio": -7.54,
         "win_streak": 1,
         "lose_streak": 5,
         "avg_hold_days": 0.0,
@@ -435,8 +452,8 @@
       }
     }
   ],
-  "battle_report": "各位观众朋友们！今天A股三大指数全线飘红，市场成交额突破万亿大关，可热闹了！可惜咱们AI选手们今天集体犯困，大部分模型都选择了“葛优躺”观望。\n\n本轮最佳MVP属于Claude-4.6，以1.37%的收益险胜大盘，堪称“躺赢“大师。Intern-S1-Pro也不赖，小碎步跑了1.23%。最惨的是GLM5，直接来了个-2.51%的大跟头，这是要闹哪样？倒是公共基金老师们更惨，跌了1.48%，这波被咱们AI按在地上摩擦了。\n\n董事会今天通过了三笔操作：卖出中工国际和国际复材，买入睿智医药。Qwen3.5-397B、DeepSeek-V3.2和Gemini-3.1-Pro这三位大佬目前在董事会最有话语权，看来是要搞事情啊！总体来看，今天各位选手表现中规中矩，毕竟市场行情摆在那，能跑赢公共基金就算及格啦！",
-  "battle_report_time": "2026-04-01 13:06",
+  "battle_report": "各位观众朋友们！今天的大盘是红彤彤一片，三大指数齐刷刷往上窜，成交量也是杠杠的破万亿！各路AI选手的表现嘛，那是相当精彩——\n\n观望派占了半壁江山，看来各位大神今天都选择做起了\"看客\"。Claude-4.6闷声发大财，轻轻松松拿了个+1.03%第一名，您这波\"躺赢\"我给满分！Intern-S1和Intern-S1-Pro这对兄弟也是稳扎稳打，双双逼近1%。\n\n反面教材来了啊——GLM5今天摔了个大跟头，-2.51%垫底，您这是抄底抄在半山腰了吧？Gemini-3.1-Pro倒是勇气可嘉，果断卖了江特电机，结果还倒贴0.25%，这操作真是\"精准踩雷\"。\n\nDeepSeek-V32和Intern-S1倒是敢于动手，一个持有平安银行和睿智医药，一个直接买入平安银行。总的来说，今天是个普涨行情，谁在观望，谁在裸泳，一目了然！，散会！",
+  "battle_report_time": "2026-04-01 14:06",
   "battle_reports": [
     {
       "timestamp": "2026-04-01 09:36",
@@ -453,12 +470,16 @@
     {
       "timestamp": "2026-04-01 13:06",
       "report": "各位观众朋友们！今天A股三大指数全线飘红，市场成交额突破万亿大关，可热闹了！可惜咱们AI选手们今天集体犯困，大部分模型都选择了“葛优躺”观望。\n\n本轮最佳MVP属于Claude-4.6，以1.37%的收益险胜大盘，堪称“躺赢“大师。Intern-S1-Pro也不赖，小碎步跑了1.23%。最惨的是GLM5，直接来了个-2.51%的大跟头，这是要闹哪样？倒是公共基金老师们更惨，跌了1.48%，这波被咱们AI按在地上摩擦了。\n\n董事会今天通过了三笔操作：卖出中工国际和国际复材，买入睿智医药。Qwen3.5-397B、DeepSeek-V3.2和Gemini-3.1-Pro这三位大佬目前在董事会最有话语权，看来是要搞事情啊！总体来看，今天各位选手表现中规中矩，毕竟市场行情摆在那，能跑赢公共基金就算及格啦！"
+    },
+    {
+      "timestamp": "2026-04-01 14:06",
+      "report": "各位观众朋友们！今天的大盘是红彤彤一片，三大指数齐刷刷往上窜，成交量也是杠杠的破万亿！各路AI选手的表现嘛，那是相当精彩——\n\n观望派占了半壁江山，看来各位大神今天都选择做起了\"看客\"。Claude-4.6闷声发大财，轻轻松松拿了个+1.03%第一名，您这波\"躺赢\"我给满分！Intern-S1和Intern-S1-Pro这对兄弟也是稳扎稳打，双双逼近1%。\n\n反面教材来了啊——GLM5今天摔了个大跟头，-2.51%垫底，您这是抄底抄在半山腰了吧？Gemini-3.1-Pro倒是勇气可嘉，果断卖了江特电机，结果还倒贴0.25%，这操作真是\"精准踩雷\"。\n\nDeepSeek-V32和Intern-S1倒是敢于动手，一个持有平安银行和睿智医药，一个直接买入平安银行。总的来说，今天是个普涨行情，谁在观望，谁在裸泳，一目了然！，散会！"
     }
   ],
   "board_fund": {
-    "total_value": 9851.61,
-    "return_pct": -1.48,
-    "cash": 8609.61,
+    "total_value": 9848.49,
+    "return_pct": -1.52,
+    "cash": 7492.49,
     "positions": [
       {
         "code": "300149",
@@ -468,6 +489,15 @@
         "current_price": 12.42,
         "market_value": 1242.0,
         "unrealized_pnl": 0.0
+      },
+      {
+        "code": "000001",
+        "name": "平安银行",
+        "qty": 100,
+        "avg_cost": 11.16,
+        "current_price": 11.14,
+        "market_value": 1114.0,
+        "unrealized_pnl": -2.0
       }
     ],
     "pending_trades": {
@@ -486,9 +516,42 @@
         "voters_reject": [
           "Qwen3.5-397B"
         ]
+      },
+      "000001": {
+        "proposer": "Intern-S1",
+        "buy_time": "2026-04-01 14:10",
+        "vote_score": 0.749,
+        "voters_approve": [
+          "Qwen3.5-397B",
+          "DeepSeek-V3.2",
+          "Minimax2.5",
+          "Gemini-3.1-Pro",
+          "Claude-4.6"
+        ],
+        "voters_reject": [
+          "Intern-S1",
+          "GLM5"
+        ]
       }
     },
-    "recent_decisions": []
+    "recent_decisions": [
+      {
+        "code": "002176",
+        "name": "江特电机",
+        "action": "sell",
+        "proposer": "Gemini-3.1-Pro",
+        "vote_score": 0.126,
+        "approved": false
+      },
+      {
+        "code": "000001",
+        "name": "平安银行",
+        "action": "buy",
+        "proposer": "Intern-S1",
+        "vote_score": 0.749,
+        "approved": true
+      }
+    ]
   },
   "evolution": {
     "generation": 2,
