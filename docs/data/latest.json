@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-01 11:10:30",
+  "timestamp": "2026-04-01 11:56:46",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -53,7 +53,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.68,
-        "sharpe_ratio": 5.14,
+        "sharpe_ratio": 5.25,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -101,7 +101,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 7.01,
+        "sharpe_ratio": 6.63,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -148,7 +148,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 7.09,
+        "sharpe_ratio": 6.73,
         "win_streak": 1,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -196,7 +196,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.29,
-        "sharpe_ratio": 6.18,
+        "sharpe_ratio": 5.79,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -260,7 +260,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.59,
-        "sharpe_ratio": 2.81,
+        "sharpe_ratio": 2.91,
         "win_streak": 0,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -298,7 +298,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.09,
-        "sharpe_ratio": 8.81,
+        "sharpe_ratio": 8.34,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -355,7 +355,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.82,
-        "sharpe_ratio": -0.38,
+        "sharpe_ratio": 0.59,
         "win_streak": 0,
         "lose_streak": 2,
         "avg_hold_days": 0.0,
@@ -408,8 +408,8 @@
         "保守派"
       ],
       "metrics": {
-        "max_drawdown": 0.83,
-        "sharpe_ratio": -0.32,
+        "max_drawdown": 0.89,
+        "sharpe_ratio": -0.74,
         "win_streak": 1,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -472,8 +472,8 @@
         "集中持仓"
       ],
       "metrics": {
-        "max_drawdown": 2.4,
-        "sharpe_ratio": -7.0,
+        "max_drawdown": 2.67,
+        "sharpe_ratio": -7.69,
         "win_streak": 1,
         "lose_streak": 5,
         "avg_hold_days": 0.0,
@@ -636,27 +636,17 @@
     "total_capsules": 0
   },
   "rules": {
-    "generation": 5,
+    "generation": 6,
     "current": {
-      "pass_threshold": 0.49,
+      "pass_threshold": 0.55,
       "proposal_weight": 1.05,
       "vote_weight": 0.48,
       "co_proposal_bonus": 0.02,
-      "max_position_ratio": 0.23,
+      "max_position_ratio": 0.2,
       "max_positions": 3
     },
-    "fitness": 0.3937,
+    "fitness": 0.0,
     "recent_changes": [
-      {
-        "generation": 1,
-        "trigger": "auto",
-        "fitness": 0.0,
-        "changes": {
-          "proposal_weight": 1.05,
-          "vote_weight": 0.48
-        },
-        "time": "2026-03-30 23:19"
-      },
       {
         "generation": 2,
         "trigger": "auto",
@@ -694,6 +684,16 @@
           "max_position_ratio": 0.23
         },
         "time": "2026-03-30 23:19"
+      },
+      {
+        "generation": 6,
+        "trigger": "manual",
+        "changes": {
+          "pass_threshold": 0.55,
+          "max_position_ratio": 0.2,
+          "cleanup": "removed_simulated_trades"
+        },
+        "time": "2026-04-01 手动干预"
       }
     ]
   }
