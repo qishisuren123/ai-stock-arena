@@ -8,9 +8,11 @@ STATE_FILE = os.path.join(os.path.dirname(__file__), "sim_state.json")
 
 # 交易参数
 INITIAL_CASH = 10000.0  # 初始资金
-COMMISSION_RATE = 0.001  # 手续费 0.1%
+COMMISSION_RATE = 0.00025  # 佣金费率 万2.5（主流券商费率）
+MIN_COMMISSION = 5.0  # 最低佣金 5 元
+STAMP_TAX_RATE = 0.0005  # 印花税 0.05%（仅卖出收取）
 MIN_LOT = 100  # 最小交易单位（1手=100股）
-MAX_POSITION_RATIO = 0.30  # 单股仓位上限 30%
+MAX_POSITION_RATIO = 0.25  # 单股仓位上限 25%（从30%降低）
 
 
 class SimAccount:
@@ -87,33 +89,37 @@ class SimAccount:
             return None
         qty = lots * MIN_LOT
         cost = qty * price
-        commission = max(cost * COMMISSION_RATE, 1.0)  # 最低1元手续费
+        commission = max(cost * COMMISSION_RATE, MIN_COMMISSION)
         total_cost = cost + commission
 
         if total_cost > self.cash:
             # 资金不足，尽量买
-            lots = int(self.cash / ((price * MIN_LOT) * (1 + COMMISSION_RATE)))
+            lots = int(self.cash / ((price * MIN_LOT) * (1 + COMMISSION_RATE) + MIN_COMMISSION / MIN_LOT))
             if lots <= 0:
                 return None
             qty = lots * MIN_LOT
             cost = qty * price
-            commission = max(cost * COMMISSION_RATE, 1.0)
+            commission = max(cost * COMMISSION_RATE, MIN_COMMISSION)
             total_cost = cost + commission
 
         # 执行买入
         self.cash -= total_cost
+        today = datetime.now().strftime("%Y-%m-%d")
         if code in self.positions:
             pos = self.positions[code]
             old_total = pos["avg_cost"] * pos["qty"]
             pos["qty"] += qty
             pos["avg_cost"] = round((old_total + cost) / pos["qty"], 4)
             pos["total_cost"] = round(old_total + cost, 2)
+            # 加仓时更新 buy_date 为最近一次
+            pos["buy_date"] = today
         else:
             self.positions[code] = {
                 "name": name,
                 "qty": qty,
                 "avg_cost": round(price, 4),
                 "total_cost": round(cost, 2),
+                "buy_date": today,
             }
 
         # 记录日志
@@ -130,8 +136,9 @@ class SimAccount:
         qty = pos["qty"]
         name = pos["name"]
         income = qty * price
-        commission = max(income * COMMISSION_RATE, 1.0)
-        net_income = income - commission
+        commission = max(income * COMMISSION_RATE, MIN_COMMISSION)
+        stamp_tax = income * STAMP_TAX_RATE  # 印花税（仅卖出）
+        net_income = income - commission - stamp_tax
 
         # 计算盈亏
         pnl = net_income - pos["total_cost"]
@@ -142,8 +149,8 @@ class SimAccount:
         del self.positions[code]
 
         pnl_str = f"+{pnl:.2f}" if pnl >= 0 else f"{pnl:.2f}"
-        msg = f"卖出 {name}({code}) {qty}股 @ {price:.2f}，盈亏 {pnl_str}（手续费 {commission:.2f}）"
-        self._log("sell", code, name, qty, price, commission, pnl)
+        msg = f"卖出 {name}({code}) {qty}股 @ {price:.2f}，盈亏 {pnl_str}（佣金 {commission:.2f} + 印花税 {stamp_tax:.2f}）"
+        self._log("sell", code, name, qty, price, commission + stamp_tax, pnl)
         return msg
 
     def _log(self, action: str, code: str, name: str, qty: int,
@@ -178,11 +185,21 @@ class SimAccount:
                 unrealized = market_val - pos["total_cost"]
                 pct = unrealized / pos["total_cost"] * 100 if pos["total_cost"] else 0
                 ratio = market_val / total * 100 if total else 0
+                # 显示持仓天数
+                buy_date = pos.get("buy_date", "")
+                hold_days = ""
+                if buy_date:
+                    try:
+                        bd = datetime.strptime(buy_date, "%Y-%m-%d")
+                        days = (datetime.now() - bd).days
+                        hold_days = f" | 持仓{days}天"
+                    except ValueError:
+                        pass
                 lines.append(
                     f"  {pos['name']}({code}): {pos['qty']}股 | "
                     f"成本 {pos['avg_cost']:.2f} | 现价 {current_price:.2f} | "
                     f"浮盈 {unrealized:+.2f}({pct:+.1f}%) | "
-                    f"仓位 {ratio:.1f}%"
+                    f"仓位 {ratio:.1f}%{hold_days}"
                 )
         else:
             lines.append("当前空仓")

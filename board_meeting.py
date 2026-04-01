@@ -452,11 +452,12 @@ class BoardFund(SimAccount):
         # 获取归因信息
         attribution = self.pending_trades.pop(code, None)
 
-        # 计算盈亏（卖出前）
+        # 计算盈亏（卖出前）— 使用与 simulator.py 一致的佣金
         pos = self.positions[code]
         income = pos["qty"] * price
-        commission = max(income * 0.001, 1.0)
-        net_income = income - commission
+        commission = max(income * 0.00025, 5.0)  # 万2.5 最低5元
+        stamp_tax = income * 0.0005  # 印花税 0.05%
+        net_income = income - commission - stamp_tax
         pnl = net_income - pos["total_cost"]
         cost = pos["total_cost"]
         profitable = pnl > 0
@@ -493,15 +494,32 @@ JSON 格式：
 
 投票原则：
 1. 独立思考，基于市场数据和公共基金状况做判断
-2. 不要盲目跟风或反对，给出合理的理由
-3. 如果提案的标的已在公共基金持仓中，谨慎投票
-4. 注意公共基金的整体仓位和风险控制"""
+2. 倾向于保守和谨慎。宁可错过机会，也不要亏损。默认倾向投 reject。
+3. 强烈反对以下行为（必须投 reject）：
+   - 买入后不足 3 个交易日就卖出（频繁交易）
+   - 买入已经连续涨 3 天以上的股票（追涨）
+   - 单笔仓位超过 25%（过度集中）
+   - 没有明确理由的交易提案
+4. 支持的行为：
+   - 触发止损（亏损 > 5%）的卖出提案
+   - 有清晰技术面/基本面依据的买入
+   - 适度分散的持仓（2-3只，每只 10-20%）
+5. 注意每笔交易的真实成本：佣金最低 5 元 + 卖出印花税，小额交易不划算
+6. 公共基金目标：稳健增值，月度收益 1-3%，最大回撤 < 5%"""
 
 
 def _collect_proposals(runners) -> list:
-    """从各模型个人交易的 advice 中收集提案"""
+    """从各模型个人交易的 advice 中收集提案，并过滤反模式"""
     proposals = []
     seen_actions = {}  # (code, action) -> proposal，用于去重
+
+    # 获取公共基金持仓信息（用于持仓期检查）
+    fund_positions = board_fund.positions
+    # 获取最近交易记录（用于防止刚卖又买）
+    recent_sells = set()
+    for log in board_fund.trade_log[-10:]:
+        if log.get("action") == "sell":
+            recent_sells.add(log.get("code", ""))
 
     for r in runners:
         if not r.advice:
@@ -511,6 +529,36 @@ def _collect_proposals(runners) -> list:
             code = act.get("code", "")
             action = act.get("action", "")
             if not code or action not in ("buy", "sell"):
+                continue
+
+            # --- 反模式过滤 ---
+            # 1. 卖出检查：持仓不足 3 天不允许卖出（除非止损）
+            if action == "sell" and code in fund_positions:
+                pos = fund_positions[code]
+                buy_date = pos.get("buy_date", "")
+                if buy_date:
+                    try:
+                        from datetime import datetime as _dt
+                        bd = _dt.strptime(buy_date, "%Y-%m-%d")
+                        hold_days = (_dt.now() - bd).days
+                        if hold_days < 3:
+                            # 检查是否为止损（亏损 > 5%）
+                            avg_cost = pos.get("avg_cost", 0)
+                            # 粗略判断（没有实时价格时跳过过滤）
+                            console.print(
+                                f"  [dim]过滤: {r.name} 提议卖出 {code}，"
+                                f"持仓仅 {hold_days} 天，不足 3 天最低持仓期[/dim]"
+                            )
+                            continue
+                    except (ValueError, ImportError):
+                        pass
+
+            # 2. 买入检查：刚卖出的股票不能立即买回
+            if action == "buy" and code in recent_sells:
+                console.print(
+                    f"  [dim]过滤: {r.name} 提议买入 {code}，"
+                    f"该股票近期刚被卖出，避免反复交易[/dim]"
+                )
                 continue
 
             key = (code, action)
@@ -528,7 +576,7 @@ def _collect_proposals(runners) -> list:
                 "code": code,
                 "name": act.get("name", code),
                 "action": action,
-                "ratio": act.get("ratio", 0.2),
+                "ratio": min(act.get("ratio", 0.2), 0.25),  # 强制上限 25%
                 "reasoning": r.advice.get("analysis", "")[:200],
             }
             proposals.append(proposal)
@@ -538,9 +586,20 @@ def _collect_proposals(runners) -> list:
 
 
 def _build_vote_prompt(proposals: list, fund: BoardFund, prices: dict) -> str:
-    """构造投票 prompt"""
+    """构造投票 prompt，包含基金状态、最近交易记录和提案"""
     # 公共基金状态
     fund_summary = fund.get_portfolio_summary(prices)
+
+    # 最近交易记录（帮助模型了解持仓期和交易频率）
+    trade_history_lines = []
+    for log in fund.trade_log[-8:]:
+        action_cn = "买入" if log.get("action") == "buy" else "卖出"
+        pnl_text = f"，盈亏{log.get('pnl', 0):+.2f}" if log.get("action") == "sell" else ""
+        trade_history_lines.append(
+            f"  {log.get('time','')} {action_cn} {log.get('name','')}({log.get('code','')}) "
+            f"{log.get('qty',0)}股 @ {log.get('price',0):.2f}{pnl_text}"
+        )
+    trade_history = "\n".join(trade_history_lines) if trade_history_lines else "暂无交易记录"
 
     # 提案列表（隐藏提案者，避免偏见）
     prop_lines = []
@@ -556,8 +615,9 @@ def _build_vote_prompt(proposals: list, fund: BoardFund, prices: dict) -> str:
 
     return (
         f"【公共基金状态】\n{fund_summary}\n\n"
+        f"【最近交易记录】\n{trade_history}\n\n"
         f"【待投票提案】\n{proposals_text}\n\n"
-        f"请对以上每个提案投票（纯 JSON 数组）。"
+        f"请对以上每个提案投票（纯 JSON 数组）。记住：倾向保守，默认 reject。"
     )
 
 

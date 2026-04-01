@@ -204,8 +204,21 @@ def _query_single_model(runner: ModelRunner, market_text: str,
     t0 = time.time()
     try:
         portfolio_info = runner.account.get_portfolio_summary(prices)
+        # 构建最近交易记录（供模型参考持仓期）
+        trade_history = ""
+        recent = runner.account.trade_log[-5:]
+        if recent:
+            lines = []
+            for log in recent:
+                action_cn = "买入" if log.get("action") == "buy" else "卖出"
+                pnl_text = f" 盈亏{log.get('pnl',0):+.2f}" if log.get("action") == "sell" else ""
+                lines.append(
+                    f"{log.get('time','')} {action_cn} {log.get('name','')}({log.get('code','')}) "
+                    f"{log.get('qty',0)}股 @ {log.get('price',0):.2f}{pnl_text}"
+                )
+            trade_history = "\n".join(lines)
         advice = ai_advisor.get_structured_advice_multi(
-            runner.cfg, market_text, portfolio_info
+            runner.cfg, market_text, portfolio_info, trade_history
         )
         runner.advice = advice
         runner.status = "成功"
@@ -244,7 +257,7 @@ def query_all_models(market_text: str, prices: dict[str, float]):
 
 
 def execute_trades(prices: dict[str, float]):
-    """对每个模型独立执行交易（先卖后买）"""
+    """对每个模型独立执行交易（先卖后买），带持仓期守卫"""
     for r in runners:
         if not r.advice:
             continue
@@ -259,11 +272,26 @@ def execute_trades(prices: dict[str, float]):
             new_prices = market_data.get_realtime_prices(buy_codes)
             local_prices.update(new_prices)
 
-        # 先卖
+        # 先卖（带持仓期检查）
         for act in actions:
             if act.get("action") != "sell":
                 continue
             code = act["code"]
+            # 持仓期守卫：持仓不足 1 天不允许卖（T+1）
+            if code in r.account.positions:
+                pos = r.account.positions[code]
+                buy_date = pos.get("buy_date", "")
+                if buy_date:
+                    try:
+                        bd = datetime.strptime(buy_date, "%Y-%m-%d")
+                        hold_days = (datetime.now() - bd).days
+                        if hold_days < 1:
+                            console.print(
+                                f"  [dim]{r.name}: 跳过卖出 {code}（T+1，今日买入）[/dim]"
+                            )
+                            continue
+                    except ValueError:
+                        pass
             sell_price = local_prices.get(code)
             if sell_price:
                 r.account.sell(code, sell_price)
@@ -274,7 +302,7 @@ def execute_trades(prices: dict[str, float]):
                 continue
             code = act["code"]
             name = act.get("name", code)
-            ratio = act.get("ratio", 0.2)
+            ratio = min(act.get("ratio", 0.2), 0.25)  # 强制上限 25%
             buy_price = local_prices.get(code)
             if buy_price:
                 r.account.buy(code, name, buy_price, ratio, local_prices)
@@ -532,23 +560,41 @@ def main():
     heartbeat_interval = 600  # 非交易时间每 10 分钟心跳
     last_heartbeat = 0
 
+    # 交易时间点：每天只在 10:00 和 14:00 各执行一次（减少频繁交易）
+    TRADE_HOURS = [10, 14]
+    last_trade_key = ""  # "YYYY-MM-DD-HH" 防止同一时段重复执行
+
     while _running:
         if is_trading_time():
-            try:
-                run_trading_cycle()
-            except Exception as e:
-                console.print(f"[red]交易周期异常: {e}[/red]")
-                for r in runners:
-                    r.account.save()
+            now = datetime.now()
+            trade_key = f"{now.strftime('%Y-%m-%d')}-{now.hour}"
+
+            # 只在指定时间点（10:xx 或 14:xx）执行，且每个时段只执行一次
+            if now.hour in TRADE_HOURS and trade_key != last_trade_key:
+                last_trade_key = trade_key
+                try:
+                    run_trading_cycle()
+                except Exception as e:
+                    console.print(f"[red]交易周期异常: {e}[/red]")
+                    for r in runners:
+                        r.account.save()
 
             # 等待到下一个整点
-            now = datetime.now()
             next_hour = (now + timedelta(hours=1)).replace(
                 minute=0, second=0, microsecond=0
             )
             wait_secs = (next_hour - now).total_seconds()
+            # 找到下一个交易时间点
+            next_trade = "无"
+            for h in TRADE_HOURS:
+                if now.hour < h:
+                    next_trade = f"今日 {h}:00"
+                    break
+            if next_trade == "无":
+                next_trade = "明日 10:00"
+
             console.print(
-                f"[dim]下次执行: {next_hour.strftime('%H:%M')}"
+                f"[dim]下次交易: {next_trade}"
                 f"（等待 {int(wait_secs // 60)} 分钟）[/dim]"
             )
 
