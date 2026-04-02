@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-02 10:06:22",
+  "timestamp": "2026-04-02 12:09:50",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -43,7 +43,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 5.22,
+        "sharpe_ratio": 6.03,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -83,7 +83,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 6.1,
+        "sharpe_ratio": 7.02,
         "win_streak": 1,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -141,7 +141,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.68,
-        "sharpe_ratio": 4.18,
+        "sharpe_ratio": 4.07,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -189,7 +189,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.29,
-        "sharpe_ratio": 4.36,
+        "sharpe_ratio": 5.25,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -227,7 +227,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.09,
-        "sharpe_ratio": 7.45,
+        "sharpe_ratio": 8.47,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -284,8 +284,8 @@
         "分散持仓"
       ],
       "metrics": {
-        "max_drawdown": 0.59,
-        "sharpe_ratio": 2.46,
+        "max_drawdown": 0.68,
+        "sharpe_ratio": -0.26,
         "win_streak": 0,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -332,7 +332,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.82,
-        "sharpe_ratio": -0.57,
+        "sharpe_ratio": -0.64,
         "win_streak": 0,
         "lose_streak": 3,
         "avg_hold_days": 0.0,
@@ -379,8 +379,8 @@
         "抄底型"
       ],
       "metrics": {
-        "max_drawdown": 0.95,
-        "sharpe_ratio": -0.95,
+        "max_drawdown": 1.27,
+        "sharpe_ratio": -2.73,
         "win_streak": 1,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -418,8 +418,8 @@
         "集中持仓"
       ],
       "metrics": {
-        "max_drawdown": 2.67,
-        "sharpe_ratio": -7.39,
+        "max_drawdown": 2.94,
+        "sharpe_ratio": -8.03,
         "win_streak": 1,
         "lose_streak": 5,
         "avg_hold_days": 0.0,
