@@ -21,6 +21,8 @@ BOARD_STATE_FILE = os.path.join(STATES_DIR, "sim_state_board_fund.json")
 BOARD_GENES_FILE = os.path.join(STATES_DIR, "board_genes.json")
 BOARD_CAPSULES_FILE = os.path.join(STATES_DIR, "board_capsules.json")
 BOARD_RULES_FILE = os.path.join(STATES_DIR, "board_rules.json")
+INTEL_FILE = os.path.join(STATES_DIR, "_intel_briefing.json")
+INTEL_HISTORY_FILE = os.path.join(STATES_DIR, "_intel_history.json")
 
 INITIAL_CASH = 10000.0
 HISTORY_MAX = 720  # 历史记录上限（每小时1条，约30天）
@@ -453,6 +455,48 @@ def export():
             "recent_changes": rule_history[-5:] if rule_history else [],
         }
 
+    # 嵌入战略情报数据
+    intel_data = _load_json(INTEL_FILE, {})
+    if intel_data.get("briefing"):
+        ib = intel_data["briefing"]
+        latest["intel"] = {
+            "timestamp": ib.get("timestamp", ""),
+            "composite_signal": ib.get("composite_signal", ""),
+            "market_phase": ib.get("market_phase", ""),
+            "macro_outlook": ib.get("macro_outlook", ""),
+            "macro_confidence": ib.get("macro_confidence", 50),
+            "sentiment_score": ib.get("sentiment_score", 50),
+            "sentiment_label": ib.get("sentiment_label", ""),
+            "risk_level": ib.get("risk_level", ""),
+            "top_risks": ib.get("top_risks", [])[:3],
+            "hot_sectors": ib.get("hot_sectors", [])[:5],
+            "main_themes": ib.get("main_themes", [])[:3],
+            "catalysts": ib.get("catalysts", [])[:3],
+            "flow_direction": ib.get("flow_direction", ""),
+            "margin_signal": ib.get("margin_signal", ""),
+            "top_picks": ib.get("top_picks", [])[:3],
+            "defensive_advice": ib.get("defensive_advice", ""),
+            "ok_count": ib.get("ok_count", 0),
+            "total": ib.get("total", 0),
+        }
+        # 嵌入各分析师简评（summary 字段）
+        reports = intel_data.get("reports", {})
+        analyst_summaries = []
+        for role_name, report in reports.items():
+            if report.get("summary"):
+                analyst_summaries.append({
+                    "role": role_name,
+                    "model": report.get("model", ""),
+                    "summary": str(report["summary"])[:80],
+                })
+        if analyst_summaries:
+            latest["intel"]["analysts"] = analyst_summaries
+
+    # 嵌入情报历史（用于趋势图）
+    intel_history = _load_json(INTEL_HISTORY_FILE, [])
+    if intel_history:
+        latest["intel_history"] = intel_history[-20:]
+
     latest_file = os.path.join(DOCS_DATA_DIR, "latest.json")
     with open(latest_file, "w", encoding="utf-8") as f:
         json.dump(latest, f, ensure_ascii=False, indent=2)
@@ -490,6 +534,7 @@ def export():
     print(f"  board_fund: {'有' if 'board_fund' in latest else '无'}")
     print(f"  evolution: {'有' if 'evolution' in latest else '无'}")
     print(f"  rules: {'有' if 'rules' in latest else '无'}")
+    print(f"  intel: {'有' if 'intel' in latest else '无'}")
     print(f"  style_tags: 已计算")
 
 

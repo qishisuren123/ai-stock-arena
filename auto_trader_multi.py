@@ -26,6 +26,7 @@ import market_data
 from board_meeting import board_fund, conduct_board_meeting, get_board_summary_for_report
 from model_config import MODELS, get_safe_name
 from simulator import SimAccount, INITIAL_CASH
+import market_intel
 
 console = Console()
 
@@ -411,6 +412,15 @@ def run_trading_cycle():
     market_text = f"【大盘指数】\n{overview}"
     if breadth:
         market_text += f"\n{breadth}"
+
+    # 新增：获取北向资金
+    try:
+        northbound = market_data.get_northbound_flow()
+        if northbound:
+            market_text += f"\n\n【北向资金】\n{northbound}"
+    except Exception:
+        pass
+
     if sectors:
         market_text += f"\n\n【行业板块】\n{sectors}"
     if concepts:
@@ -425,7 +435,17 @@ def run_trading_cycle():
     # 保存热门股票代码
     save_hot_codes(top_codes)
 
-    # 4. 并行查询所有模型
+    # ★★★ 战略情报收集 — 7 模型并行分析 ★★★
+    try:
+        intel_briefing = market_intel.gather_intelligence(market_text)
+        briefing_text = intel_briefing.get("briefing_text", "")
+        if briefing_text:
+            # 将情报简报注入到 market_text 的最前面
+            market_text = f"{briefing_text}\n\n{market_text}"
+    except Exception as e:
+        console.print(f"[yellow]情报收集异常（不影响交易）: {e}[/yellow]")
+
+    # 4. 并行查询所有模型（现在 market_text 包含情报简报）
     query_all_models(market_text, prices)
 
     # 保存各模型思考过程

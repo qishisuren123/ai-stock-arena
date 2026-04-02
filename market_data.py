@@ -499,6 +499,52 @@ def get_pe_analysis(codes: list[str]) -> str:
     return "\n".join(results)
 
 
+def get_northbound_flow() -> str:
+    """获取北向资金（沪股通+深股通）实时净流入数据"""
+    try:
+        url = "http://push2.eastmoney.com/api/qt/kamt.rtmin/get"
+        params = {
+            "fields1": "f1,f2,f3,f4",
+            "fields2": "f51,f52,f53,f54,f55,f56",
+        }
+        headers = {"User-Agent": "Mozilla/5.0"}
+        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        data = resp.json().get("data", {})
+        if not data:
+            return ""
+
+        # f1=沪股通净流入(万), f2=深股通净流入(万), f3=北向合计(万), f4=当日余额(万)
+        hgt = data.get("f1", 0) or 0
+        sgt = data.get("f2", 0) or 0
+        total = data.get("f3", 0) or 0
+
+        # 转换为亿元
+        hgt_yi = hgt / 10000
+        sgt_yi = sgt / 10000
+        total_yi = total / 10000
+        sign = "+" if total_yi >= 0 else ""
+
+        lines = [
+            f"北向资金: {sign}{total_yi:.2f}亿",
+            f"  沪股通: {'+' if hgt_yi >= 0 else ''}{hgt_yi:.2f}亿",
+            f"  深股通: {'+' if sgt_yi >= 0 else ''}{sgt_yi:.2f}亿",
+        ]
+
+        # 判断信号强度
+        if total_yi > 50:
+            lines.append("  ⚡ 北向大幅净流入（强烈看多信号）")
+        elif total_yi > 20:
+            lines.append("  ↑ 北向净流入（偏多信号）")
+        elif total_yi < -50:
+            lines.append("  ⚡ 北向大幅净流出（强烈看空信号）")
+        elif total_yi < -20:
+            lines.append("  ↓ 北向净流出（偏空信号）")
+
+        return "\n".join(lines)
+    except Exception:
+        return ""
+
+
 def get_stock_deep_info(codes: list[str]) -> str:
     """统一入口：并行获取融资融券 + 估值分析"""
     if not codes:
