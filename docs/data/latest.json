@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-02 14:10:28",
+  "timestamp": "2026-04-02 16:50:36",
   "initial_cash": 10000.0,
   "models": [
     {
@@ -35,7 +35,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 6.95,
+        "sharpe_ratio": 6.77,
         "win_streak": 1,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -83,7 +83,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 5.98,
+        "sharpe_ratio": 5.45,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -131,7 +131,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.29,
-        "sharpe_ratio": 5.2,
+        "sharpe_ratio": 4.66,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -189,7 +189,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.68,
-        "sharpe_ratio": 4.03,
+        "sharpe_ratio": 3.0,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -227,7 +227,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.09,
-        "sharpe_ratio": 8.39,
+        "sharpe_ratio": 8.15,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -285,7 +285,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.68,
-        "sharpe_ratio": -0.26,
+        "sharpe_ratio": 1.57,
         "win_streak": 0,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -333,7 +333,7 @@
       ],
       "metrics": {
         "max_drawdown": 1.27,
-        "sharpe_ratio": -2.7,
+        "sharpe_ratio": 0.7,
         "win_streak": 1,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
@@ -380,7 +380,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.82,
-        "sharpe_ratio": -0.64,
+        "sharpe_ratio": -1.33,
         "win_streak": 0,
         "lose_streak": 3,
         "avg_hold_days": 0.0,
@@ -419,7 +419,7 @@
       ],
       "metrics": {
         "max_drawdown": 2.94,
-        "sharpe_ratio": -7.95,
+        "sharpe_ratio": -6.67,
         "win_streak": 1,
         "lose_streak": 5,
         "avg_hold_days": 0.0,
