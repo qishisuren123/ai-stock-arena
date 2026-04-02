@@ -435,9 +435,20 @@ def run_trading_cycle():
     # 保存热门股票代码
     save_hot_codes(top_codes)
 
-    # ★★★ 战略情报收集 — 7 模型并行分析 ★★★
+    # ★★★ 战略情报收集 — 7 模型竞聘上岗 + 绩效考核 ★★★
     try:
-        intel_briefing = market_intel.gather_intelligence(market_text)
+        # 提取上证指数点位，供情报模块做回溯验证
+        index_level = 0.0
+        try:
+            idx_data = market_data._qq_fetch(["sh000001"])
+            if "sh000001" in idx_data:
+                index_level = idx_data["sh000001"]["price"]
+        except Exception:
+            pass
+
+        intel_briefing = market_intel.gather_intelligence(
+            market_text, index_level=index_level,
+        )
         briefing_text = intel_briefing.get("briefing_text", "")
         if briefing_text:
             # 将情报简报注入到 market_text 的最前面

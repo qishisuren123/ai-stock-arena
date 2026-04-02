@@ -23,6 +23,7 @@ BOARD_CAPSULES_FILE = os.path.join(STATES_DIR, "board_capsules.json")
 BOARD_RULES_FILE = os.path.join(STATES_DIR, "board_rules.json")
 INTEL_FILE = os.path.join(STATES_DIR, "_intel_briefing.json")
 INTEL_HISTORY_FILE = os.path.join(STATES_DIR, "_intel_history.json")
+ROLE_FITNESS_FILE = os.path.join(STATES_DIR, "_role_fitness.json")
 
 INITIAL_CASH = 10000.0
 HISTORY_MAX = 720  # 历史记录上限（每小时1条，约30天）
@@ -497,6 +498,28 @@ def export():
     if intel_history:
         latest["intel_history"] = intel_history[-20:]
 
+    # 嵌入分析师绩效考核数据
+    role_fitness_data = _load_json(ROLE_FITNESS_FILE, {})
+    if role_fitness_data.get("assignments"):
+        rf_assignments = []
+        for role, model in role_fitness_data["assignments"].items():
+            scores = role_fitness_data.get("scores", {})
+            s = scores.get(model, {}).get(role, {})
+            rf_assignments.append({
+                "role": role,
+                "model": model,
+                "score": s.get("score", 0.5),
+                "hits": s.get("hits", 0),
+                "misses": s.get("misses", 0),
+                "api_fails": s.get("api_fails", 0),
+            })
+        swap_history = role_fitness_data.get("swap_history", [])
+        latest["role_fitness"] = {
+            "cycle_count": role_fitness_data.get("cycle_count", 0),
+            "assignments": rf_assignments,
+            "recent_swaps": swap_history[-5:] if swap_history else [],
+        }
+
     latest_file = os.path.join(DOCS_DATA_DIR, "latest.json")
     with open(latest_file, "w", encoding="utf-8") as f:
         json.dump(latest, f, ensure_ascii=False, indent=2)
@@ -535,6 +558,7 @@ def export():
     print(f"  evolution: {'有' if 'evolution' in latest else '无'}")
     print(f"  rules: {'有' if 'rules' in latest else '无'}")
     print(f"  intel: {'有' if 'intel' in latest else '无'}")
+    print(f"  role_fitness: {'有' if 'role_fitness' in latest else '无'}")
     print(f"  style_tags: 已计算")
 
 
