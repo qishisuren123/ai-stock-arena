@@ -1,7 +1,47 @@
 {
-  "timestamp": "2026-04-02 12:09:50",
+  "timestamp": "2026-04-02 14:10:28",
   "initial_cash": 10000.0,
   "models": [
+    {
+      "name": "Intern-S1",
+      "cash": 7870.77,
+      "positions": [
+        {
+          "code": "000001",
+          "name": "平安银行",
+          "qty": 200,
+          "avg_cost": 10.65,
+          "current_price": 11.24,
+          "market_value": 2248.0,
+          "unrealized_pnl": 118.0
+        }
+      ],
+      "total_value": 10118.77,
+      "return_pct": 1.19,
+      "realized_pnl": 7.44,
+      "trade_count": 2,
+      "win_count": 1,
+      "win_rate": 50.0,
+      "last_update": "2026-04-02 12:18:23",
+      "thinking": {
+        "analysis": "市场整体呈下跌趋势，风险较高，建议谨慎操作。油气开采行业表现相对较好，但整体市场情绪偏空。",
+        "actions": [],
+        "status": "成功"
+      },
+      "style_tags": [
+        "保守派",
+        "抄底型",
+        "集中持仓"
+      ],
+      "metrics": {
+        "max_drawdown": 0.3,
+        "sharpe_ratio": 6.95,
+        "win_streak": 1,
+        "lose_streak": 1,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 10000.0
+      }
+    },
     {
       "name": "Intern-S1-Pro",
       "cash": 5981.99,
@@ -11,27 +51,27 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.77,
-          "current_price": 11.25,
-          "market_value": 2250.0,
-          "unrealized_pnl": 96.0
+          "current_price": 11.24,
+          "market_value": 2248.0,
+          "unrealized_pnl": 94.0
         },
         {
           "code": "601166",
           "name": "兴业银行",
           "qty": 100,
           "avg_cost": 18.6,
-          "current_price": 18.91,
-          "market_value": 1891.0,
-          "unrealized_pnl": 31.0
+          "current_price": 18.84,
+          "market_value": 1884.0,
+          "unrealized_pnl": 24.0
         }
       ],
-      "total_value": 10122.99,
-      "return_pct": 1.23,
+      "total_value": 10113.99,
+      "return_pct": 1.14,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-04-01 19:57:21",
+      "last_update": "2026-04-02 12:18:23",
       "thinking": {
         "analysis": "AI 返回解析失败: [Intern-S1-Pro] API 调用失败（重试 3 次）: timed out",
         "actions": [],
@@ -43,109 +83,11 @@
       ],
       "metrics": {
         "max_drawdown": 0.3,
-        "sharpe_ratio": 6.03,
+        "sharpe_ratio": 5.98,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5038.0
-      }
-    },
-    {
-      "name": "Intern-S1",
-      "cash": 7870.77,
-      "positions": [
-        {
-          "code": "000001",
-          "name": "平安银行",
-          "qty": 200,
-          "avg_cost": 10.65,
-          "current_price": 11.25,
-          "market_value": 2250.0,
-          "unrealized_pnl": 120.0
-        }
-      ],
-      "total_value": 10120.77,
-      "return_pct": 1.21,
-      "realized_pnl": 7.44,
-      "trade_count": 2,
-      "win_count": 1,
-      "win_rate": 50.0,
-      "last_update": "2026-04-01 19:57:21",
-      "thinking": {
-        "analysis": "市场整体波动较大，上证指数微跌，深证成指和创业板指跌幅较大。油气开采、通信线缆等板块表现较好，但大盘整体表现不佳。当前持仓的平安银行表现较好，浮盈5.4%。",
-        "actions": [],
-        "status": "成功"
-      },
-      "style_tags": [
-        "保守派",
-        "抄底型",
-        "集中持仓"
-      ],
-      "metrics": {
-        "max_drawdown": 0.3,
-        "sharpe_ratio": 7.02,
-        "win_streak": 1,
-        "lose_streak": 1,
-        "avg_hold_days": 0.0,
-        "concentration_hhi": 10000.0
-      }
-    },
-    {
-      "name": "Claude-4.6",
-      "cash": 3542.55,
-      "positions": [
-        {
-          "code": "000001",
-          "name": "平安银行",
-          "qty": 200,
-          "avg_cost": 10.65,
-          "current_price": 11.25,
-          "market_value": 2250.0,
-          "unrealized_pnl": 120.0
-        },
-        {
-          "code": "601166",
-          "name": "兴业银行",
-          "qty": 100,
-          "avg_cost": 18.63,
-          "current_price": 18.91,
-          "market_value": 1891.0,
-          "unrealized_pnl": 28.0
-        },
-        {
-          "code": "600030",
-          "name": "中信证券",
-          "qty": 100,
-          "avg_cost": 24.58,
-          "current_price": 24.29,
-          "market_value": 2429.0,
-          "unrealized_pnl": -29.0
-        }
-      ],
-      "total_value": 10112.55,
-      "return_pct": 1.13,
-      "realized_pnl": 0.0,
-      "trade_count": 0,
-      "win_count": 0,
-      "win_rate": 0.0,
-      "last_update": "2026-04-01 19:57:21",
-      "thinking": {
-        "analysis": "大盘今日基本平稳，全行业上涨，石油石化和通信线缆板块领涨。持仓三只银行/券商股均持有超过3个交易日，平安银行浮盈+5.4%接近止盈线，但未触发硬止盈条件；中信证券小幅亏损-1.0%未触发止损；整体无明确新开仓或止损信号，维持观望。",
-        "actions": [],
-        "status": "成功"
-      },
-      "style_tags": [
-        "保守派",
-        "抄底型",
-        "分散持仓"
-      ],
-      "metrics": {
-        "max_drawdown": 0.68,
-        "sharpe_ratio": 4.07,
-        "win_streak": 0,
-        "lose_streak": 0,
-        "avg_hold_days": 0.0,
-        "concentration_hhi": 3368.0
+        "concentration_hhi": 5039.0
       }
     },
     {
@@ -157,29 +99,29 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.83,
-          "current_price": 11.25,
-          "market_value": 2250.0,
-          "unrealized_pnl": 84.0
+          "current_price": 11.24,
+          "market_value": 2248.0,
+          "unrealized_pnl": 82.0
         },
         {
           "code": "601166",
           "name": "兴业银行",
           "qty": 100,
           "avg_cost": 18.92,
-          "current_price": 18.91,
-          "market_value": 1891.0,
-          "unrealized_pnl": -1.0
+          "current_price": 18.84,
+          "market_value": 1884.0,
+          "unrealized_pnl": -8.0
         }
       ],
-      "total_value": 10100.65,
-      "return_pct": 1.01,
+      "total_value": 10091.65,
+      "return_pct": 0.92,
       "realized_pnl": 23.84,
       "trade_count": 1,
       "win_count": 1,
       "win_rate": 100.0,
-      "last_update": "2026-04-01 19:57:21",
+      "last_update": "2026-04-02 12:18:23",
       "thinking": {
-        "analysis": "大盘震荡微跌，创业板指领跌-0.93%。石油板块因地缘政治因素大幅上涨，银行股表现平稳。当前持仓平安银行浮盈3.7%、兴业银行基本持平，均未触及止盈止损线。",
+        "analysis": "市场偏空信号明显，大盘放量下跌，创业板暴跌2.72%，北向资金观望，贵金属期货暴跌引发避险情绪。银行股具备防御属性，当前持仓浮盈/浮亏幅度较小，继续持有等待市场企稳。",
         "actions": [],
         "status": "成功"
       },
@@ -189,11 +131,69 @@
       ],
       "metrics": {
         "max_drawdown": 0.29,
-        "sharpe_ratio": 5.25,
+        "sharpe_ratio": 5.2,
         "win_streak": 1,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5038.0
+        "concentration_hhi": 5039.0
+      }
+    },
+    {
+      "name": "Claude-4.6",
+      "cash": 3542.55,
+      "positions": [
+        {
+          "code": "000001",
+          "name": "平安银行",
+          "qty": 200,
+          "avg_cost": 10.65,
+          "current_price": 11.24,
+          "market_value": 2248.0,
+          "unrealized_pnl": 118.0
+        },
+        {
+          "code": "601166",
+          "name": "兴业银行",
+          "qty": 100,
+          "avg_cost": 18.63,
+          "current_price": 18.84,
+          "market_value": 1884.0,
+          "unrealized_pnl": 21.0
+        },
+        {
+          "code": "600030",
+          "name": "中信证券",
+          "qty": 100,
+          "avg_cost": 24.58,
+          "current_price": 24.12,
+          "market_value": 2412.0,
+          "unrealized_pnl": -46.0
+        }
+      ],
+      "total_value": 10086.55,
+      "return_pct": 0.87,
+      "realized_pnl": 0.0,
+      "trade_count": 0,
+      "win_count": 0,
+      "win_rate": 0.0,
+      "last_update": "2026-04-02 12:18:23",
+      "thinking": {
+        "analysis": "大盘今日全线重挫，创业板跌2.72%，外围韩国期指熔断、贵金属暴跌，市场整体偏空风险高。当前持仓平安银行浮盈5.5%接近止盈线，但综合信号偏空建议观望；中信证券亏损-1.9%未触及5%止损线，维持持仓；三只股票均持有超3个交易日，但大盘恐慌环境下不宜轻动。",
+        "actions": [],
+        "status": "成功"
+      },
+      "style_tags": [
+        "保守派",
+        "抄底型",
+        "分散持仓"
+      ],
+      "metrics": {
+        "max_drawdown": 0.68,
+        "sharpe_ratio": 4.03,
+        "win_streak": 0,
+        "lose_streak": 0,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 3367.0
       }
     },
     {
@@ -205,20 +205,20 @@
           "name": "平安银行",
           "qty": 100,
           "avg_cost": 10.65,
-          "current_price": 11.25,
-          "market_value": 1125.0,
-          "unrealized_pnl": 60.0
+          "current_price": 11.24,
+          "market_value": 1124.0,
+          "unrealized_pnl": 59.0
         }
       ],
-      "total_value": 10058.93,
-      "return_pct": 0.59,
+      "total_value": 10057.93,
+      "return_pct": 0.58,
       "realized_pnl": 0.0,
       "trade_count": 0,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-04-01 19:57:21",
+      "last_update": "2026-04-02 12:18:23",
       "thinking": {
-        "analysis": "AI 返回解析失败: [Kimi-K2.5] API 调用失败（重试 3 次）: timed out",
+        "analysis": "AI 返回解析失败: Expecting value: line 1 column 1 (char 0)",
         "actions": [],
         "status": "成功"
       },
@@ -227,7 +227,7 @@
       ],
       "metrics": {
         "max_drawdown": 0.09,
-        "sharpe_ratio": 8.47,
+        "sharpe_ratio": 8.39,
         "win_streak": 0,
         "lose_streak": 0,
         "avg_hold_days": 0.0,
@@ -243,38 +243,38 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.77,
-          "current_price": 11.25,
-          "market_value": 2250.0,
-          "unrealized_pnl": 96.0
+          "current_price": 11.24,
+          "market_value": 2248.0,
+          "unrealized_pnl": 94.0
         },
         {
           "code": "600030",
           "name": "中信证券",
           "qty": 100,
           "avg_cost": 24.66,
-          "current_price": 24.29,
-          "market_value": 2429.0,
-          "unrealized_pnl": -37.0
+          "current_price": 24.12,
+          "market_value": 2412.0,
+          "unrealized_pnl": -54.0
         },
         {
           "code": "300149",
           "name": "睿智医药",
           "qty": 200,
           "avg_cost": 12.42,
-          "current_price": 12.15,
-          "market_value": 2430.0,
-          "unrealized_pnl": -54.0
+          "current_price": 12.49,
+          "market_value": 2498.0,
+          "unrealized_pnl": 14.0
         }
       ],
-      "total_value": 9993.22,
-      "return_pct": -0.07,
+      "total_value": 10042.22,
+      "return_pct": 0.42,
       "realized_pnl": -2.34,
       "trade_count": 1,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-04-01 19:57:21",
+      "last_update": "2026-04-02 12:18:23",
       "thinking": {
-        "analysis": "大盘震荡微跌，油气板块受地缘政治利好领涨，但持仓股均未触发止损或止盈条件。平安银行持仓已超 3 天且浮盈 4.3%，中信证券和睿智医药持仓不足 3 天且亏损未达 5% 止损线，根据纪律不进行操作，保持观望。",
+        "analysis": "大盘放量下跌且创业板指跌幅超 2%，宏观信号偏空，贵金属暴跌引发避险情绪，不符合开仓条件；现有持仓中平安银行买入未满 3 个交易日且未触发止损，其他持仓也未达止盈或止损线，今日应全面观望。",
         "actions": [],
         "status": "成功"
       },
@@ -289,7 +289,55 @@
         "win_streak": 0,
         "lose_streak": 1,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 3338.0
+        "concentration_hhi": 3340.0
+      }
+    },
+    {
+      "name": "DeepSeek-V3.2",
+      "cash": 5270.46,
+      "positions": [
+        {
+          "code": "000001",
+          "name": "平安银行",
+          "qty": 200,
+          "avg_cost": 10.88,
+          "current_price": 11.24,
+          "market_value": 2248.0,
+          "unrealized_pnl": 72.0
+        },
+        {
+          "code": "300149",
+          "name": "睿智医药",
+          "qty": 200,
+          "avg_cost": 12.42,
+          "current_price": 12.49,
+          "market_value": 2498.0,
+          "unrealized_pnl": 14.0
+        }
+      ],
+      "total_value": 10016.46,
+      "return_pct": 0.16,
+      "realized_pnl": -60.41,
+      "trade_count": 2,
+      "win_count": 1,
+      "win_rate": 50.0,
+      "last_update": "2026-04-02 12:18:23",
+      "thinking": {
+        "analysis": "市场全面下跌，大盘风险较高，综合信号偏空，今日创业板指暴跌2.72%，北向资金零流入显示观望情绪浓厚。严格遵守交易纪律，今日大盘跌幅过大，不适合新开仓，应保持观望，耐心等待企稳信号。",
+        "actions": [],
+        "status": "成功"
+      },
+      "style_tags": [
+        "保守派",
+        "抄底型"
+      ],
+      "metrics": {
+        "max_drawdown": 1.27,
+        "sharpe_ratio": -2.7,
+        "win_streak": 1,
+        "lose_streak": 1,
+        "avg_hold_days": 0.0,
+        "concentration_hhi": 5014.0
       }
     },
     {
@@ -301,29 +349,29 @@
           "name": "平安银行",
           "qty": 200,
           "avg_cost": 10.72,
-          "current_price": 11.25,
-          "market_value": 2250.0,
-          "unrealized_pnl": 106.0
+          "current_price": 11.24,
+          "market_value": 2248.0,
+          "unrealized_pnl": 104.0
         },
         {
           "code": "600030",
           "name": "中信证券",
           "qty": 100,
           "avg_cost": 24.26,
-          "current_price": 24.29,
-          "market_value": 2429.0,
-          "unrealized_pnl": 3.0
+          "current_price": 24.12,
+          "market_value": 2412.0,
+          "unrealized_pnl": -14.0
         }
       ],
-      "total_value": 9980.65,
-      "return_pct": -0.19,
+      "total_value": 9961.65,
+      "return_pct": -0.38,
       "realized_pnl": -117.34,
       "trade_count": 3,
       "win_count": 0,
       "win_rate": 0.0,
-      "last_update": "2026-04-01 19:57:21",
+      "last_update": "2026-04-02 12:18:23",
       "thinking": {
-        "analysis": "受地缘政治冲突影响原油大涨，油气等周期板块领涨，大盘整体呈震荡偏弱走势。当前持仓金融股估值较低且具防御属性，均未触发止盈止损条件，且目前无明确的高确定性建仓标的，建议继续持仓观望。",
+        "analysis": "当前市场偏空情绪浓厚，大盘普跌且创业板指跌幅超2%，外围市场动荡引发避险，建议保持观望不新开仓，现有持仓未触及止损止盈标准继续持有。",
         "actions": [],
         "status": "成功"
       },
@@ -336,55 +384,7 @@
         "win_streak": 0,
         "lose_streak": 3,
         "avg_hold_days": 0.0,
-        "concentration_hhi": 5007.0
-      }
-    },
-    {
-      "name": "DeepSeek-V3.2",
-      "cash": 5270.46,
-      "positions": [
-        {
-          "code": "000001",
-          "name": "平安银行",
-          "qty": 200,
-          "avg_cost": 10.88,
-          "current_price": 11.25,
-          "market_value": 2250.0,
-          "unrealized_pnl": 74.0
-        },
-        {
-          "code": "300149",
-          "name": "睿智医药",
-          "qty": 200,
-          "avg_cost": 12.42,
-          "current_price": 12.15,
-          "market_value": 2430.0,
-          "unrealized_pnl": -54.0
-        }
-      ],
-      "total_value": 9950.46,
-      "return_pct": -0.5,
-      "realized_pnl": -60.41,
-      "trade_count": 2,
-      "win_count": 1,
-      "win_rate": 50.0,
-      "last_update": "2026-04-01 19:57:21",
-      "thinking": {
-        "analysis": "大盘窄幅震荡，油气、资源类板块领涨，受地缘政治消息刺激。持仓中睿智医药小幅浮亏，平安银行微盈，均未触发止损止盈条件，且持有不足3天不宜卖出。市场无明显确定性机会，观望为主。",
-        "actions": [],
-        "status": "成功"
-      },
-      "style_tags": [
-        "保守派",
-        "抄底型"
-      ],
-      "metrics": {
-        "max_drawdown": 1.27,
-        "sharpe_ratio": -2.73,
-        "win_streak": 1,
-        "lose_streak": 1,
-        "avg_hold_days": 0.0,
-        "concentration_hhi": 5007.0
+        "concentration_hhi": 5006.0
       }
     },
     {
@@ -396,20 +396,20 @@
           "name": "睿智医药",
           "qty": 100,
           "avg_cost": 12.42,
-          "current_price": 12.15,
-          "market_value": 1215.0,
-          "unrealized_pnl": -27.0
+          "current_price": 12.49,
+          "market_value": 1249.0,
+          "unrealized_pnl": 7.0
         }
       ],
-      "total_value": 9721.75,
-      "return_pct": -2.78,
+      "total_value": 9755.75,
+      "return_pct": -2.44,
       "realized_pnl": -239.39,
       "trade_count": 6,
       "win_count": 1,
       "win_rate": 16.7,
-      "last_update": "2026-04-01 19:57:21",
+      "last_update": "2026-04-02 12:18:23",
       "thinking": {
-        "analysis": "大盘指数微跌，油气板块受地缘政治消息刺激大涨，但整体市场情绪一般。睿智医药持有仅1天，浮亏2.2%未触及5%止损线，且无明确卖出信号。根据持仓期纪律，当前应继续持有观望，避免频繁交易增加成本。",
+        "analysis": "AI 返回解析失败: [GLM5] API 调用失败（重试 3 次）: timed out",
         "actions": [],
         "status": "成功"
       },
@@ -419,7 +419,7 @@
       ],
       "metrics": {
         "max_drawdown": 2.94,
-        "sharpe_ratio": -8.03,
+        "sharpe_ratio": -7.95,
         "win_streak": 1,
         "lose_streak": 5,
         "avg_hold_days": 0.0,
@@ -427,13 +427,9 @@
       }
     }
   ],
-  "battle_report": "各位观众朋友们！今天的AI炒股大赛又双叒叕收盘了！大盘表示：我太难了，涨不动跌不动，就在这儿躺着刷存在感。上证老师轻微翻绿，创业板同学稍微掉了点肉，整体就是个“温吞水”行情。\n\n咱们的AI选手们今天默契值拉满——清一色观望，这是集体修仙呢还是集体装死？不过收益榜单倒是有点意思：Intern-S1-Pro以1.23%的小碎步拿下冠军，Intern-S1紧随其后，Claude-4.6和Minimax2.5也混了个及格分。倒是GLM5这位仁兄，可能是想不开，直接来了个-2.78%的大礼包，这是要上天台吹风吗？总的来说，今天是个“胜在控制回撤”的日子，各位AI老师用实际行动证明：不动才是最好的动！",
-  "battle_report_time": "2026-04-02 10:06",
+  "battle_report": "今天的A股市场堪称“AI模型的照妖镜”！三大指数集体扑街，创业板更是跌得找不着北，AI们倒好，整齐划一地选择“观望”，仿佛提前商量好要当吃瓜群众。\n\n可同样是观望，差距咋就这么大呢？Intern-S1兄弟俩闷声发大财，一个赚1.19%一个赚1.14%，稳如老狗；Minimax2.5和Claude-4.6也跟着喝汤。反观GLM5同学，观望都能亏2.44%，这是睡着觉也能赔钱的水平？DeepSeek-V3.2和Gemini-3.1-Pro表示：我们只是来陪跑的。\n\n总结：在这个点位还能赚钱的，不是高手是神仙；亏钱的那个，欢迎来到股市“体验生活”。",
+  "battle_report_time": "2026-04-02 14:10",
   "battle_reports": [
-    {
-      "timestamp": "2026-04-01 11:06",
-      "report": "各位观众朋友们！今天A股三大指数集体发力，全线飘红1.5%左右，成交额高达1.5万亿，这行情，不扫码都对不起这热度！\n\n各路AI选手表现嘛，典型的“躺平也能赢”系列。Claude-4.6大佬稳坐钓鱼台，观望直接拿下+1.32%冠军，这波啊，这波是“无为而治”的最高境界。Intern-S1-Pro紧随其后，同样观望姿势收入+1.19%，真是“选中茅台，躺赢到手”！\n\n最惨的要数GLM5这位兄弟，频繁操作又是卖又是买，结果倒亏2.51%，完美诠释了“NO ZUO NO DIE”。公共基金也是神奇，同比亚迪还稳，只跌了0.03%。\n\n今天睿智医药成了香饽饽，被两个模型同时相中买入。总结：在这个市场，会躺平的才是真高手啊！"
-    },
     {
       "timestamp": "2026-04-01 13:06",
       "report": "各位观众朋友们！今天A股三大指数全线飘红，市场成交额突破万亿大关，可热闹了！可惜咱们AI选手们今天集体犯困，大部分模型都选择了“葛优躺”观望。\n\n本轮最佳MVP属于Claude-4.6，以1.37%的收益险胜大盘，堪称“躺赢“大师。Intern-S1-Pro也不赖，小碎步跑了1.23%。最惨的是GLM5，直接来了个-2.51%的大跟头，这是要闹哪样？倒是公共基金老师们更惨，跌了1.48%，这波被咱们AI按在地上摩擦了。\n\n董事会今天通过了三笔操作：卖出中工国际和国际复材，买入睿智医药。Qwen3.5-397B、DeepSeek-V3.2和Gemini-3.1-Pro这三位大佬目前在董事会最有话语权，看来是要搞事情啊！总体来看，今天各位选手表现中规中矩，毕竟市场行情摆在那，能跑赢公共基金就算及格啦！"
@@ -449,11 +445,15 @@
     {
       "timestamp": "2026-04-02 10:06",
       "report": "各位观众朋友们！今天的AI炒股大赛又双叒叕收盘了！大盘表示：我太难了，涨不动跌不动，就在这儿躺着刷存在感。上证老师轻微翻绿，创业板同学稍微掉了点肉，整体就是个“温吞水”行情。\n\n咱们的AI选手们今天默契值拉满——清一色观望，这是集体修仙呢还是集体装死？不过收益榜单倒是有点意思：Intern-S1-Pro以1.23%的小碎步拿下冠军，Intern-S1紧随其后，Claude-4.6和Minimax2.5也混了个及格分。倒是GLM5这位仁兄，可能是想不开，直接来了个-2.78%的大礼包，这是要上天台吹风吗？总的来说，今天是个“胜在控制回撤”的日子，各位AI老师用实际行动证明：不动才是最好的动！"
+    },
+    {
+      "timestamp": "2026-04-02 14:10",
+      "report": "今天的A股市场堪称“AI模型的照妖镜”！三大指数集体扑街，创业板更是跌得找不着北，AI们倒好，整齐划一地选择“观望”，仿佛提前商量好要当吃瓜群众。\n\n可同样是观望，差距咋就这么大呢？Intern-S1兄弟俩闷声发大财，一个赚1.19%一个赚1.14%，稳如老狗；Minimax2.5和Claude-4.6也跟着喝汤。反观GLM5同学，观望都能亏2.44%，这是睡着觉也能赔钱的水平？DeepSeek-V3.2和Gemini-3.1-Pro表示：我们只是来陪跑的。\n\n总结：在这个点位还能赚钱的，不是高手是神仙；亏钱的那个，欢迎来到股市“体验生活”。"
     }
   ],
   "board_fund": {
-    "total_value": 9832.49,
-    "return_pct": -1.68,
+    "total_value": 9865.49,
+    "return_pct": -1.35,
     "cash": 7492.49,
     "positions": [
       {
@@ -461,18 +461,18 @@
         "name": "睿智医药",
         "qty": 100,
         "avg_cost": 12.42,
-        "current_price": 12.15,
-        "market_value": 1215.0,
-        "unrealized_pnl": -27.0
+        "current_price": 12.49,
+        "market_value": 1249.0,
+        "unrealized_pnl": 7.0
       },
       {
         "code": "000001",
         "name": "平安银行",
         "qty": 100,
         "avg_cost": 11.16,
-        "current_price": 11.25,
-        "market_value": 1125.0,
-        "unrealized_pnl": 9.0
+        "current_price": 11.24,
+        "market_value": 1124.0,
+        "unrealized_pnl": 8.0
       }
     ],
     "pending_trades": {
@@ -642,5 +642,157 @@
         "time": "2026-04-01 手动干预"
       }
     ]
+  },
+  "intel": {
+    "timestamp": "2026-04-02 14:04",
+    "composite_signal": "偏空",
+    "market_phase": "下跌趋势",
+    "macro_outlook": "看空",
+    "macro_confidence": 75,
+    "sentiment_score": 50,
+    "sentiment_label": "",
+    "risk_level": "高",
+    "top_risks": [
+      "贵金属期货暴跌（白银跌7%、黄金跌3%）引发避险资产踩踏",
+      "创业板指暴跌2.72%显示中小盘股抛压沉重",
+      "外围市场恐慌（韩国期指熔断、A50期货跌1%）"
+    ],
+    "hot_sectors": [
+      "油田服务",
+      "油服工程",
+      "油气开采"
+    ],
+    "main_themes": [],
+    "catalysts": [],
+    "flow_direction": "",
+    "margin_signal": "",
+    "top_picks": [
+      {
+        "code": "300839",
+        "name": "博汇股份",
+        "reason": "涨幅19.99%，PE分位8%，估值低，基本面支撑强",
+        "suggested_ratio": 0.15
+      },
+      {
+        "code": "301188",
+        "name": "力诺药包",
+        "reason": "涨幅15.99%，成交额12.6亿，基本面支撑强",
+        "suggested_ratio": 0.15
+      },
+      {
+        "code": "688336",
+        "name": "三生国健",
+        "reason": "涨幅12.84%，PE分位2%，估值极低",
+        "suggested_ratio": 0.15
+      }
+    ],
+    "defensive_advice": "",
+    "ok_count": 5,
+    "total": 7,
+    "analysts": [
+      {
+        "role": "行业轮动分析师",
+        "model": "Qwen3.5-397B",
+        "summary": "大盘调整，资金避险涌入油气与医药。科技与贵金属大幅回调，建议短期聚焦资源避险与超跌医药方向。"
+      },
+      {
+        "role": "宏观策略师",
+        "model": "DeepSeek-V3.2",
+        "summary": "市场放量普跌，避险情绪升温，叠加贵金属崩盘与外盘拖累，短期下行压力较大。"
+      },
+      {
+        "role": "风险预警分析师",
+        "model": "Minimax2.5",
+        "summary": "市场普跌且贵金属暴跌引发避险踩踏，创业板重挫表明中小盘风险释放未结束，宜控制仓位等待企稳"
+      },
+      {
+        "role": "选股分析师",
+        "model": "Intern-S1",
+        "summary": "推荐博汇股份、力诺药包、三生国健，基本面支撑强，估值低。"
+      },
+      {
+        "role": "资金流向分析师",
+        "model": "Kimi-K2.5",
+        "summary": " 用户要求我作为资金流向分析专家，基于提供的成交额、涨跌幅榜和融资融券数据，分析以下四个方面：\n\n1. 今日资金主要流向：大盘蓝筹 or 中小盘 or 题材股？"
+      }
+    ]
+  },
+  "intel_history": [
+    {
+      "timestamp": "2026-04-02 14:04",
+      "composite_signal": "偏空",
+      "market_phase": "下跌趋势",
+      "sentiment_score": null,
+      "risk_level": "高",
+      "hot_sectors": [
+        "油田服务",
+        "油服工程",
+        "油气开采"
+      ],
+      "main_themes": [],
+      "ok_count": 5
+    }
+  ],
+  "role_fitness": {
+    "cycle_count": 0,
+    "assignments": [
+      {
+        "role": "宏观策略师",
+        "model": "DeepSeek-V3.2",
+        "score": 0.5,
+        "hits": 0,
+        "misses": 0,
+        "api_fails": 0
+      },
+      {
+        "role": "行业轮动分析师",
+        "model": "Qwen3.5-397B",
+        "score": 0.5,
+        "hits": 0,
+        "misses": 0,
+        "api_fails": 0
+      },
+      {
+        "role": "市场情绪分析师",
+        "model": "GLM5",
+        "score": 0.5,
+        "hits": 0,
+        "misses": 0,
+        "api_fails": 0
+      },
+      {
+        "role": "资金流向分析师",
+        "model": "Kimi-K2.5",
+        "score": 0.5,
+        "hits": 0,
+        "misses": 0,
+        "api_fails": 0
+      },
+      {
+        "role": "风险预警分析师",
+        "model": "Minimax2.5",
+        "score": 0.5,
+        "hits": 0,
+        "misses": 0,
+        "api_fails": 0
+      },
+      {
+        "role": "热点题材分析师",
+        "model": "Intern-S1-Pro",
+        "score": 0.5,
+        "hits": 0,
+        "misses": 0,
+        "api_fails": 0
+      },
+      {
+        "role": "选股分析师",
+        "model": "Intern-S1",
+        "score": 0.5,
+        "hits": 0,
+        "misses": 0,
+        "api_fails": 0
+      }
+    ],
+    "recent_swaps": []
   }
 }
