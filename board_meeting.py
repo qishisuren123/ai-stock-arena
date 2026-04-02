@@ -499,11 +499,14 @@ JSON 格式：
    - 买入后不足 3 个交易日就卖出（频繁交易）
    - 买入已经连续涨 3 天以上的股票（追涨）
    - 单笔仓位超过 25%（过度集中）
+   - 买入市值低于 100 亿的小盘股或概念炒作股（历史证明小盘股贡献了 98% 的亏损）
+   - 买入当日涨幅超过 5% 的股票（可能追高被套）
    - 没有明确理由的交易提案
 4. 支持的行为：
    - 触发止损（亏损 > 5%）的卖出提案
-   - 有清晰技术面/基本面依据的买入
+   - 买入沪深300/中证500成分股，有清晰基本面依据
    - 适度分散的持仓（2-3只，每只 10-20%）
+   - 银行、电力、消费等稳健蓝筹股
 5. 注意每笔交易的真实成本：佣金最低 5 元 + 卖出印花税，小额交易不划算
 6. 公共基金目标：稳健增值，月度收益 1-3%，最大回撤 < 5%"""
 
@@ -1008,11 +1011,19 @@ def conduct_board_meeting(runners, market_text: str, prices: dict):
         fresh_buy = market_data.get_realtime_prices(buy_codes)
         fund_prices.update(fresh_buy)
 
-    # 先卖（传递 ruleset）
+    # 先卖（传递 ruleset，含 T+1 守卫）
+    today = datetime.now().strftime("%Y-%m-%d")
     for r in results:
         if not r["approved"] or r["action"] != "sell":
             continue
         code = r["code"]
+        # T+1 守卫：当日买入不允许卖出
+        if code in board_fund.positions:
+            pos = board_fund.positions[code]
+            buy_date = pos.get("buy_date", "")
+            if buy_date == today:
+                console.print(f"  [dim]董事会: 跳过卖出 {code}（T+1，今日买入）[/dim]")
+                continue
         sell_price = fund_prices.get(code)
         if sell_price:
             msg = board_fund.sell_with_evolution(

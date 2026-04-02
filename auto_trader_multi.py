@@ -274,39 +274,59 @@ def execute_trades(prices: dict[str, float]):
             local_prices.update(new_prices)
 
         # 先卖（带持仓期检查）
+        today = datetime.now().strftime("%Y-%m-%d")
         for act in actions:
             if act.get("action") != "sell":
                 continue
             code = act["code"]
-            # 持仓期守卫：持仓不足 1 天不允许卖（T+1）
+            # T+1 守卫：当日买入不允许卖出
             if code in r.account.positions:
                 pos = r.account.positions[code]
                 buy_date = pos.get("buy_date", "")
+                if buy_date == today:
+                    console.print(
+                        f"  [dim]{r.name}: 跳过卖出 {code}（T+1，今日买入）[/dim]"
+                    )
+                    continue
+                # 最低持仓期 2 天（减少频繁交易）
                 if buy_date:
                     try:
                         bd = datetime.strptime(buy_date, "%Y-%m-%d")
                         hold_days = (datetime.now() - bd).days
-                        if hold_days < 1:
-                            console.print(
-                                f"  [dim]{r.name}: 跳过卖出 {code}（T+1，今日买入）[/dim]"
-                            )
-                            continue
+                        if hold_days < 2:
+                            # 允许止损：亏损超过 5% 放行
+                            avg_cost = pos.get("avg_cost", 0)
+                            sell_price = local_prices.get(code, avg_cost)
+                            loss_pct = (sell_price - avg_cost) / avg_cost * 100 if avg_cost > 0 else 0
+                            if loss_pct > -5:
+                                console.print(
+                                    f"  [dim]{r.name}: 跳过卖出 {code}（持仓{hold_days}天 < 2天，未达止损线）[/dim]"
+                                )
+                                continue
                     except ValueError:
                         pass
             sell_price = local_prices.get(code)
             if sell_price:
                 r.account.sell(code, sell_price)
 
-        # 后买
+        # 后买（含标的过滤）
         for act in actions:
             if act.get("action") != "buy":
                 continue
             code = act["code"]
             name = act.get("name", code)
-            ratio = min(act.get("ratio", 0.2), 0.25)  # 强制上限 25%
+            # 执行级标的过滤：禁止高价股和可疑代码
             buy_price = local_prices.get(code)
-            if buy_price:
-                r.account.buy(code, name, buy_price, ratio, local_prices)
+            if not buy_price:
+                continue
+            if buy_price > 50:
+                console.print(
+                    f"  [dim]{r.name}: 跳过买入 {name}({code})（股价{buy_price:.0f}>50元，不适合小账户）[/dim]"
+                )
+                continue
+            # 禁止追涨：如果当日涨幅已超 5% 不买（简单判断：涨幅榜里的代码）
+            ratio = min(act.get("ratio", 0.2), 0.25)  # 强制上限 25%
+            r.account.buy(code, name, buy_price, ratio, local_prices)
 
         r.account.save()
 
